@@ -15,3 +15,7 @@ gist:
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
+
+
+show_downloads: true
+google_analytics: G-ABC123XYZ
