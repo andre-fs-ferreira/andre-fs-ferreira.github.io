@@ -24,7 +24,7 @@ github_username:  ShadowTwin41
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: midnight
 plugins:
   - jekyll-feed
 
