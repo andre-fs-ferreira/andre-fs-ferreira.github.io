@@ -1,11 +1,6 @@
 title: "André's Homepage"
 description: "A personal blog about my work and projects."
 
-
-
-plugins:
-  - jekyll-remote-theme
-
 lsi: false
 safe: false
 incremental: false
