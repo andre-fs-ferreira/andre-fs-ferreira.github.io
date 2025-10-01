@@ -1,11 +1,4 @@
 ---
 ---
 
-@import "{{ site.theme }}";
-
-// Change the body background
-body {
-  background-color: #f9fafb; // light gray
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #333;
-}
+@import "jekyll-theme-minimal";
