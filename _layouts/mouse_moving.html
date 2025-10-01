@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mouse-following background — Neural Network & Brain Reveal (Jekyll friendly)</title>
+  <style>
+    /*
+      Enhanced: central brain + radial deep-learning wires that pulse outward.
+      Integration notes (Jekyll):
+      - Put CSS in assets/css/main.scss or inside <head> of _layouts/default.html
+      - Insert overlay elements into <body> in _layouts/default.html
+      - Put the script into assets/js/mouse-bg-network-brain.js and include it in your layout
+    */
+
+    :root{
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+      --spot-opacity: 0.95;
+      --spot-size: 30%;
+    }
+
+    html,body{height:100%;margin:0}
+    body{
+      background: linear-gradient(180deg,#010217 0%, #07102a 100%);
+      color:#e7eefc;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .bg-root{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+    .bg-stars{position:absolute;inset:0;background:
+      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.05), transparent 40%),
+      radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.03), transparent 40%),
+      radial-gradient(1px 1px at 80% 30%, rgba(255,255,255,0.02), transparent 40%);
+      opacity:0.85;filter:blur(0.4px);transform: translateZ(0);
+    }
+
+    /* network layer uses mask to reveal only near cursor */
+    .bg-network{
+      position:absolute;inset:0;display:block;
+      -webkit-mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,var(--spot-opacity)) 0%, rgba(0,0,0,calc(var(--spot-opacity) * 0.4)) 18%, rgba(0,0,0,0) var(--spot-size));
+      mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,var(--spot-opacity)) 0%, rgba(0,0,0,calc(var(--spot-opacity) * 0.4)) 18%, rgba(0,0,0,0) var(--spot-size));
+      transition: mask-position 120ms linear, -webkit-mask-position 120ms linear;
+      will-change: mask-position;
+      mix-blend-mode: screen;opacity:0.98;
+    }
+
+    .bg-illum{position:absolute;inset:0;pointer-events:none;background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(60,200,255,0.12) 0%, rgba(60,180,220,0.04) 12%, rgba(0,0,0,0) 28%);mix-blend-mode: screen;opacity:0.95;transition: background-position 120ms linear}
+
+    .mouse-ring{position:fixed;left:var(--mouse-x);top:var(--mouse-y);width:38px;height:38px;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:4;display:block;mix-blend-mode:screen}
+    .mouse-ring .dot{position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 1px rgba(160,220,255,0.12) inset, 0 8px 24px rgba(0,0,0,0.6)}
+
+    main{position:relative;z-index:6;padding:4rem}
+
+    @media (prefers-reduced-motion: reduce){.bg-network, .bg-illum, .bg-stars, .mouse-ring{transition:none;animation:none}}
+
+    /* SVG styles */
+    .wire{stroke: rgba(80,200,255,0.85); stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; filter: drop-shadow(0 0 6px rgba(60,180,255,0.08));}
+    .wire.flow{stroke-dasharray: 6 14; animation:dashMove 1400ms linear infinite}
+    @keyframes dashMove{to{stroke-dashoffset:-20}}
+
+    .node{fill:rgba(160,230,255,0.95); opacity:0.92; filter: drop-shadow(0 0 8px rgba(60,180,255,0.12))}
+    .node.pulse{animation:nodePulse 2000ms infinite ease-in-out}
+    @keyframes nodePulse{0%{transform:scale(0.9);opacity:0.6}45%{transform:scale(1.12);opacity:1}100%{transform:scale(0.95);opacity:0.6}}
+
+    /* central brain */
+    .brain-core{fill:url(#brainGrad); filter: drop-shadow(0 0 20px rgba(70,180,255,0.18));}
+    .brain-outline{stroke:rgba(120,210,255,0.95); stroke-width:1.4; fill:none}
+    .brain-arc{stroke:rgba(200,230,255,0.9); stroke-width:0.8; fill:none; opacity:0.88}
+    .brain-pulse{animation:brainBeat 1800ms ease-in-out infinite}
+    @keyframes brainBeat{0%{transform:scale(0.96);opacity:0.95}40%{transform:scale(1.02);opacity:1}100%{transform:scale(0.98);opacity:0.96}}
+
+  </style>
+</head>
+<body>
+
+  <div class="bg-root" aria-hidden="true">
+    <div class="bg-stars"></div>
+
+    <svg class="bg-network" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <defs>
+        <radialGradient id="brainGrad" cx="50%" cy="40%">
+          <stop offset="0%" stop-color="#8fe0ff" stop-opacity="0.95"/>
+          <stop offset="55%" stop-color="#3ab3ff" stop-opacity="0.86"/>
+          <stop offset="100%" stop-color="#0b6b9a" stop-opacity="0.6"/>
+        </radialGradient>
+      </defs>
+
+      <!-- wires group -->
+      <g id="wires"></g>
+      <!-- nodes group -->
+      <g id="nodes"></g>
+
+      <!-- central brain group placed programmatically but include a clean visual fallback -->
+      <g id="brain" transform="translate(600,400)" style="pointer-events:none;">
+        <g class="brain-pulse" transform="translate(0,0)">
+          <ellipse class="brain-core" cx="0" cy="0" rx="48" ry="40" />
+          <path class="brain-outline" d="M-32,-6 C-32,-34 32,-34 32,-6 C32,18 8,32 -8,32 C-28,32 -32,18 -32,-6 Z" />
+          <!-- some arcs to suggest folds -->
+          <path class="brain-arc" d="M-10,-16 C-2,-6 10,-6 18,-12" />
+          <path class="brain-arc" d="M-20,0 C-8,10 6,10 20,4" />
+          <path class="brain-arc" d="M-28,8 C-12,16 -2,18 10,12" />
+        </g>
+      </g>
+
+    </svg>
+
+    <div class="bg-illum"></div>
+  </div>
+
+  <div class="mouse-ring" aria-hidden="true"><span class="dot"></span></div>
+
+  <main>
+    <h1>Neural network & brain reveal — move your mouse</h1>
+    <p>Move the mouse to reveal a neural network with a central "brain" and outward deep-learning wires.</p>
+  </main>
+
+  <script>
+    /*
+      Script: mouse tracking + procedural brain-centric network
+      - updates CSS vars for spotlight
+      - generates nodes, radial wires from brain center to nodes, and connecting wires between nodes
+      - animates small organic motion and a streaming 'flow' along some wires
+      - respects prefers-reduced-motion
+    */
+
+    (function(){
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const root = document.documentElement;
+      const ring = document.querySelector('.mouse-ring');
+      const svg = document.querySelector('.bg-network');
+      const wiresG = document.getElementById('wires');
+      const nodesG = document.getElementById('nodes');
+      const brainG = document.getElementById('brain');
+
+      const vb = svg.viewBox.baseVal || {width:1200, height:800};
+      const W = vb.width || 1200; const H = vb.height || 800;
+      const brain = {x: W/2, y: H/2, r: 48};
+
+      function setVarsFromClientXY(clientX, clientY){
+        const xPct = (clientX / window.innerWidth * 100).toFixed(2) + '%';
+        const yPct = (clientY / window.innerHeight * 100).toFixed(2) + '%';
+        root.style.setProperty('--mouse-x', xPct);
+        root.style.setProperty('--mouse-y', yPct);
+        ring.style.left = xPct; ring.style.top = yPct;
+      }
+
+      window.addEventListener('mousemove', (e)=> setVarsFromClientXY(e.clientX, e.clientY), {passive:true});
+      window.addEventListener('touchstart', (ev)=>{ if(ev.touches && ev.touches[0]) setVarsFromClientXY(ev.touches[0].clientX, ev.touches[0].clientY); }, {passive:true});
+      window.addEventListener('touchmove', (ev)=>{ if(ev.touches && ev.touches[0]) setVarsFromClientXY(ev.touches[0].clientX, ev.touches[0].clientY); }, {passive:true});
+
+      window.addEventListener('resize', ()=>{
+        // on resize we should recompute anything based on viewport; keep brain centered in viewBox
+        // (we use viewBox coords so no change needed here unless you change viewBox)
+      }, {passive:true});
+
+      // procedural network generator: create nodes and wires from brain
+      function generateBrainNetwork(nodeCount){
+        while(wiresG.firstChild) wiresG.removeChild(wiresG.firstChild);
+        while(nodesG.firstChild) nodesG.removeChild(nodesG.firstChild);
+
+        const nodes = [];
+        for (let i=0;i<nodeCount;i++){
+          // random around periphery but bias outward from brain
+          const angle = Math.random()*Math.PI*2;
+          const dist = (0.28 + Math.random()*0.62) * Math.min(W,H)/2; // radial distance
+          const x = brain.x + Math.cos(angle)*dist;
+          const y = brain.y + Math.sin(angle)*dist;
+          const r = (2 + Math.random()*3.2).toFixed(2);
+          const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+          c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', r);
+          c.classList.add('node');
+          if (Math.random() > 0.82) c.classList.add('pulse');
+          nodesG.appendChild(c);
+          nodes.push({x,y,r:parseFloat(r),el:c});
+        }
+
+        // create radial wires from brain to nodes (curved) and some inter-node wires
+        nodes.forEach((n, idx)=>{
+          // create a smooth Bezier path from brain to node
+          const midX = (brain.x + n.x)/2 + (Math.random()*80 - 40);
+          const midY = (brain.y + n.y)/2 + (Math.random()*40 - 20);
+          const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+          const d = `M ${brain.x} ${brain.y} Q ${midX} ${midY} ${n.x} ${n.y}`;
+          path.setAttribute('d', d);
+          path.classList.add('wire');
+          // make some wires show a flow animation
+          if (Math.random() > 0.6) path.classList.add('flow');
+          // subtle opacity variation
+          path.style.strokeOpacity = (0.4 + Math.random()*0.55).toFixed(2);
+          wiresG.appendChild(path);
+        });
+
+        // interconnect nearest neighbours (sparser)
+        for (let i=0;i<nodes.length;i++){
+          const dists = nodes.map((no, j)=>({j, d: (no.x-nodes[i].x)**2 + (no.y-nodes[i].y)**2}));
+          dists.sort((a,b)=>a.d-b.d);
+          const neighbors = 1 + Math.floor(Math.random()*2); // connect to 1..2 nearest
+          for (let k=1;k<=neighbors && k<dists.length;k++){
+            const nb = nodes[dists[k].j];
+            const ctrlX = (nodes[i].x + nb.x)/2 + (Math.random()*40 - 20);
+            const ctrlY = (nodes[i].y + nb.y)/2 + (Math.random()*30 - 15);
+            const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+            const dd = `M ${nodes[i].x} ${nodes[i].y} Q ${ctrlX} ${ctrlY} ${nb.x} ${nb.y}`;
+            p.setAttribute('d', dd);
+            p.classList.add('wire');
+            // fewer interconnects have flow
+            if (Math.random() > 0.85) p.classList.add('flow');
+            p.style.strokeOpacity = (0.22 + Math.random()*0.5).toFixed(2);
+            wiresG.appendChild(p);
+          }
+        }
+
+        return nodes;
+      }
+
+      // initial generation
+      const prefersReduced = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      const nodeCount = prefersReduced ? 18 : 42;
+      let nodes = generateBrainNetwork(nodeCount);
+
+      // gentle organic motion and occasional re-tessellation for life
+      let t = 0;
+      function animate(){
+        t += 0.006;
+        // nudge node positions slightly and update their element attributes
+        nodes.forEach((n, idx)=>{
+          const jitterX = Math.sin(t*(0.8 + idx*0.02))*0.8;
+          const jitterY = Math.cos(t*(0.7 + idx*0.018))*0.8;
+          const nx = n.x + jitterX;
+          const ny = n.y + jitterY;
+          n.el.setAttribute('cx', nx.toFixed(2));
+          n.el.setAttribute('cy', ny.toFixed(2));
+        });
+
+        // update all path endpoints to follow moved nodes (cheap for moderate counts)
+        const allPaths = Array.from(wiresG.querySelectorAll('path'));
+        // naive approach: when there are many paths this can be optimized. For moderate node counts it's fine.
+        allPaths.forEach((p)=>{
+          const d = p.getAttribute('d');
+          // quick heuristic: if path starts at brain.x brain.y it's radial, else it's inter-node.
+          if (d && d.startsWith('M ' + brain.x)){
+            // radial wire: ends at some node; find closest node to current end coords
+            const parts = d.split(' ');
+            const endX = parseFloat(parts[parts.length-2]);
+            const endY = parseFloat(parts[parts.length-1]);
+            let best = 0, bd = Infinity;
+            for (let i=0;i<nodes.length;i++){
+              const dd = (nodes[i].x - endX)**2 + (nodes[i].y - endY)**2;
+              if (dd < bd){ bd = dd; best = i; }
+            }
+            const midX = (brain.x + nodes[best].x)/2 + (Math.sin(t*0.7 + best)*40);
+            const midY = (brain.y + nodes[best].y)/2 + (Math.cos(t*0.6 + best)*24);
+            const newD = `M ${brain.x} ${brain.y} Q ${midX.toFixed(2)} ${midY.toFixed(2)} ${nodes[best].x.toFixed(2)} ${nodes[best].y.toFixed(2)}`;
+            p.setAttribute('d', newD);
+          } else if (d){
+            // inter-node: parse approximate end points and re-create control points
+            // extract numbers roughly
+            const nums = d.match(/-?\d+\.?\d*/g);
+            if (nums && nums.length >= 4){
+              const x1 = parseFloat(nums[0]), y1 = parseFloat(nums[1]);
+              const x2 = parseFloat(nums[nums.length-2]), y2 = parseFloat(nums[nums.length-1]);
+              // find nearest node indices
+              let b1=0,b2=0,bd1=Infinity,bd2=Infinity;
+              for (let i=0;i<nodes.length;i++){
+                const dd1 = (nodes[i].x - x1)**2 + (nodes[i].y - y1)**2;
+                const dd2 = (nodes[i].x - x2)**2 + (nodes[i].y - y2)**2;
+                if (dd1 < bd1){ bd1 = dd1; b1 = i; }
+                if (dd2 < bd2){ bd2 = dd2; b2 = i; }
+              }
+              const ctrlX = (nodes[b1].x + nodes[b2].x)/2 + Math.sin(t*(0.9 + b1*0.01))*20;
+              const ctrlY = (nodes[b1].y + nodes[b2].y)/2 + Math.cos(t*(0.95 + b2*0.01))*12;
+              const nd = `M ${nodes[b1].x.toFixed(2)} ${nodes[b1].y.toFixed(2)} Q ${ctrlX.toFixed(2)} ${ctrlY.toFixed(2)} ${nodes[b2].x.toFixed(2)} ${nodes[b2].y.toFixed(2)}`;
+              p.setAttribute('d', nd);
+            }
+          }
+        });
+
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+
+      // optional periodic regeneration to keep the layout evolving (very infrequent)
+      setInterval(()=>{
+        if (Math.random() > 0.9) nodes = generateBrainNetwork(nodeCount);
+      }, 9000);
+
+    })();
+  </script>
+</body>
+</html>
