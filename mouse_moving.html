@@ -33,16 +33,20 @@
       overflow:hidden;
     }
 
-    /* single responsive image (use your background.jpg filename) */
+    /* single responsive image (full image shrinkable) */
     .bg-wrap img.bg-image{
       position:absolute;
-      left:0; top:0;
+      left:50%;
+      top:50%;
       width:100%;
       height:100%;
-      object-fit:cover;
-      object-position:center;
+      max-width:100%;
+      max-height:100%;
+      transform:translate(-50%,-50%);
+      object-fit:contain; /* ensures full image visible */
       filter:brightness(var(--image-brightness));
-      /* radial mask at mouse pos using the CSS variables */
+      transition: width 220ms ease, height 220ms ease;
+      will-change: mask-image, -webkit-mask-image;
       mask-image: radial-gradient(
         circle at var(--mouse-x) var(--mouse-y),
         rgba(0,0,0,1) 0%,
@@ -55,7 +59,6 @@
         rgba(0,0,0,1) var(--mask-size),
         rgba(0,0,0,0) calc(var(--mask-size) + var(--mask-feather))
       );
-      will-change: mask-image, -webkit-mask-image;
     }
 
     /* vignette overlay */
@@ -89,7 +92,7 @@
   <!-- particle canvas -->
   <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-  <!-- single responsive image (put your background.jpg next to this file) -->
+  <!-- single responsive image -->
   <div class="bg-wrap" aria-hidden="true">
     <img class="bg-image" src="/imgs/background.jpg" alt="">
   </div>
@@ -129,7 +132,6 @@
         bg.style.setProperty('--mouse-y', toPercent(ty, window.innerHeight));
       }, {passive:true});
 
-      // helpers
       function parsePercent(str, fallback=0){
         if (!str) return fallback;
         const m = String(str).trim().match(/^(-?[\d.]+)/);
@@ -234,7 +236,7 @@
       }, {passive:true});
     })();
 
-    // --------------------------- Particles (same radial mask) ---------------------------
+    // --------------------------- Particles ---------------------------
     (function(){
       const canvas = document.getElementById('particle-canvas');
       const ctx = canvas.getContext('2d');
@@ -307,7 +309,6 @@
         return { maskSize, maskFeather };
       }
 
-      // convert percent -> px using the larger viewport dimension (keeps visual scale consistent)
       function maskPercentToPx(pct) {
         const ref = Math.max(window.innerWidth, window.innerHeight);
         return (pct / 100) * ref;
@@ -375,6 +376,22 @@
           initParticles();
         }, 120);
       }, {passive:true});
+    })();
+
+    // -------------------- Shrink image proportionally on small screens --------------------
+    (function(){
+      const bg = document.querySelector('.bg-image');
+      const SMALL_WIDTH = 800; // px
+      const SHRINK_TO = 0.9;   // 90% of full size
+
+      function updateSize(){
+        const scale = (window.innerWidth <= SMALL_WIDTH) ? SHRINK_TO : 1;
+        bg.style.width = (scale*100) + '%';
+        bg.style.height = (scale*100) + '%';
+      }
+
+      updateSize();
+      window.addEventListener('resize', updateSize, {passive:true});
     })();
   </script>
 </body>
