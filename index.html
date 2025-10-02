@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>André Ferreira</title>
   <link rel="stylesheet" href="/css/background.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     main {
       display: flex;
@@ -50,26 +51,49 @@
 
     /* button */
     .push-button {
-      appearance: none;
-      background: transparent;
-      color: var(--accent);
-      border: 2px solid var(--accent);
-      padding: 14px 34px;
-      font-size: clamp(10px, 2vw, 24px); /* responsive: min 14px, max 24px, scales with viewport */
-      font-weight: 600;
-      letter-spacing: 0.35px;
-      border-radius: 10px;
-      cursor: pointer;
-      line-height: 1;
-      transition:
-        transform 160ms cubic-bezier(.2,.9,.2,1),
-        box-shadow 160ms cubic-bezier(.2,.9,.2,1),
-        background-color 160ms cubic-bezier(.2,.9,.2,1),
-        color 160ms cubic-bezier(.2,.9,.2,1);
-      box-shadow: none;
-      user-select: none;
-      -webkit-font-smoothing: antialiased;
-    }
+    position: relative; /* needed for the pseudo-element */
+    appearance: none;
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 14px 34px;
+    font-size: clamp(10px, 2vw, 24px);
+    font-weight: 600;
+    letter-spacing: 0.35px;
+    border-radius: 10px;
+    cursor: pointer;
+    line-height: 1;
+    transition:
+      transform 160ms cubic-bezier(.2,.9,.2,1),
+      box-shadow 160ms cubic-bezier(.2,.9,.2,1),
+      background-color 160ms cubic-bezier(.2,.9,.2,1),
+      color 160ms cubic-bezier(.2,.9,.2,1);
+    box-shadow: none;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* small line under the button - now always visible, but less intense by default */
+  .push-button::after {
+    content: "";
+    position: absolute;
+    left: 10%;                 /* start a little inside the button */
+    right: 10%;                /* end a little inside the button */
+    bottom: 4px;               /* distance from bottom of button */
+    height: 2px;               /* thickness of the line */
+    background-color: var(--accent);
+    border-radius: 1px;        /* slightly rounded edges */
+    opacity: 0.4;              /* less intense by default */
+    transition: left 0.3s ease, right 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* On hover: make line grow and full intensity */
+  .push-button:hover::after {
+    left: 5%;
+    right: 5%;
+    background-color: #ffffff; /* full white on hover */
+    opacity: 1;
+  }
 
 
 
@@ -104,6 +128,51 @@
       box-shadow: none;
     }
 
+    /* social links */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-button {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--accent);
+      background: transparent;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition:
+        background-color 160ms cubic-bezier(.2,.9,.2,1),
+        color 160ms cubic-bezier(.2,.9,.2,1),
+        transform 160ms cubic-bezier(.2,.9,.2,1),
+        box-shadow 160ms cubic-bezier(.2,.9,.2,1);
+      text-decoration: none;
+    }
+
+    .social-button:hover,
+    .social-button:focus {
+      background-color: var(--accent);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(32,77,159,0.18);
+      outline: none;
+    }
+
+    .social-button:focus-visible {
+      outline: 2px solid rgba(32,77,159,0.18);
+      outline-offset: 2px;
+    }
+
+    .social-button:active {
+      transform: translateY(0);
+    }
+
   </style>
 
 </head>
@@ -123,6 +192,21 @@
     <button class="push-button" onclick="location.href='/research-projects'">Research Projects</button>
     <button class="push-button" onclick="location.href='/publications'">Publications</button>
     <button class="push-button" onclick="location.href='/contact'">Contact</button>
+
+    <div class="social-links">
+      <a class="social-button" href="https://github.com/ShadowTwin41" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a class="social-button" href="https://scholar.google.com/citations?user=Xi_0Q9wAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+      <a class="social-button" href="mailto:andre.ferreira@alunos.uminho.pt" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a class="social-button" href="https://pt.linkedin.com/in/andre-filipe-de-sousa-ferreira" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
 
   </main>
 
