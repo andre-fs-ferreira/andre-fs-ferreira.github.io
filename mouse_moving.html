@@ -3,39 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Radial click wave (slow gradient reveal)</title>
+  <title>Radial reveal (single background.jpg) + Particles</title>
   <style>
     :root{
       --mouse-x: 50%;
       --mouse-y: 50%;
-      --mask-size: 1%;   /* current reveal radius (percent of viewport) */
-      --mask-feather: 6%; /* softness of edge (percent) */
+      --mask-size: 1%;    /* percent of viewport */
+      --mask-feather: 6%; /* percent */
       --image-brightness: 1.15;
-      --ring-size: 36px;
-      --ring-opacity: 0.95;
-      --vignette-opacity: 0.35; /* darker overlay — animated down during wave */
+      --vignette-opacity: 0.35;
     }
 
     html,body{height:100%;margin:0}
     body{
-      background: #000;
+      background:#000;
       color:#fff;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       min-height:100vh;
       position:relative;
       overflow:hidden;
     }
 
-    .bg-image{
+    /* responsive image wrapper */
+    .bg-wrap{
       position:fixed;
       inset:0;
       z-index:0;
       pointer-events:none;
-      background-image: url("/imgs/background.jpg"); /* <-- replace with your image */
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      filter: brightness(var(--image-brightness));
+      overflow:hidden;
+    }
+
+    /* single responsive image (use your background.jpg filename) */
+    .bg-wrap img.bg-image{
+      position:absolute;
+      left:0; top:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      filter:brightness(var(--image-brightness));
+      /* radial mask at mouse pos using the CSS variables */
       mask-image: radial-gradient(
         circle at var(--mouse-x) var(--mouse-y),
         rgba(0,0,0,1) 0%,
@@ -48,11 +55,11 @@
         rgba(0,0,0,1) var(--mask-size),
         rgba(0,0,0,0) calc(var(--mask-size) + var(--mask-feather))
       );
-      transition: background-position 160ms linear;
       will-change: mask-image, -webkit-mask-image;
     }
 
-    .bg-image::after{
+    /* vignette overlay */
+    .bg-wrap::after{
       content:'';
       position:absolute; inset:0;
       mix-blend-mode:multiply;
@@ -60,38 +67,32 @@
       pointer-events:none;
     }
 
-    .mouse-ring{
-      position:fixed;
-      left:var(--mouse-x);
-      top:var(--mouse-y);
-      width:var(--ring-size);
-      height:var(--ring-size);
-      transform:translate(-50%,-50%) scale(0.9);
-      border-radius:50%;
-      pointer-events:none;
-      z-index:2;
-      box-shadow:0 0 0 1px rgba(255,255,255,0.12) inset, 0 8px 22px rgba(0,0,0,0.7);
-      transition:transform 120ms cubic-bezier(.2,.9,.3,1), opacity 120ms linear;
-      opacity:var(--ring-opacity);
-      mix-blend-mode:screen;
-      backdrop-filter: blur(0.6px);
-      -webkit-backdrop-filter: blur(0.6px);
-    }
-    .mouse-ring.idle { transform:translate(-50%,-50%) scale(0.6); opacity:0.55; }
-
     @media (prefers-reduced-motion: reduce){
-      .bg-image, .mouse-ring { transition:none; }
+      .bg-wrap img.bg-image { transition:none; }
     }
 
-    main{ position:relative; z-index:3; padding:4rem; pointer-events:auto; }
-    h1{ margin:0 0 .6rem; font-size:clamp(1.5rem, 3vw, 2.4rem) }
+    main{ position:relative; z-index:6; padding:3.5rem; pointer-events:auto; }
+    h1{ margin:0 0 .6rem; font-size:clamp(1.5rem, 3vw, 2.2rem) }
     p{ margin:0; opacity:0.92; max-width:60ch; line-height:1.5 }
 
+    /* Particle canvas sits above the bg image but below main content */
+    #particle-canvas {
+      position: fixed;
+      inset: 0;
+      z-index:2;
+      pointer-events: none;
+      display:block;
+    }
   </style>
 </head>
 <body>
-  <div class="bg-image" aria-hidden="true"></div>
-  <div class="mouse-ring idle" aria-hidden="true"></div>
+  <!-- particle canvas -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- single responsive image (put your background.jpg next to this file) -->
+  <div class="bg-wrap" aria-hidden="true">
+    <img class="bg-image" src="/imgs/background.jpg" alt="">
+  </div>
 
   <main>
     <h1>Reveal the image with your mouse</h1>
@@ -99,28 +100,20 @@
   </main>
 
   <script>
+    // --------------------------- Mask + wave logic ---------------------------
     (function(){
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
       const bg = document.querySelector('.bg-image');
-      const ring = document.querySelector('.mouse-ring');
-      if (!bg || !ring) return;
+      if (!bg) return;
 
-      let tx = innerWidth/2, ty = innerHeight/2;
-      let idleTimer = null;
-
+      let tx = innerWidth / 2, ty = innerHeight / 2;
       function toPercent(value, max){ return (value / max * 100).toFixed(4) + '%'; }
 
       function updatePos(clientX, clientY){
         tx = clientX; ty = clientY;
         bg.style.setProperty('--mouse-x', toPercent(tx, window.innerWidth));
         bg.style.setProperty('--mouse-y', toPercent(ty, window.innerHeight));
-        ring.style.left = toPercent(tx, window.innerWidth);
-        ring.style.top = toPercent(ty, window.innerHeight);
-
-        ring.classList.remove('idle');
-        clearTimeout(idleTimer);
-        idleTimer = setTimeout(()=> ring.classList.add('idle'), 900);
       }
 
       window.addEventListener('mousemove', (e)=> updatePos(e.clientX, e.clientY), {passive:true});
@@ -136,42 +129,31 @@
         bg.style.setProperty('--mouse-y', toPercent(ty, window.innerHeight));
       }, {passive:true});
 
-      // ------------------- Smooth radial gradient wave -------------------
-      // We'll animate numeric percent values using requestAnimationFrame with easing.
-
-      // Utility: parse "12.34%" -> 12.34
+      // helpers
       function parsePercent(str, fallback=0){
         if (!str) return fallback;
         const m = String(str).trim().match(/^(-?[\d.]+)/);
         return m ? parseFloat(m[1]) : fallback;
       }
-
-      // Easing: easeOutCubic
       function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
 
-      // Current wave rAF id so we can cancel
       let waveRAF = null;
-      // track start timestamp
       let waveStart = 0;
-
-      // default target values (numbers represent percent of viewport)
       const DEFAULTS = {
-        startSize: 0.8,     // start at 0.8% so it's tiny initially
-        startFeather: 6,    // initial feather
-        peakSize: 65,       // how far the gradient expands (percent of viewport)
-        peakFeather: 28,    // how soft the peak becomes
+        startSize: 0.8,
+        startFeather: 6,
+        peakSize: 65,
+        peakFeather: 28,
         startVignette: 0.35,
         peakVignette: 0.05,
-        duration: 2000      // duration in ms (slow)
+        duration: 2000
       };
 
-      // Set initial CSS variables (ensure we start small)
       bg.style.setProperty('--mask-size', DEFAULTS.startSize + '%');
       bg.style.setProperty('--mask-feather', DEFAULTS.startFeather + '%');
       bg.style.setProperty('--vignette-opacity', DEFAULTS.startVignette);
 
       function animateWave(options = {}) {
-        // merge options with defaults
         const {
           startSize = DEFAULTS.startSize,
           startFeather = DEFAULTS.startFeather,
@@ -182,25 +164,18 @@
           duration = DEFAULTS.duration
         } = options;
 
-        // If an animation is running, read the current inline values and start from them
         let currentSize = parsePercent(getComputedStyle(bg).getPropertyValue('--mask-size'), startSize);
         let currentFeather = parsePercent(getComputedStyle(bg).getPropertyValue('--mask-feather'), startFeather);
         let currentVig = parseFloat(getComputedStyle(bg).getPropertyValue('--vignette-opacity')) || startVignette;
 
-        // Cancel previous
         if (waveRAF) cancelAnimationFrame(waveRAF);
-
         waveStart = performance.now();
 
         function frame(now) {
           const elapsed = now - waveStart;
           let t = Math.min(1, elapsed / duration);
-          // we'll use an ease-out curve so it accelerates then slows elegantly
           const ease = easeOutCubic(t);
 
-          // Compose a two-phase effect: grow quickly to a mid point, then ease out while fading back.
-          // But for simplicity, we'll map ease 0..1 to a curve that expands then retracts slightly in softness.
-          // Calculate mask size as interpolation from currentSize -> peakSize
           const size = currentSize + (peakSize - currentSize) * ease;
           const feather = currentFeather + (peakFeather - currentFeather) * ease;
           const vig = currentVig + (peakVignette - currentVig) * ease;
@@ -212,15 +187,13 @@
           if (t < 1) {
             waveRAF = requestAnimationFrame(frame);
           } else {
-            // option: subtle settle-back animation so it doesn't immediately snap to original.
-            // We'll ease back to the small base values over 700ms.
             const settleStart = performance.now();
             const settleDuration = 700;
             const settleFrom = { size, feather, vig };
             function settle(now2) {
               const elapsed2 = now2 - settleStart;
               const tt = Math.min(1, elapsed2 / settleDuration);
-              const e2 = 1 - Math.pow(1 - tt, 2); // easeOutQuad
+              const e2 = 1 - Math.pow(1 - tt, 2);
               const sSize = settleFrom.size + (startSize - settleFrom.size) * e2;
               const sFeather = settleFrom.feather + (startFeather - settleFrom.feather) * e2;
               const sVig = settleFrom.vig + (startVignette - settleFrom.vig) * e2;
@@ -238,11 +211,8 @@
         waveRAF = requestAnimationFrame(frame);
       }
 
-      // Click/tap handler: position plus animate
       function clickWave(clientX, clientY){
         updatePos(clientX, clientY);
-
-        // Trigger the gradient wave: start from tiny and expand slowly to peak then settle.
         animateWave({
           startSize: 0.8,
           startFeather: 6,
@@ -250,7 +220,7 @@
           peakFeather: 28,
           startVignette: 0.35,
           peakVignette: 0.05,
-          duration: 4000 // 2s expand
+          duration: 4000
         });
       }
 
@@ -262,7 +232,149 @@
         const t = (e.changedTouches && e.changedTouches[0]) || (e.touches && e.touches[0]);
         if (t) clickWave(t.clientX, t.clientY);
       }, {passive:true});
+    })();
 
+    // --------------------------- Particles (same radial mask) ---------------------------
+    (function(){
+      const canvas = document.getElementById('particle-canvas');
+      const ctx = canvas.getContext('2d');
+      const bg = document.querySelector('.bg-image');
+
+      let DPR = Math.max(1, window.devicePixelRatio || 1);
+
+      class Particle {
+        constructor(w, h) {
+          this.x = Math.random() * w;
+          this.y = Math.random() * h;
+          this.vx = (Math.random() - 0.5) * 2;
+          this.vy = (Math.random() - 0.5) * 2;
+          this.size = Math.random() * 3 + 2;
+        }
+        update(w, h) {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x > w) { this.x = w; this.vx *= -1; }
+          if (this.x < 0) { this.x = 0; this.vx *= -1; }
+          if (this.y > h) { this.y = h; this.vy *= -1; }
+          if (this.y < 0) { this.y = 0; this.vy *= -1; }
+        }
+        draw(ctx, alpha) {
+          if (alpha <= 0) return;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0,200,255,${(0.85 * alpha).toFixed(3)})`;
+          ctx.fill();
+        }
+      }
+
+      let particles = [];
+      const numParticles = 50;
+      const connectDistance = 150;
+
+      function setCanvasSize() {
+        DPR = Math.max(1, window.devicePixelRatio || 1);
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        canvas.width = Math.floor(w * DPR);
+        canvas.height = Math.floor(h * DPR);
+        ctx.setTransform(1,0,0,1,0,0);
+        ctx.scale(DPR, DPR);
+      }
+
+      function initParticles() {
+        setCanvasSize();
+        particles = [];
+        for (let i = 0; i < numParticles; i++) {
+          particles.push(new Particle(window.innerWidth, window.innerHeight));
+        }
+      }
+
+      function getMousePosFromCSS() {
+        const mx = getComputedStyle(bg).getPropertyValue('--mouse-x') || '50%';
+        const my = getComputedStyle(bg).getPropertyValue('--mouse-y') || '50%';
+        const mxN = parseFloat(mx) / 100 * window.innerWidth;
+        const myN = parseFloat(my) / 100 * window.innerHeight;
+        return { x: mxN, y: myN };
+      }
+
+      function getMaskParams() {
+        const maskSizeRaw = getComputedStyle(bg).getPropertyValue('--mask-size') || '1%';
+        const maskFeatherRaw = getComputedStyle(bg).getPropertyValue('--mask-feather') || '6%';
+        const maskSize = parseFloat(maskSizeRaw);
+        const maskFeather = parseFloat(maskFeatherRaw);
+        return { maskSize, maskFeather };
+      }
+
+      // convert percent -> px using the larger viewport dimension (keeps visual scale consistent)
+      function maskPercentToPx(pct) {
+        const ref = Math.max(window.innerWidth, window.innerHeight);
+        return (pct / 100) * ref;
+      }
+
+      function computeMaskAlphaAtPoint(px, py, maskRadiusPx, maskFeatherPx, centerX, centerY) {
+        const dx = px - centerX;
+        const dy = py - centerY;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist <= maskRadiusPx) return 1;
+        if (maskFeatherPx <= 0) return 0;
+        if (dist <= maskRadiusPx + maskFeatherPx) {
+          return 1 - (dist - maskRadiusPx) / maskFeatherPx;
+        }
+        return 0;
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+        const { x: mouseX, y: mouseY } = getMousePosFromCSS();
+        const { maskSize, maskFeather } = getMaskParams();
+        const radiusPx = maskPercentToPx(maskSize);
+        const featherPx = maskPercentToPx(maskFeather);
+
+        for (let p of particles) {
+          p.update(window.innerWidth, window.innerHeight);
+          const alpha = computeMaskAlphaAtPoint(p.x, p.y, radiusPx, featherPx, mouseX, mouseY);
+          p.draw(ctx, alpha);
+        }
+
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const a = particles[i];
+            const b = particles[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < connectDistance) {
+              const midX = (a.x + b.x) / 2;
+              const midY = (a.y + b.y) / 2;
+              const maskAlpha = computeMaskAlphaAtPoint(midX, midY, radiusPx, featherPx, mouseX, mouseY);
+              if (maskAlpha <= 0) continue;
+              const baseAlpha = 1 - dist / connectDistance;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(0,150,255,${(baseAlpha * maskAlpha * 0.95).toFixed(3)})`;
+              ctx.lineWidth = 1.5;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      initParticles();
+      animateParticles();
+
+      let resizeDebounce = null;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeDebounce);
+        resizeDebounce = setTimeout(() => {
+          initParticles();
+        }, 120);
+      }, {passive:true});
     })();
   </script>
 </body>
