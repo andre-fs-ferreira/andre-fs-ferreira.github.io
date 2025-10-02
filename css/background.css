@@ -1,0 +1,77 @@
+:root{
+  --mouse-x: 100%;
+  --mouse-y: 100%;
+  --mask-size: 1%;    
+  --mask-feather: 6%; 
+  --image-brightness: 1.15;
+  --vignette-opacity: 0.35;
+}
+
+html,body{height:100%;margin:0}
+body{
+  background:#010A21;
+  color:#fff;
+  font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+.bg-wrap{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.bg-wrap img.bg-image{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  transform:translate(-50%,-50%);
+  object-fit:contain;
+  filter:brightness(var(--image-brightness));
+  transition: width 220ms ease, height 220ms ease;
+  will-change: mask-image, -webkit-mask-image;
+  mask-image: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,1) var(--mask-size),
+    rgba(0,0,0,0) calc(var(--mask-size) + var(--mask-feather))
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,1) var(--mask-size),
+    rgba(0,0,0,0) calc(var(--mask-size) + var(--mask-feather))
+  );
+}
+
+.bg-wrap::after{
+  content:'';
+  position:absolute; inset:0;
+  mix-blend-mode:multiply;
+  background: radial-gradient(120% 120% at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,var(--vignette-opacity)) 100%);
+  pointer-events:none;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .bg-wrap img.bg-image { transition:none; }
+}
+
+main{ position:relative; z-index:6; padding:3.5rem; pointer-events:auto; }
+h1{ margin:0 0 .6rem; font-size:clamp(1.5rem, 3vw, 2.2rem) }
+p{ margin:0; opacity:0.92; max-width:60ch; line-height:1.5 }
+
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index:2;
+  pointer-events: none;
+  display:block;
+}
