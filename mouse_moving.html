@@ -3,145 +3,265 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mouse-following background — Neural Network & Brain Reveal (Jekyll friendly)</title>
+  <title>Radial click wave (slow gradient reveal)</title>
   <style>
-    /*
-      Enhanced: central brain + static image for the network lines/wires.
-      Integration notes (Jekyll):
-      - Put CSS in assets/css/main.scss or inside <head> of _layouts/default.html
-      - Insert overlay elements into <body> in _layouts/default.html
-      - Put the script into assets/js/mouse-bg-network-brain.js and include it in your layout
-      - Replace 'path/to/your/network-image.png' with the URL/path to your created image.
-        The image should depict the neural network lines/wires (optionally including nodes),
-        sized appropriately for the viewport (e.g., 1200x800 or scalable).
-    */
-
     :root{
       --mouse-x: 50%;
       --mouse-y: 50%;
-      --spot-opacity: 0.95;
-      --spot-size: 30%;
+      --mask-size: 1%;   /* current reveal radius (percent of viewport) */
+      --mask-feather: 6%; /* softness of edge (percent) */
+      --image-brightness: 1.15;
+      --ring-size: 36px;
+      --ring-opacity: 0.95;
+      --vignette-opacity: 0.35; /* darker overlay — animated down during wave */
     }
 
     html,body{height:100%;margin:0}
     body{
-      background: linear-gradient(180deg,#010217 0%, #07102a 100%);
-      color:#e7eefc;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: #000;
+      color:#fff;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       min-height:100vh;
       position:relative;
       overflow:hidden;
     }
 
-    .bg-root{position:fixed;inset:0;z-index:0;pointer-events:none}
-
-    .bg-stars{position:absolute;inset:0;background:
-      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.05), transparent 40%),
-      radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.03), transparent 40%),
-      radial-gradient(1px 1px at 80% 30%, rgba(255,255,255,0.02), transparent 40%);
-      opacity:0.85;filter:blur(0.4px);transform: translateZ(0);
-    }
-
-    /* network layer uses mask to reveal only near cursor; now backgrounds your static image */
-    .bg-network{
-      position:absolute;inset:0;display:block;
-      background-image: url('brain_ai.jpeg'); /* Replace with your image path/URL */
-      background-size: cover; /* Or 'contain' / specific size like '1200px 800px' to match viewBox */
+    .bg-image{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      background-image: url("/imgs/background.jpg"); /* <-- replace with your image */
       background-position: center;
+      background-size: cover;
       background-repeat: no-repeat;
-      -webkit-mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,var(--spot-opacity)) 0%, rgba(0,0,0,calc(var(--spot-opacity) * 0.4)) 18%, rgba(0,0,0,0) var(--spot-size));
-      mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,var(--spot-opacity)) 0%, rgba(0,0,0,calc(var(--spot-opacity) * 0.4)) 18%, rgba(0,0,0,0) var(--spot-size));
-      transition: mask-position 120ms linear, -webkit-mask-position 120ms linear;
-      will-change: mask-position;
-      mix-blend-mode: screen;opacity:0.98;
+      filter: brightness(var(--image-brightness));
+      mask-image: radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,1) var(--mask-size),
+        rgba(0,0,0,0) calc(var(--mask-size) + var(--mask-feather))
+      );
+      -webkit-mask-image: radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,1) var(--mask-size),
+        rgba(0,0,0,0) calc(var(--mask-size) + var(--mask-feather))
+      );
+      transition: background-position 160ms linear;
+      will-change: mask-image, -webkit-mask-image;
     }
 
-    .bg-illum{position:absolute;inset:0;pointer-events:none;background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(60,200,255,0.12) 0%, rgba(60,180,220,0.04) 12%, rgba(0,0,0,0) 28%);mix-blend-mode: screen;opacity:0.95;transition: background-position 120ms linear}
+    .bg-image::after{
+      content:'';
+      position:absolute; inset:0;
+      mix-blend-mode:multiply;
+      background: radial-gradient(120% 120% at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,var(--vignette-opacity)) 100%);
+      pointer-events:none;
+    }
 
-    .mouse-ring{position:fixed;left:var(--mouse-x);top:var(--mouse-y);width:38px;height:38px;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:4;display:block;mix-blend-mode:screen}
-    .mouse-ring .dot{position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 1px rgba(160,220,255,0.12) inset, 0 8px 24px rgba(0,0,0,0.6)}
+    .mouse-ring{
+      position:fixed;
+      left:var(--mouse-x);
+      top:var(--mouse-y);
+      width:var(--ring-size);
+      height:var(--ring-size);
+      transform:translate(-50%,-50%) scale(0.9);
+      border-radius:50%;
+      pointer-events:none;
+      z-index:2;
+      box-shadow:0 0 0 1px rgba(255,255,255,0.12) inset, 0 8px 22px rgba(0,0,0,0.7);
+      transition:transform 120ms cubic-bezier(.2,.9,.3,1), opacity 120ms linear;
+      opacity:var(--ring-opacity);
+      mix-blend-mode:screen;
+      backdrop-filter: blur(0.6px);
+      -webkit-backdrop-filter: blur(0.6px);
+    }
+    .mouse-ring.idle { transform:translate(-50%,-50%) scale(0.6); opacity:0.55; }
 
-    main{position:relative;z-index:6;padding:4rem}
+    @media (prefers-reduced-motion: reduce){
+      .bg-image, .mouse-ring { transition:none; }
+    }
 
-    @media (prefers-reduced-motion: reduce){.bg-network, .bg-illum, .bg-stars, .mouse-ring{transition:none;animation:none}}
-
-    /* SVG styles (now only for static brain) */
-    .brain-core{fill:url(#brainGrad); filter: drop-shadow(0 0 20px rgba(70,180,255,0.18));}
-    .brain-outline{stroke:rgba(120,210,255,0.95); stroke-width:1.4; fill:none}
-    .brain-arc{stroke:rgba(200,230,255,0.9); stroke-width:0.8; fill:none; opacity:0.88}
-    .brain-pulse{animation:brainBeat 1800ms ease-in-out infinite}
-    @keyframes brainBeat{0%{transform:scale(0.96);opacity:0.95}40%{transform:scale(1.02);opacity:1}100%{transform:scale(0.98);opacity:0.96}}
+    main{ position:relative; z-index:3; padding:4rem; pointer-events:auto; }
+    h1{ margin:0 0 .6rem; font-size:clamp(1.5rem, 3vw, 2.4rem) }
+    p{ margin:0; opacity:0.92; max-width:60ch; line-height:1.5 }
 
   </style>
 </head>
 <body>
-
-  <div class="bg-root" aria-hidden="true">
-    <div class="bg-stars"></div>
-
-    <!-- Static brain SVG overlay (kept as-is; position it over your image if needed) -->
-    <svg style="position:absolute;inset:0;pointer-events:none;" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-      <defs>
-        <radialGradient id="brainGrad" cx="50%" cy="40%">
-          <stop offset="0%" stop-color="#8fe0ff" stop-opacity="0.95"/>
-          <stop offset="55%" stop-color="#3ab3ff" stop-opacity="0.86"/>
-          <stop offset="100%" stop-color="#0b6b9a" stop-opacity="0.6"/>
-        </radialGradient>
-      </defs>
-
-      <!-- central brain group -->
-      <g id="brain" transform="translate(600,400)" style="pointer-events:none;">
-        <g class="brain-pulse" transform="translate(0,0)">
-          <ellipse class="brain-core" cx="0" cy="0" rx="48" ry="40" />
-          <path class="brain-outline" d="M-32,-6 C-32,-34 32,-34 32,-6 C32,18 8,32 -8,32 C-28,32 -32,18 -32,-6 Z" />
-          <!-- some arcs to suggest folds -->
-          <path class="brain-arc" d="M-10,-16 C-2,-6 10,-6 18,-12" />
-          <path class="brain-arc" d="M-20,0 C-8,10 6,10 20,4" />
-          <path class="brain-arc" d="M-28,8 C-12,16 -2,18 10,12" />
-        </g>
-      </g>
-    </svg>
-
-    <!-- Your static network image with mouse-reveal mask -->
-    <div class="bg-network"></div>
-
-    <div class="bg-illum"></div>
-  </div>
-
-  <div class="mouse-ring" aria-hidden="true"><span class="dot"></span></div>
+  <div class="bg-image" aria-hidden="true"></div>
+  <div class="mouse-ring idle" aria-hidden="true"></div>
 
   <main>
-    <h1>Neural network & brain reveal — move your mouse</h1>
-    <p>Move the mouse to reveal your custom neural network image with a central "brain".</p>
+    <h1>Reveal the image with your mouse</h1>
+    <p>Move to reveal. Click (or tap) to send a slow radial gradient wave from the click point.</p>
   </main>
 
   <script>
-    /*
-      Script: mouse tracking + spotlight reveal
-      - updates CSS vars for spotlight on the static image
-      - removed procedural generation and animations for nodes/wires
-      - respects prefers-reduced-motion
-    */
-
     (function(){
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      const root = document.documentElement;
+      const bg = document.querySelector('.bg-image');
       const ring = document.querySelector('.mouse-ring');
+      if (!bg || !ring) return;
 
-      function setVarsFromClientXY(clientX, clientY){
-        const xPct = (clientX / window.innerWidth * 100).toFixed(2) + '%';
-        const yPct = (clientY / window.innerHeight * 100).toFixed(2) + '%';
-        root.style.setProperty('--mouse-x', xPct);
-        root.style.setProperty('--mouse-y', yPct);
-        ring.style.left = xPct; ring.style.top = yPct;
+      let tx = innerWidth/2, ty = innerHeight/2;
+      let idleTimer = null;
+
+      function toPercent(value, max){ return (value / max * 100).toFixed(4) + '%'; }
+
+      function updatePos(clientX, clientY){
+        tx = clientX; ty = clientY;
+        bg.style.setProperty('--mouse-x', toPercent(tx, window.innerWidth));
+        bg.style.setProperty('--mouse-y', toPercent(ty, window.innerHeight));
+        ring.style.left = toPercent(tx, window.innerWidth);
+        ring.style.top = toPercent(ty, window.innerHeight);
+
+        ring.classList.remove('idle');
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(()=> ring.classList.add('idle'), 900);
       }
 
-      window.addEventListener('mousemove', (e)=> setVarsFromClientXY(e.clientX, e.clientY), {passive:true});
-      window.addEventListener('touchstart', (ev)=>{ if(ev.touches && ev.touches[0]) setVarsFromClientXY(ev.touches[0].clientX, ev.touches[0].clientY); }, {passive:true});
-      window.addEventListener('touchmove', (ev)=>{ if(ev.touches && ev.touches[0]) setVarsFromClientXY(ev.touches[0].clientX, ev.touches[0].clientY); }, {passive:true});
+      window.addEventListener('mousemove', (e)=> updatePos(e.clientX, e.clientY), {passive:true});
+      window.addEventListener('touchstart', (e)=> {
+        if (e.touches && e.touches.length) updatePos(e.touches[0].clientX, e.touches[0].clientY);
+      }, {passive:true});
+      window.addEventListener('touchmove', (e)=> {
+        if (e.touches && e.touches.length) updatePos(e.touches[0].clientX, e.touches[0].clientY);
+      }, {passive:true});
 
-      window.addEventListener('resize', ()=>{ /* No dynamic elements to recompute */ }, {passive:true});
+      window.addEventListener('resize', ()=> {
+        bg.style.setProperty('--mouse-x', toPercent(tx, window.innerWidth));
+        bg.style.setProperty('--mouse-y', toPercent(ty, window.innerHeight));
+      }, {passive:true});
+
+      // ------------------- Smooth radial gradient wave -------------------
+      // We'll animate numeric percent values using requestAnimationFrame with easing.
+
+      // Utility: parse "12.34%" -> 12.34
+      function parsePercent(str, fallback=0){
+        if (!str) return fallback;
+        const m = String(str).trim().match(/^(-?[\d.]+)/);
+        return m ? parseFloat(m[1]) : fallback;
+      }
+
+      // Easing: easeOutCubic
+      function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+      // Current wave rAF id so we can cancel
+      let waveRAF = null;
+      // track start timestamp
+      let waveStart = 0;
+
+      // default target values (numbers represent percent of viewport)
+      const DEFAULTS = {
+        startSize: 0.8,     // start at 0.8% so it's tiny initially
+        startFeather: 6,    // initial feather
+        peakSize: 65,       // how far the gradient expands (percent of viewport)
+        peakFeather: 28,    // how soft the peak becomes
+        startVignette: 0.35,
+        peakVignette: 0.05,
+        duration: 2000      // duration in ms (slow)
+      };
+
+      // Set initial CSS variables (ensure we start small)
+      bg.style.setProperty('--mask-size', DEFAULTS.startSize + '%');
+      bg.style.setProperty('--mask-feather', DEFAULTS.startFeather + '%');
+      bg.style.setProperty('--vignette-opacity', DEFAULTS.startVignette);
+
+      function animateWave(options = {}) {
+        // merge options with defaults
+        const {
+          startSize = DEFAULTS.startSize,
+          startFeather = DEFAULTS.startFeather,
+          peakSize = DEFAULTS.peakSize,
+          peakFeather = DEFAULTS.peakFeather,
+          startVignette = DEFAULTS.startVignette,
+          peakVignette = DEFAULTS.peakVignette,
+          duration = DEFAULTS.duration
+        } = options;
+
+        // If an animation is running, read the current inline values and start from them
+        let currentSize = parsePercent(getComputedStyle(bg).getPropertyValue('--mask-size'), startSize);
+        let currentFeather = parsePercent(getComputedStyle(bg).getPropertyValue('--mask-feather'), startFeather);
+        let currentVig = parseFloat(getComputedStyle(bg).getPropertyValue('--vignette-opacity')) || startVignette;
+
+        // Cancel previous
+        if (waveRAF) cancelAnimationFrame(waveRAF);
+
+        waveStart = performance.now();
+
+        function frame(now) {
+          const elapsed = now - waveStart;
+          let t = Math.min(1, elapsed / duration);
+          // we'll use an ease-out curve so it accelerates then slows elegantly
+          const ease = easeOutCubic(t);
+
+          // Compose a two-phase effect: grow quickly to a mid point, then ease out while fading back.
+          // But for simplicity, we'll map ease 0..1 to a curve that expands then retracts slightly in softness.
+          // Calculate mask size as interpolation from currentSize -> peakSize
+          const size = currentSize + (peakSize - currentSize) * ease;
+          const feather = currentFeather + (peakFeather - currentFeather) * ease;
+          const vig = currentVig + (peakVignette - currentVig) * ease;
+
+          bg.style.setProperty('--mask-size', size.toFixed(4) + '%');
+          bg.style.setProperty('--mask-feather', feather.toFixed(4) + '%');
+          bg.style.setProperty('--vignette-opacity', vig.toFixed(4));
+
+          if (t < 1) {
+            waveRAF = requestAnimationFrame(frame);
+          } else {
+            // option: subtle settle-back animation so it doesn't immediately snap to original.
+            // We'll ease back to the small base values over 700ms.
+            const settleStart = performance.now();
+            const settleDuration = 700;
+            const settleFrom = { size, feather, vig };
+            function settle(now2) {
+              const elapsed2 = now2 - settleStart;
+              const tt = Math.min(1, elapsed2 / settleDuration);
+              const e2 = 1 - Math.pow(1 - tt, 2); // easeOutQuad
+              const sSize = settleFrom.size + (startSize - settleFrom.size) * e2;
+              const sFeather = settleFrom.feather + (startFeather - settleFrom.feather) * e2;
+              const sVig = settleFrom.vig + (startVignette - settleFrom.vig) * e2;
+              bg.style.setProperty('--mask-size', sSize.toFixed(4) + '%');
+              bg.style.setProperty('--mask-feather', sFeather.toFixed(4) + '%');
+              bg.style.setProperty('--vignette-opacity', sVig.toFixed(4));
+
+              if (tt < 1) waveRAF = requestAnimationFrame(settle);
+              else waveRAF = null;
+            }
+            waveRAF = requestAnimationFrame(settle);
+          }
+        }
+
+        waveRAF = requestAnimationFrame(frame);
+      }
+
+      // Click/tap handler: position plus animate
+      function clickWave(clientX, clientY){
+        updatePos(clientX, clientY);
+
+        // Trigger the gradient wave: start from tiny and expand slowly to peak then settle.
+        animateWave({
+          startSize: 0.8,
+          startFeather: 6,
+          peakSize: 65,
+          peakFeather: 28,
+          startVignette: 0.35,
+          peakVignette: 0.05,
+          duration: 4000 // 2s expand
+        });
+      }
+
+      window.addEventListener('click', (e)=> {
+        clickWave(e.clientX, e.clientY);
+      }, {passive:true});
+
+      window.addEventListener('touchend', (e)=> {
+        const t = (e.changedTouches && e.changedTouches[0]) || (e.touches && e.touches[0]);
+        if (t) clickWave(t.clientX, t.clientY);
+      }, {passive:true});
 
     })();
   </script>
