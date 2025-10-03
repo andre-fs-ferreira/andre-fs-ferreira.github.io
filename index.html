@@ -8,6 +8,32 @@
   <link rel="stylesheet" href="/css/button.css">
   <link rel="stylesheet" href="/css/text.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    .header-wrap {
+      margin-top: clamp(80px, 6vh, 120px);
+    }
+
+    .buttons-wrap {
+      display: flex;
+      flex-direction: column;   /* stack buttons vertically, one per line */
+      gap: 1rem;                /* space between buttons */
+      width: 100%;
+      max-width: 480px;         /* controls the buttons' width; change or remove if you want full-bleed */
+      margin-top: clamp(32px, 4vh, 80px);
+      /* take remaining vertical space so buttons size depends on viewport height */
+      flex: 1 1 auto;
+      justify-content: center;  /* center group vertically if there's extra space */
+      box-sizing: border-box;
+      padding: 0 0 2rem 0;
+    }
+
+
+    /* Small-screen tweak: if you prefer taller buttons on phones */
+  @media (max-height: 600px) {
+    .buttons-wrap { min-height: 56px; }
+  }
+  </style>
 </head>
 <body>
   <!-- particle canvas -->
@@ -18,17 +44,22 @@
   </div>
 
   <main>
-    <h1>André Ferreira</h1>
+    <div class="header-wrap">
+      <h1>André Ferreira</h1>
+    </div>
     <br>
     <div class="text-box">
       <p>Empowering Healthcare with AI and Data</p>
     </div>
     <br> 
     <br>
-    <button class="push-button" onclick="location.href='/about'">About</button>
-    <button class="push-button" onclick="location.href='/research-projects'">Research Projects</button>
-    <button class="push-button" onclick="location.href='/publications'">Publications</button>
-    <button class="push-button" onclick="location.href='/contact'">Contact</button>
+    <div class="buttons-wrap" role="navigation" aria-label="Main navigation">
+      <button class="push-button" onclick="location.href='/about'">About</button>
+      <button class="push-button" onclick="location.href='/research-projects'">Research Projects</button>
+      <button class="push-button" onclick="location.href='/publications'">Publications</button>
+      <button class="push-button" onclick="location.href='/contact'">Contact</button>
+    </div>
+    
 
     <div class="social-links">
       <a class="social-button" href="https://github.com/ShadowTwin41" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
