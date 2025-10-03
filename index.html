@@ -10,36 +10,51 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* Make page take full height */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* full viewport height */
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
     .header-wrap {
-      margin-top: clamp(0px, 2vh, 120px);
+      margin-top: clamp(50px, 2vh, 120px);
+    }
+
+    .text-box {
+      margin-top: 1rem;
     }
 
     .buttons-wrap {
       display: flex;
-      flex-direction: column;   /* stack buttons vertically, one per line */
+      flex-direction: column;   /* stack buttons vertically */
       gap: 1rem;                /* space between buttons */
       width: 100%;
-      max-width: 480px;         /* controls the buttons' width; change or remove if you want full-bleed */
-      margin-top: clamp(32px, 4vh, 80px);
-      /* take remaining vertical space so buttons size depends on viewport height */
-      flex: 1 1 auto;
-      justify-content: center;  /* center group vertically if there's extra space */
+      max-width: 480px;         /* controls button width */
+      margin-top: auto;          /* push buttons to the bottom */
       box-sizing: border-box;
       padding: 0 0 2rem 0;
     }
 
-
-    /* Small-screen tweak: if you prefer taller buttons on phones */
-  @media (max-height: 600px) {
-    .buttons-wrap { min-height: 56px; }
-  }
+    /* Small-screen tweak */
+    @media (max-height: 600px) {
+      .buttons-wrap { min-height: 56px; }
+    }
   </style>
 </head>
 
 <body>
   <!-- particle canvas -->
   <canvas id="particle-canvas" aria-hidden="true"></canvas>
-  <!-- single responsive image -->
+
+  <!-- background image -->
   <div class="bg-wrap" aria-hidden="true">
     <img class="bg-image" src="/imgs/background.jpg" alt="">
   </div>
@@ -48,33 +63,32 @@
     <div class="header-wrap">
       <h1>André Ferreira</h1>
     </div>
-    <br>
+
     <div class="text-box">
       <p>Empowering Healthcare with AI and Data</p>
     </div>
+
     <div class="buttons-wrap" role="navigation" aria-label="Main navigation">
       <button class="push-button" onclick="location.href='/about'">About</button>
       <button class="push-button" onclick="location.href='/research-projects'">Research Projects</button>
       <button class="push-button" onclick="location.href='/publications'">Publications</button>
       <button class="push-button" onclick="location.href='/contact'">Contact</button>
-    </div>
-    
 
-    <div class="social-links">
-      <a class="social-button" href="https://github.com/ShadowTwin41" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a class="social-button" href="https://scholar.google.com/citations?user=Xi_0Q9wAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-        <i class="fas fa-graduation-cap"></i>
-      </a>
-      <a class="social-button" href="mailto:id10656@alunos.uminho.pt" aria-label="Email">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a class="social-button" href="https://pt.linkedin.com/in/andre-filipe-de-sousa-ferreira" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
+      <div class="social-links">
+        <a class="social-button" href="https://github.com/ShadowTwin41" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a class="social-button" href="https://scholar.google.com/citations?user=Xi_0Q9wAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+        <a class="social-button" href="mailto:id10656@alunos.uminho.pt" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a class="social-button" href="https://pt.linkedin.com/in/andre-filipe-de-sousa-ferreira" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
     </div>
-
   </main>
 
   <!-- JS scripts -->

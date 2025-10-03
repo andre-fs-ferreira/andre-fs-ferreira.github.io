@@ -107,10 +107,11 @@
 
 /* social links */
 .social-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: auto;
-    margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;  /* center horizontally */
+  margin-top: auto;
+  margin-bottom: 2rem;
 }
 
 .social-button {
