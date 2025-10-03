@@ -66,7 +66,7 @@ body{
 
 main{ position:relative; z-index:6; padding:3.5rem; pointer-events:auto; }
 h1{ margin:0 0 .6rem; font-size:clamp(1.5rem, 3vw, 2.2rem) }
-p{ margin:0; opacity:0.92; max-width:60ch; line-height:1.5 }
+
 
 #particle-canvas {
   position: fixed;

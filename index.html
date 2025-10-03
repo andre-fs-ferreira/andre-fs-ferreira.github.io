@@ -5,176 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>André Ferreira</title>
   <link rel="stylesheet" href="/css/background.css">
+  <link rel="stylesheet" href="/css/button.css">
+  <link rel="stylesheet" href="/css/text.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* centers the elements themselves */
-      font-family: Arial, sans-serif;
-    }
-
-  main h1, main p {
-    margin: 0;
-    text-align: center; /* centers the text inside */
-  }
-
-    h1 {
-      font-size: 6vw; /* scales with viewport width */
-      margin: 0;
-    }
-
-    p {
-      font-size: 1vw; /* scales with viewport width */
-      margin: 0.5rem 0 0 0;
-    }
-
-    /* Optional: Media queries for better control on very small or very large screens */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 8vw;
-      }
-      p {
-        font-size: 4vw;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      h1 {
-        font-size: 72px;
-      }
-      p {
-        font-size: 36px;
-      }
-    }
-    
-
-    /* button */
-    .push-button {
-    position: relative; /* needed for the pseudo-element */
-    appearance: none;
-    background: transparent;
-    color: var(--accent);
-    border: 2px solid var(--accent);
-    padding: 14px 34px;
-    font-size: clamp(10px, 2vw, 24px);
-    font-weight: 600;
-    letter-spacing: 0.35px;
-    border-radius: 10px;
-    cursor: pointer;
-    line-height: 1;
-    transition:
-      transform 160ms cubic-bezier(.2,.9,.2,1),
-      box-shadow 160ms cubic-bezier(.2,.9,.2,1),
-      background-color 160ms cubic-bezier(.2,.9,.2,1),
-      color 160ms cubic-bezier(.2,.9,.2,1);
-    box-shadow: none;
-    user-select: none;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* small line under the button - now always visible, but less intense by default */
-  .push-button::after {
-    content: "";
-    position: absolute;
-    left: 10%;                 /* start a little inside the button */
-    right: 10%;                /* end a little inside the button */
-    bottom: 4px;               /* distance from bottom of button */
-    height: 2px;               /* thickness of the line */
-    background-color: var(--accent);
-    border-radius: 1px;        /* slightly rounded edges */
-    opacity: 0.4;              /* less intense by default */
-    transition: left 0.3s ease, right 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
-  }
-
-  /* On hover: make line grow and full intensity */
-  .push-button:hover::after {
-    left: 5%;
-    right: 5%;
-    background-color: #ffffff; /* full white on hover */
-    opacity: 1;
-  }
-
-
-
-    /* hover & focus: reveal background and glow */
-    .push-button:hover,
-    .push-button:focus{
-      background-color: var(--accent);      /* filled on hover/focus */
-      color: #ffffff;                       /* white text when filled */
-      box-shadow: 0 10px 30px rgba(32,77,159,0.18);
-      transform: translateY(-3px);
-      outline: none;
-    }
-
-    /* keyboard focus accessibility */
-    .push-button:focus-visible{
-      outline: 3px solid rgba(32,77,159,0.18);
-      outline-offset: 4px;
-    }
-
-    /* active (pressed) state: pushed-down look */
-    .push-button:active{
-      transform: translateY(-1px);
-      background-color: var(--accent-darker); /* slightly darker while pressing */
-      box-shadow: 0 6px 18px rgba(22,55,111,0.22), inset 0 2px 6px rgba(0,0,0,0.12);
-    }
-
-    /* disabled variant (optional) */
-    .push-button[disabled]{
-      opacity: 0.45;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    /* social links */
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .social-button {
-      width: 40px;
-      height: 40px;
-      border: 2px solid var(--accent);
-      background: transparent;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition:
-        background-color 160ms cubic-bezier(.2,.9,.2,1),
-        color 160ms cubic-bezier(.2,.9,.2,1),
-        transform 160ms cubic-bezier(.2,.9,.2,1),
-        box-shadow 160ms cubic-bezier(.2,.9,.2,1);
-      text-decoration: none;
-    }
-
-    .social-button:hover,
-    .social-button:focus {
-      background-color: var(--accent);
-      color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(32,77,159,0.18);
-      outline: none;
-    }
-
-    .social-button:focus-visible {
-      outline: 2px solid rgba(32,77,159,0.18);
-      outline-offset: 2px;
-    }
-
-    .social-button:active {
-      transform: translateY(0);
-    }
-
-  </style>
-
 </head>
 <body>
   <!-- particle canvas -->
@@ -186,8 +19,12 @@
 
   <main>
     <h1>André Ferreira</h1>
-    <p>Empowering Healthcare with AI and Data</p>
-    <br> <br>
+    <br>
+    <div class="text-box">
+      <p>Empowering Healthcare with AI and Data</p>
+    </div>
+    <br> 
+    <br>
     <button class="push-button" onclick="location.href='/about'">About</button>
     <button class="push-button" onclick="location.href='/research-projects'">Research Projects</button>
     <button class="push-button" onclick="location.href='/publications'">Publications</button>

@@ -1,0 +1,52 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers the elements themselves */
+    font-family: Verdana;
+}
+
+main h1, main p {
+margin: 0;
+text-align: center; /* centers the text inside */
+}
+
+h1 {
+    font-size: 6vw; /* scales with viewport width */
+    margin: 0;
+}
+
+p {
+    font-size: 2vw; /* scales with viewport width */
+    margin: 0.5rem 0 0 0;
+}
+
+/* Optional: Media queries for better control on very small or very large screens */
+@media (max-width: 600px) {
+    h1 {
+    font-size: 8vw;
+    }
+    p {
+    font-size: 4vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    h1 {
+    font-size: 72px;
+    }
+    p {
+    font-size: 36px;
+    }
+}
+/* full-width row but the glow/band is centered */
+.text-box {
+    width: 100vw;
+    padding: 20px 0;
+    /* centered horizontal band that fades to transparent at edges */
+    background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.05) 0%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(255,255,255,0.05) 100%
+    ) no-repeat center;
+}
