@@ -5,8 +5,8 @@
     background: transparent;
     color: var(--accent);
     border: 2px solid var(--accent);
-    padding: 14px 34px;
-    font-size: clamp(25px, 4vw, 25px);
+    padding: 0.5em 1.5em;
+    font-size: clamp(0px, 5vw, 25px);
     font-weight: 600;
     letter-spacing: 0.35px;
     border-radius: 10px;

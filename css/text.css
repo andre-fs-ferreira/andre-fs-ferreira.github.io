@@ -6,24 +6,23 @@ main {
 }
 
 main h1, main p {
-margin: 0;
+
 text-align: center; /* centers the text inside */
 }
 
 h1 {
-    font-size: 6vw; /* scales with viewport width */
-    margin: 0;
+    font-size: 5vw; /* scales with viewport width */
 }
 
 p {
-    font-size: 2vw; /* scales with viewport width */
+    font-size: 3vw; /* scales with viewport width */
     margin: 0.5rem 0 0 0;
 }
 
 /* Optional: Media queries for better control on very small or very large screens */
 @media (max-width: 600px) {
     h1 {
-    font-size: 8vw;
+    font-size: 7vw;
     }
     p {
     font-size: 4vw;
@@ -49,4 +48,80 @@ p {
     rgba(255,255,255,0.2) 50%,
     rgba(255,255,255,0.05) 100%
     ) no-repeat center;
+}
+
+/* For publications page */
+.publication-class {
+    width: 100vw;
+    padding: 20px 0;
+    /* centered horizontal band that fades to transparent at edges */
+    background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.05) 0%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(255,255,255,0.05) 100%
+    ) no-repeat center;
+}
+.publication-class h1 {
+  text-align: left; /* left just the heading */
+  margin: 0% 10%;
+  max-width: fit-content; /* shrink box around text so it's centered */
+  font-size: 2rem; /* big title */
+  font-weight: bold;
+}
+
+.publication-class hr {
+  border: none;             /* remove default border */
+  height: 3px;              /* line thickness */
+  background-color: #000;    /* black line */
+  width: 90%;               /* 90% of container width */
+  margin: 0 auto 20px auto; /* center and add spacing below */
+}
+
+/* bottom hr on the same <hr> element using a class */
+.publication-class hr.hr2 {
+  /* specific styles for hr with class="hr2" */
+  background-color: rgba(0,0,0,0.3); /* 30% opacity */
+  width: 50%;
+  margin: 5% auto 20px;
+}
+
+
+.publication-class h2 {
+    text-align: center; /* center just the heading */
+    margin: 30px 10% 1rem 10%; /* top 0, bottom 1rem, sides 10% */
+    max-width: fit-content; /* shrink box around text so it's centered */
+    font-size: 1.5rem; /* big title */
+    font-weight: bold;
+}
+
+.publication-class p {
+    margin: 0 10%;
+    text-align: justify; /* justified text */
+    max-width: 100%;
+    font-size: 1rem; /* normal body text */
+    line-height: 1.6;
+}
+
+
+.publication-class p.keywords {
+    margin: 1em 10% 0 10%; /* top margin increased to 2em, rest remains */
+    text-align: justify; 
+    max-width: 100%;
+    font-size: 1rem; 
+    line-height: 1.6;
+
+}
+.publication-class p.keywords::before {
+    content: "Keywords: ";
+    font-weight: bold; /* optional, make "Keywords:" bold */
+}
+
+a {
+    color: black;       /* Makes the text black */
+    text-decoration: none; /* Removes underline */
+}
+
+a:hover {
+    color: gray;        /* Optional: changes color on hover */
 }
