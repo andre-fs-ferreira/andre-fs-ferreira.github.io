@@ -30,46 +30,26 @@
   <main>
     <!-- FIRST AUTHOR 2025 papers -->
     <div class="publication-class">
-      <hr> 
       <h1>2025</h1>
-
+      <hr> 
       <h2>Achieving Over 10× Faster Sample Generation with conditional DDPM</h2>
       <p>
-        This paper presents our solutions for Task 8 and 9 of BraTS 2025, which respectively involve the generation of a missing MRI modality and inpainting a missing region. Task 8 aims to solve the problem of missing a MRI modality for cases which acquisition is infeasible or the quality is not good enough for analysis. Task 9 seeks to produce pathology-free cases which would allow the analysis of healthy brains.
-        We use denoising diffusion models to solve both tasks in a unified framework. Since regular diffusion models require 1000 steps or more for inference, we propose a solution to speed up inference while obtaining competitive results while keeping a low computational footprint. Compared to our solution from BraTS 2024, our new solution achieves better results with over 10 times faster processing.
-        We achieve a Dice score of 0.86 and an SSIM of 0.77 on Task 8, and an MSE of 0.005, PSNR of 24.53, and SSIM of 0.868 on the Task 9 online validation set. The code will be made available after the challenge.
+        We present a unified denoising-diffusion framework for BraTS 2025 **Task 8** (synthesizing missing MRI modalities) and **Task 9** (inpainting pathology-free regions), with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. Results — **Task 8**: Dice 0.86, SSIM 0.77; **Task 9**: RMSE 0.053, PSNR 26.77, SSIM 0.918. Code to be released soon.
       </p>
       <p class="keywords">Conditional Denoising Diffusion, IDDPM, Synthetic Data Generation, MRI Reconstruction, Computational Efficiency, Image Inpainting</p>
 
       <hr class="hr2">
-
-      <!-- Another paper -->
-      <h2>Advancing the Open Suturing Skills Challenge 2025 with Pre-Trained Networks</h2>
-      <p>For Task 1, the pipeline is composed of three steps: First, frames are selected using a non-linear sampling strategy that prioritises the final, most informative segments of the procedure. Next, each frame is transformed into a 4-channel input tensor, augmenting the standard RGB data with a Sobel edge-detection channel to enhance fine-grained details of instruments and sutures. Finally, this sequence of feature-enhanced frames is processed by a fine-tuned InceptionV3 architecture to classify overall surgical performance into one of four skill categories.</p>
-      <p>In Task 2, the pipeline is composed of two steps: frame preprocessing and skill classification. Surgical videos are sampled using a non-linear strategy that emphasises the final portion of the procedure, and <em>ROIs</em> are extracted with a frozen pre-trained YOLOv5 detector. The resulting sequences are encoded by a <em>ResNet50</em> backbone and modelled with a 3-layer LSTM to capture temporal dynamics. Finally, eight classification heads assign <em>OSATS</em> scores across five skill levels.</p>
-      <p>For Task 3, the pipeline is composed of three steps: First, the frames are selected and a fine-tuned SAM2 is used to segment everything in the image; Next, a trained XGBoost is used to classify the masks into an object of interest or not; Lastly, a U-Net is used to predict the keypoints.</p>
-      <p>For Task 1, we achieved an F1 score of 0.8869. In Task 2, the results show high performance for class 0 but a sharp drop across other classes, with zero performance in class 4. This indicates overfitting and poor generalisation to under-represented classes, and for Task 3, 0.2241 (HOTA).</p>
-      <p class="keywords">Surgery, Skill Evaluation, Tracking, Radiomics, SAM2</p>
-
-      <hr class="hr2">
     </div>
-
+    <br>
     <!-- 2024 papers -->
     <div class="publication-class">
-      <hr> 
       <h1>2024</h1>
-      <!-- Brats goat -->
-      <h2>Generalisation of segmentation using Generative Adversarial Networks</h2>
-      <p>
-        State-of-the-art deep learning algorithms are easily biased and evaluated in misleading scenarios, especially in the medical context, where scenarios change rapidly and diseases develop quickly. The BraTS 2024 GoAT challenge aims to evaluate how brain tumour segmentation algorithms can adapt to different circumstances when these are not available for training. Our solution utilises state-of-the-art conditional generative adversarial networks to generate realistic new cases and train a segmentation algorithm that takes advantage of the convolutions and attention mechanisms. Our solution achieved a DSC value of 0.855, 0.863, 0.883 and an HD95 value of 24.83, 24.10 and 21.72 for the enhancing tumour, the tumour core and the whole tumour in the validation set, respectively.
-      </p>
-      <p class="keywords">Generative Adversarial Networks, Synthetic data, nnU-Net, Swin UNETR, Segmentation </p>
-      <hr class="hr2">
-      
+      <hr> 
       <!-- Brats 2024 Task 1 and 3 -->
       <h2>Improved Segmentation with Synthetic Data</h2>
       <p>
-        This paper presents the winning solution of task 1 and the third-placed solution of task 3 of the BraTS challenge. The use of automated tools in clinical practice has increased due to the development of more and more sophisticated and reliable algorithms. However, achieving clinical standards and developing tools for real-life scenarios is a major challenge. To this end, BraTS has organised tasks to find the most advanced solutions for specific purposes. In this paper, we propose the use of synthetic data to train state-of-the-art frameworks in order to improve the segmentation of adult gliomas in a post-treatment scenario, and the segmentation of meningioma for radiotherapy planning. Our results suggest that the use of synthetic data leads to more robust algorithms, although the synthetic data generation pipeline is not directly suited to the meningioma task. In task 1, we achieved a DSC of 0.7900, 0.8076, 0.7760, 0.8926, 0.7874, 0.8938 and a HD95 of 35.63, 30.35, 44.58, 16.87, 38.19, 17.95 for ET, NETC, RC, SNFH, TC and WT, respectively and, in task 3, we achieved a DSC of 0.801 and HD95 of 38.26, in the testing phase. The code for these tasks is available at  <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
+        We present our winning Task 1 and third-place Task 3 solutions for BraTS, using synthetic data to train SOTA segmentation pipelines—improving robustness for post-treatment glioma segmentation though the pipeline was less suited to meningioma.
+        Results — Task 1 (ET, NETC, RC, SNFH, TC, WT): DSC = 0.790, 0.808, 0.776, 0.893, 0.787, 0.894; HD95 = 35.63, 30.35, 44.58, 16.87, 38.19, 17.95. Task 3 (test): DSC = 0.801, HD95 = 38.26. Code available on  <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
       </p>
       <p class="keywords">Brain Tumour Segmentation, Synthetic data, nnUnet, MedNeXt, Swin-UNETR</p>
       <hr class="hr2">
@@ -77,11 +57,43 @@
       <!-- Brats 2024 task 7 and 8 -->
       <h2>Brain Tumour Removing and Missing Modality Generation using 3D WDM</h2>
       <p>
-        This paper presents the second-placed solution for task 8 and the participation solution for task 7 of BraTS 2024. The adoption of automated brain analysis algorithms to support clinical practice is increasing. However, many of these algorithms struggle with the presence of brain lesions or the absence of certain MRI modalities. The alterations in the brain's morphology leads to high variability and thus poor performance of predictive models that were trained only on healthy brains. The lack of information that is usually provided by some of the missing MRI modalities also reduces the reliability of the prediction models trained with all modalities. In order to improve the performance of these models, we propose the use of conditional 3D wavelet diffusion models. The wavelet transform enabled full-resolution image training and prediction on a GPU with 48 GB VRAM, without patching or downsampling, preserving all information for prediction. The code for these tasks is available at <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
+        We present our second-place solution for BraTS 2024 Task 8 (and a participation entry for Task 7) that uses conditional 3D wavelet diffusion models to handle lesions and missing MRI modalities. By applying a wavelet transform we train and infer at full resolution on a 48 GB GPU without patching or downsampling—preserving all image information and improving prediction reliability; code is available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
       </p>
       <p class="keywords">3D WDM, MRI, Brain Tumour, Inpainting, Missing Modality</p>
       <hr class="hr2">
+
+      <!-- Brats goat -->
+      <h2>Generalisation of segmentation using Generative Adversarial Networks</h2>
+      <p>
+        We tackle robustness in BraTS 2024 GoAT by using conditional GANs to generate realistic new cases and train a segmentation model that combines convolutions with attention mechanisms. On the validation set we achieve DSC = 0.855 (enhancing tumor), 0.863 (tumor core), 0.883 (whole tumor), and HD95 = 24.83, 24.10, 21.72, respectively.
+      </p>
+      <p class="keywords">Generative Adversarial Networks, Synthetic data, nnU-Net, Swin UNETR, Segmentation </p>
+      <hr class="hr2">
+      
+      <!-- GAN review paper -->
+      <h2>GAN-based generation of realistic 3D volumetric data: A systematic review and taxonomy</h2>
+      <p>
+        We review GAN-based methods for generating realistic volumetric (3D) data—primarily in medicine—motivated by limited datasets caused by rarity, privacy, and high acquisition cost. We summarize common architectures, loss functions and evaluation metrics, present a novel taxonomy, compare advantages and drawbacks, and outline evaluations, open challenges, and research opportunities to give a holistic overview of volumetric GANs.
+      </p>
+      <p class="keywords">Synthetic volumetric data, Generative adversarial network, Systematic review, Volumetric GANs taxonomy</p>
+      <hr class="hr2">
+
     </div>
+    <br>
+
+    <!-- 2023 papers -->
+    <div class="publication-class">
+      <h1>2023</h1>
+      <hr> 
+      <!-- Brats 2023 Task 1 -->
+      <h2>Enhanced Data Augmentation using Synthetic Data for Brain Tumour Segmentation</h2>
+      <p>
+        We address limited medical data for BraTS 2023 Task 1 by using GANs and registration to massively augment training samples for three models: nnU-Net, Swin UNETR, and the BraTS 2021 winning solution. Combining convolutional and transformer architectures improves complementarity. Results on the test set — lesion-wise Dice: 0.885, 0.872, 0.869; lesion-wise HD95: 22.84, 22.97, 16.71 (WT, TC, ET). Code available on  <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
+      </p>
+      <p class="keywords">Generative adversarial networks, Registration, Synthetic data, Brain Tumour segmentation, nnU-Net</p>
+      <hr class="hr2">
+    </div>
+    <br>
 
     <!-- 2022 Papers -->
     <div class="publication-class">
@@ -91,13 +103,23 @@
 
       <h2>Generation of Synthetic Rat Brain MRI Scans with a 3D Enhanced Alpha Generative Adversarial Network</h2>
       <p>
-        Translational brain research using Magnetic Resonance Imaging (MRI) is becoming increasingly popular as animal models are an essential part of scientific studies and more ultra-high-field scanners are becoming available. Some disadvantages of MRI are the availability of MRI scanners and the time required for a full scanning session. Privacy laws and the 3Rs ethics rule also make it difficult to create large datasets for training deep learning models. To overcome these challenges, an adaptation of the alpha Generative Adversarial Networks (GANs) architecture was used to test its ability to generate realistic 3D MRI scans of the rat brain in silico.  As far as the authors are aware, this was the first time a GAN-based approach was used to generate synthetic MRI data of the rat brain. The generated scans were evaluated using various quantitative metrics, a Turing test, and a segmentation test. The last two tests proved the realism and applicability of the generated scans to real problems. Therefore, by using the proposed new normalisation layer and loss functions, it was possible to improve the realism of the generated rat MRI scans and it was shown that using the generated data improved the segmentation model more than using the conventional data augmentation.
+        We adapt an α-GAN to generate realistic 3D rat-brain MRIs to overcome scanner scarcity, long acquisition times, and data/privacy constraints. To our knowledge this is the first GAN-based generation of rat MRI; with a new normalization layer and loss terms, we validate realism via quantitative metrics, a Turing test, and a segmentation task — and show that training with our synthetic scans improves segmentation more than conventional augmentation.
       </p>
       <p class="keywords">Alpha Generative Adversarial Network, Data Augmentation, Synthetic Data, MRI rat brain</p>
       <hr class="hr2">
 
-    </div>
+      <h2>Generation of Synthetic Data: A Generative Adversarial Networks Approach</h2>
+      <p>
+        We adapt an α-GAN to generate unlimited synthetic 3D rat-brain MRIs as a low-cost way to overcome scarce, unrepresentative medical datasets that traditional augmentation cannot solve. We validate realism by visual assessment and demonstrate practical value by improving performance in a segmentation test.
+      </p>
+      <p class="keywords">Alpha Generative Adversarial Network, Data Augmentation, Deep Learning Models, 3D MRI data sets of rat brain</p>
+      <hr class="hr2">
 
+
+      
+
+    </div>
+    <br>
 
 
       <!-- MIDDLE AUTHOR papers -->
@@ -105,11 +127,9 @@
       <hr> 
       <h2>Advancing the Open Suturing Skills Challenge 2025 with Pre-Trained Networks</h2>
       <p>For Task 1, the pipeline is composed of three steps: First, frames are selected using a non-linear sampling strategy that prioritises the final, most informative segments of the procedure. Next, each frame is transformed into a 4-channel input tensor, augmenting the standard RGB data with a Sobel edge-detection channel to enhance fine-grained details of instruments and sutures. Finally, this sequence of feature-enhanced frames is processed by a fine-tuned InceptionV3 architecture to classify overall surgical performance into one of four skill categories.</p>
-      <p>In Task 2, the pipeline is composed of two steps: frame preprocessing and skill classification. Surgical videos are sampled using a non-linear strategy that emphasises the final portion of the procedure, and <em>ROIs</em> are extracted with a frozen pre-trained YOLOv5 detector. The resulting sequences are encoded by a <em>ResNet50</em> backbone and modelled with a 3-layer LSTM to capture temporal dynamics. Finally, eight classification heads assign <em>OSATS</em> scores across five skill levels.</p>
-      <p>For Task 3, the pipeline is composed of three steps: First, the frames are selected and a fine-tuned SAM2 is used to segment everything in the image; Next, a trained XGBoost is used to classify the masks into an object of interest or not; Lastly, a U-Net is used to predict the keypoints.</p>
-      <p>For Task 1, we achieved an F1 score of 0.8869. In Task 2, the results show high performance for class 0 but a sharp drop across other classes, with zero performance in class 4. This indicates overfitting and poor generalisation to under-represented classes, and for Task 3, 0.2241 (HOTA).</p>
+      We present tailored pipelines for three tasks. For Task 1 we non-linearly sample final frames, add a Sobel edge channel to RGB, and classify skill (4 classes) with a fine-tuned InceptionV3 — F1 = 0.8869. Task 2 uses the same sampling, YOLOv5 ROIs, a ResNet50 encoder + 3-layer LSTM and eight OSATS heads; it performs well on class 0 but collapses on under-represented classes (zero on class 4), indicating overfitting. Task 3 combines frame selection, SAM2 segmentation, XGBoost mask filtering and a U-Net for keypoints, achieving HOTA = 0.2241.
+      </p>
       <p class="keywords">Surgery, Skill Evaluation, Tracking, Radiomics, SAM2</p>
-
       <hr class="hr2">
     </div>
 

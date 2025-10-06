@@ -57,9 +57,9 @@ p {
     /* centered horizontal band that fades to transparent at edges */
     background: linear-gradient(
     to right,
-    rgba(255,255,255,0.05) 0%,
+    rgba(255,255,255,0.2) 0%,
     rgba(255,255,255,0.2) 50%,
-    rgba(255,255,255,0.05) 100%
+    rgba(255,255,255,0.2) 100%
     ) no-repeat center;
 }
 .publication-class h1 {
@@ -68,6 +68,7 @@ p {
   max-width: fit-content; /* shrink box around text so it's centered */
   font-size: 2rem; /* big title */
   font-weight: bold;
+  color: rgba(0, 0, 0, 1); 
 }
 
 .publication-class hr {
@@ -91,35 +92,38 @@ p {
     text-align: center; /* center just the heading */
     margin: 30px 10% 1rem 10%; /* top 0, bottom 1rem, sides 10% */
     max-width: fit-content; /* shrink box around text so it's centered */
-    font-size: 1.5rem; /* big title */
+    font-size: 1.2rem; /* big title */
     font-weight: bold;
+    color: rgb(0, 0, 83); 
 }
 
 .publication-class p {
     margin: 0 10%;
-    text-align: justify; /* justified text */
+    text-align: left; /* justified text */
     max-width: 100%;
-    font-size: 1rem; /* normal body text */
+    font-size: 0.9rem; /* normal body text */
     line-height: 1.6;
 }
 
 
 .publication-class p.keywords {
     margin: 1em 10% 0 10%; /* top margin increased to 2em, rest remains */
-    text-align: justify; 
+    text-align: left; 
     max-width: 100%;
-    font-size: 1rem; 
+    font-size: 0.9rem; 
     line-height: 1.6;
 
 }
 .publication-class p.keywords::before {
     content: "Keywords: ";
     font-weight: bold; /* optional, make "Keywords:" bold */
+    font-size: 1.0rem; 
 }
 
 a {
-    color: black;       /* Makes the text black */
+    color: rgba(255, 255, 255, 0.978);       /* Makes the text black */
     text-decoration: none; /* Removes underline */
+    font-weight: bold;
 }
 
 a:hover {
