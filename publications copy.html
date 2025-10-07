@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Publications</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/background-pub.css">
+  <link rel="stylesheet" href="/css/button.css">
+  <link rel="stylesheet" href="/css/text.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .navbar a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+      cursor: pointer;
+      font-size: 16px;  
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+      background-color: red;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: linear-gradient(
+        to right,
+        rgba(255,255,255,0.2) 0%,
+        rgba(255,255,255,0.2) 50%,
+        rgba(255,255,255,0.2) 100%
+        ) no-repeat center;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .show {
+      display: block;
+    }
+  </style>
+  
+</head>
+<body>
+  <!-- particle canvas -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <!-- single responsive image -->
+  <div class="bg-wrap" aria-hidden="true">
+    <img class="bg-image" src="/imgs/background.jpg" alt="">
+  </div>
+
+  <button class="house-button" onclick="location.href='/'" aria-label="Homepage">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75h-5.25v-6h-6v6H3.75A.75.75 0 013 21V9.75z"/>
+    </svg>
+  </button>
+
+  <main>
+    <div class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn" onclick="myFunction()">2025
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" id="myDropdown">
+          <h2>Achieving Over 10× Faster Sample Generation with conditional DDPM</h2>
+          <p>
+            We present a unified denoising-diffusion framework for BraTS 2025 Task 8 (synthesizing missing MRI modalities) and **Task 9** (inpainting pathology-free regions), with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. Results — **Task 8**: Dice 0.86, SSIM 0.77; **Task 9**: RMSE 0.053, PSNR 26.77, SSIM 0.918. Code to be released soon.
+          </p>
+          <p class="keywords">Conditional Denoising Diffusion, IDDPM, Synthetic Data Generation, MRI Reconstruction, Computational Efficiency, Image Inpainting</p>
+          <hr>
+        </div>
+      </div> 
+
+      <div class="dropdown">
+        <button class="dropbtn" onclick="myFunction()">2024
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" id="myDropdown">
+          <h2>Achieving Over 10× Faster Sample Generation with conditional DDPM</h2>
+          <p>
+            We present a unified denoising-diffusion framework for BraTS 2025 Task 8 (synthesizing missing MRI modalities) and **Task 9** (inpainting pathology-free regions), with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. Results — **Task 8**: Dice 0.86, SSIM 0.77; **Task 9**: RMSE 0.053, PSNR 26.77, SSIM 0.918. Code to be released soon.
+          </p>
+          <p class="keywords">Conditional Denoising Diffusion, IDDPM, Synthetic Data Generation, MRI Reconstruction, Computational Efficiency, Image Inpainting</p>
+          <hr>
+        </div>
+      </div> 
+    </div>
+
+    <!-- FIRST AUTHOR 2025 papers -->
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">2025</button>
+        <hr> 
+        <div id="myDropdown" class="dropdown-content">
+          <h2>Achieving Over 10× Faster Sample Generation with conditional DDPM</h2>
+          <p>
+            We present a unified denoising-diffusion framework for BraTS 2025 **Task 8** (synthesizing missing MRI modalities) and **Task 9** (inpainting pathology-free regions), with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. Results — **Task 8**: Dice 0.86, SSIM 0.77; **Task 9**: RMSE 0.053, PSNR 26.77, SSIM 0.918. Code to be released soon.
+          </p>
+          <p class="keywords">Conditional Denoising Diffusion, IDDPM, Synthetic Data Generation, MRI Reconstruction, Computational Efficiency, Image Inpainting</p>
+          <hr class="hr2">
+      </div>
+    </div>
+   
+    <br>
+    <!-- 2024 papers -->
+    <div class="publication-class">
+      <h1>2024</h1>
+      <hr> 
+      <!-- Brats 2024 Task 1 and 3 -->
+      <h2>Improved Segmentation with Synthetic Data</h2>
+      <p>
+        We present our winning Task 1 and third-place Task 3 solutions for BraTS, using synthetic data to train SOTA segmentation pipelines—improving robustness for post-treatment glioma segmentation though the pipeline was less suited to meningioma.
+        Results — Task 1 (ET, NETC, RC, SNFH, TC, WT): DSC = 0.790, 0.808, 0.776, 0.893, 0.787, 0.894; HD95 = 35.63, 30.35, 44.58, 16.87, 38.19, 17.95. Task 3 (test): DSC = 0.801, HD95 = 38.26. Code available on  <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
+      </p>
+      <p class="keywords">Brain Tumour Segmentation, Synthetic data, nnUnet, MedNeXt, Swin-UNETR</p>
+      <hr class="hr2">
+
+      <!-- Brats 2024 task 7 and 8 -->
+      <h2>Brain Tumour Removing and Missing Modality Generation using 3D WDM</h2>
+      <p>
+        We present our second-place solution for BraTS 2024 Task 8 (and a participation entry for Task 7) that uses conditional 3D wavelet diffusion models to handle lesions and missing MRI modalities. By applying a wavelet transform we train and infer at full resolution on a 48 GB GPU without patching or downsampling—preserving all image information and improving prediction reliability; code is available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
+      </p>
+      <p class="keywords">3D WDM, MRI, Brain Tumour, Inpainting, Missing Modality</p>
+      <hr class="hr2">
+
+      <!-- Brats goat -->
+      <h2>Generalisation of segmentation using Generative Adversarial Networks</h2>
+      <p>
+        We tackle robustness in BraTS 2024 GoAT by using conditional GANs to generate realistic new cases and train a segmentation model that combines convolutions with attention mechanisms. On the validation set we achieve DSC = 0.855 (enhancing tumor), 0.863 (tumor core), 0.883 (whole tumor), and HD95 = 24.83, 24.10, 21.72, respectively.
+      </p>
+      <p class="keywords">Generative Adversarial Networks, Synthetic data, nnU-Net, Swin UNETR, Segmentation </p>
+      <hr class="hr2">
+      
+      <!-- GAN review paper -->
+      <h2>GAN-based generation of realistic 3D volumetric data: A systematic review and taxonomy</h2>
+      <p>
+        We review GAN-based methods for generating realistic volumetric (3D) data—primarily in medicine—motivated by limited datasets caused by rarity, privacy, and high acquisition cost. We summarize common architectures, loss functions and evaluation metrics, present a novel taxonomy, compare advantages and drawbacks, and outline evaluations, open challenges, and research opportunities to give a holistic overview of volumetric GANs.
+      </p>
+      <p class="keywords">Synthetic volumetric data, Generative adversarial network, Systematic review, Volumetric GANs taxonomy</p>
+      <hr class="hr2">
+
+    </div>
+    <br>
+
+    <!-- 2023 papers -->
+    <div class="publication-class">
+      <h1>2023</h1>
+      <hr> 
+      <!-- Brats 2023 Task 1 -->
+      <h2>Enhanced Data Augmentation using Synthetic Data for Brain Tumour Segmentation</h2>
+      <p>
+        We address limited medical data for BraTS 2023 Task 1 by using GANs and registration to massively augment training samples for three models: nnU-Net, Swin UNETR, and the BraTS 2021 winning solution. Combining convolutional and transformer architectures improves complementarity. Results on the test set — lesion-wise Dice: 0.885, 0.872, 0.869; lesion-wise HD95: 22.84, 22.97, 16.71 (WT, TC, ET). Code available on  <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
+      </p>
+      <p class="keywords">Generative adversarial networks, Registration, Synthetic data, Brain Tumour segmentation, nnU-Net</p>
+      <hr class="hr2">
+    </div>
+    <br>
+
+    <!-- 2022 Papers -->
+    <div class="publication-class">
+      <!-- Rat brains -->
+       <hr>
+      <h1>2022</h1>
+
+      <h2>Generation of Synthetic Rat Brain MRI Scans with a 3D Enhanced Alpha Generative Adversarial Network</h2>
+      <p>
+        We adapt an α-GAN to generate realistic 3D rat-brain MRIs to overcome scanner scarcity, long acquisition times, and data/privacy constraints. To our knowledge this is the first GAN-based generation of rat MRI; with a new normalization layer and loss terms, we validate realism via quantitative metrics, a Turing test, and a segmentation task — and show that training with our synthetic scans improves segmentation more than conventional augmentation.
+      </p>
+      <p class="keywords">Alpha Generative Adversarial Network, Data Augmentation, Synthetic Data, MRI rat brain</p>
+      <hr class="hr2">
+
+      <h2>Generation of Synthetic Data: A Generative Adversarial Networks Approach</h2>
+      <p>
+        We adapt an α-GAN to generate unlimited synthetic 3D rat-brain MRIs as a low-cost way to overcome scarce, unrepresentative medical datasets that traditional augmentation cannot solve. We validate realism by visual assessment and demonstrate practical value by improving performance in a segmentation test.
+      </p>
+      <p class="keywords">Alpha Generative Adversarial Network, Data Augmentation, Deep Learning Models, 3D MRI data sets of rat brain</p>
+      <hr class="hr2">
+
+
+      
+
+    </div>
+    <br>
+
+
+      <!-- MIDDLE AUTHOR papers -->
+    <div class="publication-class">
+      <hr> 
+      <h2>Advancing the Open Suturing Skills Challenge 2025 with Pre-Trained Networks</h2>
+      <p>For Task 1, the pipeline is composed of three steps: First, frames are selected using a non-linear sampling strategy that prioritises the final, most informative segments of the procedure. Next, each frame is transformed into a 4-channel input tensor, augmenting the standard RGB data with a Sobel edge-detection channel to enhance fine-grained details of instruments and sutures. Finally, this sequence of feature-enhanced frames is processed by a fine-tuned InceptionV3 architecture to classify overall surgical performance into one of four skill categories.</p>
+      We present tailored pipelines for three tasks. For Task 1 we non-linearly sample final frames, add a Sobel edge channel to RGB, and classify skill (4 classes) with a fine-tuned InceptionV3 — F1 = 0.8869. Task 2 uses the same sampling, YOLOv5 ROIs, a ResNet50 encoder + 3-layer LSTM and eight OSATS heads; it performs well on class 0 but collapses on under-represented classes (zero on class 4), indicating overfitting. Task 3 combines frame selection, SAM2 segmentation, XGBoost mask filtering and a U-Net for keypoints, achieving HOTA = 0.2241.
+      </p>
+      <p class="keywords">Surgery, Skill Evaluation, Tracking, Radiomics, SAM2</p>
+      <hr class="hr2">
+    </div>
+
+    
+    
+
+   
+
+  </main>
+
+  <!-- JS scripts -->
+  <script src="/js/mask-wave-mouse.js"></script>
+  <script src="/js/particles.js"></script>
+  <script src="/js/responsive.js"></script>
+  <script>
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Optional: close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        const dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+          const openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
+</body>
+</html>
