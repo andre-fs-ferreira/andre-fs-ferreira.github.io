@@ -11,6 +11,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
+    body {
+      margin: 0;
+      overflow: hidden; /* Prevents scrollbars from appearing */
+    }
     .navbar {
       overflow: visible;
       position: fixed; 
@@ -30,7 +34,7 @@
 
     .dropdown .dropbtn {
       cursor: pointer;
-      font-size: 16px;  
+      font-size: 1.5rem;  
       border: none;
       outline: none;
       color: white;
@@ -38,6 +42,8 @@
       background-color: inherit;
       font-family: inherit;
       margin: 0;
+      font-weight: bold;
+
     }
 
     .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
@@ -48,11 +54,14 @@
       display: none;         /* toggle with JS */
       position: fixed;       /* so it's not clipped by parents */
       left: 0;               /* or align to trigger by calculating left in JS */
-      width: 100%;           /* or set a fixed width */
+      width: auto;           /* or set a fixed width */
       overflow-y: auto;
       z-index: 1000;
       height: 80vh;
-       background-color: rgb(255, 255, 255);
+      background-color: #ffffffc7;
+      border-radius: 12px; /* adds rounded corners */
+      padding: 0.5rem 0.5rem; /* optional: adds inner spacing for better look */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* optional: subtle shadow for depth */
     }
     
     .dropdown-content h2 {

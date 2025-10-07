@@ -1,9 +1,11 @@
-body {
-            margin: 0;
-            overflow: hidden; /* Prevents scrollbars from appearing */
-        }
-
-        canvas {
-            display: block; /* Removes any default spacing around the canvas */
-            background-color: #010A21; /* A nice dark blue background */
-        }
+canvas {
+    display: block;
+    background-color: #010A21;
+    /* --- ADDED FOR FIX --- */
+    position: fixed; /* Fixes it to the viewport */
+    top: 0;
+    left: 0;
+    z-index: -1;     /* Places it behind all other standard content (which defaults to z-index: auto or 0) */
+    width: 100vw;    /* Ensures it covers the whole screen width */
+    height: 100vh;   /* Ensures it covers the whole screen height */
+}
