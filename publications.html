@@ -95,18 +95,20 @@
       }
 
       /* Update or add this style */
-      .header {
-        background-color: #46639d;
+     .header {
+        background-color: #010A21;
         display: flex;
-        align-items: center; /* vertically center h1 and button */
-        justify-content: space-between; /* space between title and button */
+        align-items: center;     /* vertically center */
+        justify-content: center; /* horizontally center */
         width: 100%;
       }
 
       .header h1 {
+        color: #fff;
         font-size: 2rem;
-        margin: 0; /* remove default h1 margin */
+        margin: 0;
       }
+
 
   </style>
   
@@ -115,12 +117,13 @@
 
   <div class="header"> 
         <h1>Publications</h1>
-        <button class="house-button" onclick="location.href='/'" aria-label="Homepage">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75h-5.25v-6h-6v6H3.75A.75.75 0 013 21V9.75z"/>
-            </svg>
-        </button>
   </div>
+
+   <button class="house-button" onclick="location.href='/'" aria-label="Homepage">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75h-5.25v-6h-6v6H3.75A.75.75 0 013 21V9.75z"/>
+    </svg>
+  </button>
   
   <main>
     
@@ -224,8 +227,10 @@
     
    
   </main>
+ 
   <canvas id="particle-canvas"></canvas>
 
+   
   <!-- JS scripts -->
   <script src="/js/mask-wave-mouse.js"></script>
   <script src="/js/responsive.js"></script>

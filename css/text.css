@@ -120,7 +120,7 @@ p {
 }
 
 a {
-    color: rgba(255, 255, 255, 0.978);       /* Makes the text black */
+    color: rgba(0, 0, 0, 1);       /* Makes the text black */
     text-decoration: none; /* Removes underline */
     font-weight: bold;
 }
