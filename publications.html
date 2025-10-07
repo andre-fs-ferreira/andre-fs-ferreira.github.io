@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/button.css">
   <link rel="stylesheet" href="/css/text.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <style>
     .navbar {
       overflow: visible;
@@ -48,9 +49,10 @@
       position: fixed;       /* so it's not clipped by parents */
       left: 0;               /* or align to trigger by calculating left in JS */
       width: 100%;           /* or set a fixed width */
-      max-height: calc(100vh - 10px); /* fallback */
       overflow-y: auto;
       z-index: 1000;
+      height: 80vh;
+       background-color: rgb(255, 255, 255);
     }
     
     .dropdown-content h2 {
@@ -94,12 +96,11 @@
 
       /* Update or add this style */
       .header {
-        background-color: #333;
+        background-color: #46639d;
         display: flex;
         align-items: center; /* vertically center h1 and button */
         justify-content: space-between; /* space between title and button */
         width: 100%;
-        padding: 10px 15px;
       }
 
       .header h1 {
@@ -111,13 +112,6 @@
   
 </head>
 <body>
-  <!-- particle canvas -->
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
-  <!-- single responsive image -->
-  <div class="bg-wrap" aria-hidden="true">
-    <img class="bg-image" src="/imgs/background.jpg" alt="">
-  </div>
-
 
   <div class="header"> 
         <h1>Publications</h1>
@@ -128,9 +122,8 @@
         </button>
   </div>
   
- 
   <main>
-     
+    
     <div class="navbar">
       <!-- 2025 papers -->
       <div class="dropdown">
@@ -147,7 +140,7 @@
           <hr>
         </div>
       </div> 
-       <!-- 2024 papers -->
+      <!-- 2024 papers -->
       <div class="dropdown">
         <button class="dropbtn" onclick="myFunction_2024_papers()">2024
           <i class="fa fa-caret-down"></i>
@@ -228,12 +221,13 @@
         </div>
       </div> 
     </div>
-
+    
+   
   </main>
+  <canvas id="particle-canvas"></canvas>
 
   <!-- JS scripts -->
   <script src="/js/mask-wave-mouse.js"></script>
-  <script src="/js/particles.js"></script>
   <script src="/js/responsive.js"></script>
   <script>
     (function(){
@@ -311,7 +305,7 @@
       });
 
     })();
-    </script>
+  </script>
 
 </body>
 </html>
