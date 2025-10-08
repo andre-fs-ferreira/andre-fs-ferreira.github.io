@@ -34,7 +34,7 @@
 
     .dropdown .dropbtn {
       cursor: pointer;
-      font-size: 1.5rem;  
+      font-size: clamp(0.5rem, 4vw, 1.6rem);
       border: none;
       outline: none;
       color: white;
@@ -43,7 +43,6 @@
       font-family: inherit;
       margin: 0;
       font-weight: bold;
-
     }
 
     .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
@@ -73,8 +72,7 @@
       text-align: center;            /* keep to center multi-line text inside the box */
       max-width: 80%;                /* optional: limit width so it doesn't span full row */
     }
-
-
+    
     .dropdown-content p {
           margin: 10px 5%; /* 10px top/bottom, 20px left/right */
           text-align: left; 
@@ -114,11 +112,52 @@
 
       .header h1 {
         color: #fff;
-        font-size: 2rem;
+        font-size: clamp(1.1rem, 10vw, 3rem);
         margin: 0;
       }
 
+      .first-author-with-border {
+        border-bottom: 2px solid rgb(0, 0, 255);
+        padding: 0;                 /* remove extra space if needed */
+        margin: 0 auto;             /* optional: center container */
+      }
 
+      .first-author-with-border h1 {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: rgb(0, 0, 255);
+      text-align: center;
+      /* Box styling */         
+      padding: 10px 0;                    
+      margin: 0;                           /* remove default spacing */
+      background-color: rgba(0, 0, 255, 0.05);
+      width: 100%;                         /* full width of container */
+    }
+
+    .mid-author-with-border {
+        border-bottom: 2px solid rgb(255, 0, 0);
+        padding: 0;                 /* remove extra space if needed */
+        margin: 0 auto;             /* optional: center container */
+      }
+
+      .mid-author-with-border h1 {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: rgb(255, 0, 0);
+      text-align: center;
+      /* Box styling */            
+      padding: 10px 0;                    
+      margin: 0;                           /* remove default spacing */
+      background-color: rgba(255, 0, 0, 0.05);
+      width: 100%;                         /* full width of container */
+      box-sizing: border-box;
+    }
+
+    .mid-author-with-border h2 {
+      color: rgb(83, 0, 0);
+    }
   </style>
   
 </head>
@@ -143,13 +182,25 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="2025_papers">
-          <!-- Brats 2025 inpaint and missing modal -->
-          <h2>Achieving Over 10× Faster Sample Generation with conditional DDPM</h2>
-          <p>
-            We present a unified denoising-diffusion framework for BraTS 2025 Task 8 (synthesizing missing MRI modalities) and **Task 9** (inpainting pathology-free regions), with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. Results — **Task 8**: Dice 0.86, SSIM 0.77; **Task 9**: RMSE 0.053, PSNR 26.77, SSIM 0.918. Code to be released soon.
-          </p>
-          <p class="keywords">Conditional Denoising Diffusion, IDDPM, Synthetic Data Generation, MRI Reconstruction, Computational Efficiency, Image Inpainting</p>
-          <hr>
+          <div class="first-author-with-border">
+            <h1>First author</h1>
+            <!-- Brats 2025 inpaint and missing modal -->
+            <h2>Achieving Over 10× Faster Sample Generation with conditional DDPM</h2>
+            <p>
+              We present a unified denoising-diffusion framework for BraTS 2025 Task 8 (synthesizing missing MRI modalities) and **Task 9** (inpainting pathology-free regions), with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. Results — **Task 8**: Dice 0.86, SSIM 0.77; **Task 9**: RMSE 0.053, PSNR 26.77, SSIM 0.918. Code to be released soon.
+            </p>
+            <p class="keywords">Conditional Denoising Diffusion, IDDPM, Synthetic Data Generation, MRI Reconstruction, Computational Efficiency, Image Inpainting</p>
+          </div>
+          <br>
+          <div class="mid-author-with-border">
+            <h1>Mid author</h1>
+            <!-- Naida's GBM-Reservoir -->
+            <h2>GBM-Reservoir: Brain tumor (Glioblastoma Multiforme) MRI dataset collection with ground truth segmentation masks</h2>
+            <p>
+              We present a brain tumor MRI dataset with 23,049 samples, each including FLAIR, T1, T1ce, and T2 scans, plus one or two segmentation masks. The dataset expands 438 original BraTS 2022 cases through registration, generating additional samples with varied tumor locations. Despite heterogeneous imaging protocols, it provides ground truth for each sample, supporting the development of deep learning–based automated tumor segmentation on unseen cases.
+            </p>
+            <p class="keywords">Brain tumor segmentation, Data augmentation, Registration, BraTS, Deep learning</p>
+          </div>
         </div>
       </div> 
       <!-- 2024 papers -->
@@ -158,39 +209,78 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="2024_papers">
-          <!-- Brats 2024 Task 1 and 3 -->
-          <h2>Improved Segmentation with Synthetic Data</h2>
-          <p>
-            We present our winning Task 1 and third-place Task 3 solutions for BraTS, using synthetic data to train SOTA segmentation pipelines—improving robustness for post-treatment glioma segmentation though the pipeline was less suited to meningioma.
-            Results — Task 1 (ET, NETC, RC, SNFH, TC, WT): DSC = 0.790, 0.808, 0.776, 0.893, 0.787, 0.894; HD95 = 35.63, 30.35, 44.58, 16.87, 38.19, 17.95. Task 3 (test): DSC = 0.801, HD95 = 38.26. Code available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.
-          </p>
-          <p class="keywords">Brain Tumour Segmentation, Synthetic data, nnUnet, MedNeXt, Swin-UNETR</p>
-          <hr>
-          
-          <!-- Brats 2024 task 7 and 8 -->
-          <h2>Brain Tumour Removing and Missing Modality Generation using 3D WDM</h2>
-          <p>
-            We present our second-place solution for BraTS 2024 Task 8 (and a participation entry for Task 7) that uses conditional 3D wavelet diffusion models to handle lesions and missing MRI modalities. By applying a wavelet transform we train and infer at full resolution on a 48 GB GPU without patching or downsampling—preserving all image information and improving prediction reliability; code is available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.
-          </p>
-          <p class="keywords">3D WDM, MRI, Brain Tumour, Inpainting, Missing Modality</p>
-          <hr>
+          <div class="first-author-with-border">
+            <h1>First author</h1>
+            <!-- Brats 2024 Task 1 and 3 -->
+            <h2>Improved Segmentation with Synthetic Data</h2>
+            <p>
+              We present our winning Task 1 and third-place Task 3 solutions for BraTS, using synthetic data to train SOTA segmentation pipelines—improving robustness for post-treatment glioma segmentation though the pipeline was less suited to meningioma.
+              Results — Task 1 (ET, NETC, RC, SNFH, TC, WT): DSC = 0.790, 0.808, 0.776, 0.893, 0.787, 0.894; HD95 = 35.63, 30.35, 44.58, 16.87, 38.19, 17.95. Task 3 (test): DSC = 0.801, HD95 = 38.26. Code available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.
+            </p>
+            <p class="keywords">Brain Tumour Segmentation, Synthetic data, nnUnet, MedNeXt, Swin-UNETR</p>
+            <hr>
+            
+            <!-- Brats 2024 task 7 and 8 -->
+            <h2>Brain Tumour Removing and Missing Modality Generation using 3D WDM</h2>
+            <p>
+              We present our second-place solution for BraTS 2024 Task 8 (and a participation entry for Task 7) that uses conditional 3D wavelet diffusion models to handle lesions and missing MRI modalities. By applying a wavelet transform we train and infer at full resolution on a 48 GB GPU without patching or downsampling—preserving all image information and improving prediction reliability; code is available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.
+            </p>
+            <p class="keywords">3D WDM, MRI, Brain Tumour, Inpainting, Missing Modality</p>
+            <hr>
 
-          <!-- Brats goat -->
-          <h2>Generalisation of segmentation using Generative Adversarial Networks</h2>
-          <p>
-            We tackle robustness in BraTS 2024 GoAT by using conditional GANs to generate realistic new cases and train a segmentation model that combines convolutions with attention mechanisms. On the validation set we achieve DSC = 0.855 (enhancing tumor), 0.863 (tumor core), 0.883 (whole tumor), and HD95 = 24.83, 24.10, 21.72, respectively.
-          </p>
-          <p class="keywords">Generative Adversarial Networks, Synthetic data, nnU-Net, Swin UNETR, Segmentation </p>
-          <hr>
-          
-          <!-- GAN review paper -->
-          <h2>GAN-based generation of realistic 3D volumetric data: A systematic review and taxonomy</h2>
-          <p>
-            We review GAN-based methods for generating realistic volumetric (3D) data—primarily in medicine—motivated by limited datasets caused by rarity, privacy, and high acquisition cost. We summarize common architectures, loss functions and evaluation metrics, present a novel taxonomy, compare advantages and drawbacks, and outline evaluations, open challenges, and research opportunities to give a holistic overview of volumetric GANs.
-          </p>
-          <p class="keywords">Synthetic volumetric data, Generative adversarial network, Systematic review, Volumetric GANs taxonomy</p>
-          <hr>
+            <!-- Brats goat -->
+            <h2>Generalisation of segmentation using Generative Adversarial Networks</h2>
+            <p>
+              We tackle robustness in BraTS 2024 GoAT by using conditional GANs to generate realistic new cases and train a segmentation model that combines convolutions with attention mechanisms. On the validation set we achieve DSC = 0.855 (enhancing tumor), 0.863 (tumor core), 0.883 (whole tumor), and HD95 = 24.83, 24.10, 21.72, respectively.
+            </p>
+            <p class="keywords">Generative Adversarial Networks, Synthetic data, nnU-Net, Swin UNETR, Segmentation </p>
+            <hr>
+            
+            <!-- GAN review paper -->
+            <h2>GAN-based generation of realistic 3D volumetric data: A systematic review and taxonomy</h2>
+            <p>
+              We review GAN-based methods for generating realistic volumetric (3D) data—primarily in medicine—motivated by limited datasets caused by rarity, privacy, and high acquisition cost. We summarize common architectures, loss functions and evaluation metrics, present a novel taxonomy, compare advantages and drawbacks, and outline evaluations, open challenges, and research opportunities to give a holistic overview of volumetric GANs.
+            </p>
+            <p class="keywords">Synthetic volumetric data, Generative adversarial network, Systematic review, Volumetric GANs taxonomy</p>
+          </div>
 
+          <div class="mid-author-with-border">
+            <h1>Mid author</h1>
+            <!-- Nikoo paper -->
+            <h2>Comparative Analysis of nnUNet and MedNeXt for Head and Neck Tumor Segmentation in MRI-Guided Radiotherapy</h2>
+            <p>
+              We address limited medical data for BraTS 2023 Task 1 by using GANs and registration to massively augment training samples for three models: nnU-Net, Swin UNETR, and the BraTS 2021 winning solution. Combining convolutional and transformer architectures improves complementarity. Results on the test set — lesion-wise Dice: 0.885, 0.872, 0.869; lesion-wise HD95: 22.84, 22.97, 16.71 (WT, TC, ET). Code available on <a href="https://github.com/NikooMoradi/HNTSMRG24_team_TUMOR">HNTSMRG24_team_TUMOR</a>.
+            </p>
+            <p class="keywords">HNTS-MRG24, MICCAI24, nnUNet, MedNeXt</p>
+            <hr>
+            <!-- Review MRI paper -->
+            <h2>Deep Dive Into MRI: Exploring Deep Learning Applications in 0.55T and 7T MRI</h2>
+            <p>
+              We review the integration of deep learning into emerging 0.55T and 7T MRI technologies, highlighting how DL enhances image detail, tissue characterization, and diagnostic performance. The paper discusses current applications, benefits, and future directions for combining deep learning with advanced MRI to further improve medical imaging.
+            </p>
+            <p class="keywords">Magnetic Resonance Imaging, 0.55T MRI, 7T MRI, Deep Learning</p>
+            <hr>
+            <!-- Review MRI paper -->
+            <h2>Insights into Predicting Tooth Extraction from Panoramic Dental Images: Artificial Intelligence vs. Dentists</h2>
+            <p>
+              We trained a ResNet50 model on 26,956 cropped teeth images from panoramic radiographs to predict whether a tooth should be extracted or preserved. The AI achieved ROC-AUC = 0.901 and PR-AUC = 0.749, outperforming dentists (ROC-AUC = 0.797, PR-AUC = 0.589). These results show that AI can support clinical decision-making by improving accuracy and reducing errors in tooth extraction indications.
+            </p>
+            <p class="keywords">Tooth Extraction, Surgery, Oral Dentistry, Decision Support Techniques, Deep Learning, Artificial Intelligence</p>
+            <hr>
+            <!-- ISBI Dreaming challenge paper -->
+            <h2>A Baseline Solution for the ISBI 2024 Dreaming Challenge</h2>
+            <p>
+              We introduce the DREAMING challenge, which explores Diminished Reality for medicine by removing surgical tools from operation scenes to enhance visibility. A new dataset of simulated surgeries with instrument and hand occlusions is presented, and a baseline using an existing video inpainting model is evaluated. Results show promising performance under some conditions but highlight key limitations for real-world surgical use.
+            </p>
+            <p class="keywords">Deep Learning, Inpainting, Diminished Reality, Surgery</p>
+            <hr>
+            <!-- Ana Carolina PCCT paper -->
+            <h2>Deep PCCT: Photon Counting Computed Tomography Deep Learning Applications Review</h2>
+            <p>
+              This review explores recent advances and applications of Photon Counting Computed Tomography (PCCT) in pre-clinical research, highlighting its ability to overcome traditional imaging limitations like low resolution and noise. It analyzes scanner features, deep learning integration, and radiomic applications, showing PCCT’s promise for improved diagnostic precision while outlining current challenges and future research directions in medical imaging.
+            </p>
+            <p class="keywords">Photon Counting Computed Tomography, Deep Learning, Radiomics</p>
+          </div>
         </div>
       </div> 
     
@@ -200,13 +290,38 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="2023_papers">
-          <!-- Brats 2023 Task 1 -->
-          <h2>Enhanced Data Augmentation using Synthetic Data for Brain Tumour Segmentation</h2>
-          <p>
-            We address limited medical data for BraTS 2023 Task 1 by using GANs and registration to massively augment training samples for three models: nnU-Net, Swin UNETR, and the BraTS 2021 winning solution. Combining convolutional and transformer architectures improves complementarity. Results on the test set — lesion-wise Dice: 0.885, 0.872, 0.869; lesion-wise HD95: 22.84, 22.97, 16.71 (WT, TC, ET). Code available on  <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
-          </p>
-          <p class="keywords">Generative adversarial networks, Registration, Synthetic data, Brain Tumour segmentation, nnU-Net</p>
-          <hr class="hr2">
+          <div class="first-author-with-border">
+            <h1>First author</h1>
+              <!-- Brats 2023 Task 1 -->
+              <h2>Enhanced Data Augmentation using Synthetic Data for Brain Tumour Segmentation</h2>
+              <p>
+                We address limited medical data for BraTS 2023 Task 1 by using GANs and registration to massively augment training samples for three models: nnU-Net, Swin UNETR, and the BraTS 2021 winning solution. Combining convolutional and transformer architectures improves complementarity. Results on the test set — lesion-wise Dice: 0.885, 0.872, 0.869; lesion-wise HD95: 22.84, 22.97, 16.71 (WT, TC, ET). Code available on  <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
+              </p>
+              <p class="keywords">Generative adversarial networks, Registration, Synthetic data, Brain Tumour segmentation, nnU-Net</p>
+          </div>
+          <div class="mid-author-with-border">
+            <h1>Mid author</h1>
+            <!-- MedShapeNet paper -->
+            <h2>MedShapeNet – a large-scale dataset of 3D medical shapes for computer vision</h2>
+            <p>
+              We introduce MedShapeNet, a large-scale collection of over 100,000 annotated 3D medical shapes derived from real patient imaging, covering anatomy and surgical instruments. Designed to bridge computer vision and medical imaging, it supports tasks such as tumor classification, skull reconstruction, anatomy completion, education, and 3D printing. The data is openly accessible via a web and Python interface, enabling research in discriminative, reconstructive, and variational benchmarks, as well as extended reality applications. The project page is: <a href="https://medshapenet.ikim.nrw/">https://medshapenet.ikim.nrw/</a>.
+            </p>
+            <p class="keywords">3D medical shapes, benchmark, anatomy education, shapeomics, augmented reality, virtual reality</p>
+            <hr>
+            <!-- Open skull reconstruction paper -->
+            <h2>Open-source skull reconstruction with MONAI</h2>
+            <p>
+              We propose an autoencoder-based deep learning model for cranial and facial defect reconstruction within the MONAI framework, pre-trained on the MUG500+ and SkullFix datasets. The work emphasizes open-sourcing, providing accessible code and pre-trained weights via <a href="https://github.com/Project-MONAI/research-contributions/tree/master/SkullRec/"> MONAI’s official repository </a>. This contribution introduces a pre-trained reconstruction model and demonstrates how MONAI tutorials can be easily adapted for new medical imaging applications like skull reconstruction. 
+            </p>
+            <p class="keywords">Skull reconstruction, Research contribution, MONAI, Open-source, API, PyTorch, Python, Deep learning, Pre-trained model, Cranial implant design, Cranioplasty, Craniotomy, Craniectomy, CT, BoneHeadFace</p>
+            <hr>
+            <!-- X-Rays ribs paper -->
+            <h2>Generation of Synthetic X-Rays Images of Rib Fractures Using a 2D Enhanced Alpha-GAN for Data Augmentation</h2>
+            <p>
+              We developed a generative model to synthesize X-ray images with subtle rib fractures, addressing the scarcity of public datasets limited by ethical and bureaucratic constraints. Although evaluated with quantitative metrics and a Turing test, the generated images lacked sufficient realism due to high dataset heterogeneity, highlighting challenges in modeling fine fracture details.
+            </p>
+            <p class="keywords">alpha-GAN, data augmentation, X-ray, fractures, rib</p>
+          </div>
         </div>
       </div> 
 
@@ -216,20 +331,38 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="2022_papers">
-          <!-- Rat brains -->
-          <h2>Generation of Synthetic Rat Brain MRI Scans with a 3D Enhanced Alpha Generative Adversarial Network</h2>
-          <p>
-            We adapt an α-GAN to generate realistic 3D rat-brain MRIs to overcome scanner scarcity, long acquisition times, and data/privacy constraints. To our knowledge this is the first GAN-based generation of rat MRI; with a new normalization layer and loss terms, we validate realism via quantitative metrics, a Turing test, and a segmentation task — and show that training with our synthetic scans improves segmentation more than conventional augmentation.
-          </p>
-          <p class="keywords">Alpha Generative Adversarial Network, Data Augmentation, Synthetic Data, MRI rat brain</p>
-          <hr>
+          <div class="first-author-with-border">
+            <h1>First author</h1>
+            <!-- Rat brains -->
+            <h2>Generation of Synthetic Rat Brain MRI Scans with a 3D Enhanced Alpha Generative Adversarial Network</h2>
+            <p>
+              We adapt an α-GAN to generate realistic 3D rat-brain MRIs to overcome scanner scarcity, long acquisition times, and data/privacy constraints. To our knowledge this is the first GAN-based generation of rat MRI; with a new normalization layer and loss terms, we validate realism via quantitative metrics, a Turing test, and a segmentation task — and show that training with our synthetic scans improves segmentation more than conventional augmentation.
+            </p>
+            <p class="keywords">Alpha Generative Adversarial Network, Data Augmentation, Synthetic Data, MRI rat brain</p>
+            <hr>
 
-          <h2>Generation of Synthetic Data: A Generative Adversarial Networks Approach</h2>
-          <p>
-            We adapt an α-GAN to generate unlimited synthetic 3D rat-brain MRIs as a low-cost way to overcome scarce, unrepresentative medical datasets that traditional augmentation cannot solve. We validate realism by visual assessment and demonstrate practical value by improving performance in a segmentation test.
-          </p>
-          <p class="keywords">Alpha Generative Adversarial Network, Data Augmentation, Deep Learning Models, 3D MRI data sets of rat brain</p>
-          <hr>
+            <h2>Generation of Synthetic Data: A Generative Adversarial Networks Approach</h2>
+            <p>
+              We adapt an α-GAN to generate unlimited synthetic 3D rat-brain MRIs as a low-cost way to overcome scarce, unrepresentative medical datasets that traditional augmentation cannot solve. We validate realism by visual assessment and demonstrate practical value by improving performance in a segmentation test.
+            </p>
+            <p class="keywords">Alpha Generative Adversarial Network, Data Augmentation, Deep Learning Models, 3D MRI data sets of rat brain</p>
+          </div>
+          <div class="mid-author-with-border">
+            <h1>Mid author</h1>
+            <!-- Maria's paper -->
+            <h2>Radiomics in Head and Neck Cancer Outcome Predictions</h2>
+            <p>
+              We use radiomics and machine learning to predict head and neck cancer prognosis—including locoregional recurrences, distant metastases, and overall survival—by extracting features from CT images combined with patient clinical data. Using XGBoost, our models achieved AUC = 0.74 (LR), 0.84 (DM), 0.91 (OS), demonstrating that CT-based radiomic features can effectively support prognosis and clinical decision-making.
+            </p>
+            <p class="keywords">precision medicine, head and neck cancer, radiomics, locoregional recurrences, distant metastases, overall survival, CT, multilayer perceptron, XGBoost</p>
+            <hr>
+            <!-- AutoPET paper -->
+            <h2>AutoPET Challenge: Combining nn-Unet with Swin UNETR Augmented by Maximum Intensity Projection Classifier</h2>
+            <p>
+              We present an ensemble solution for the AutoPET challenge, combining nnU-Net and Swin UNETR with a maximum intensity projection classifier that gates lesion detection, followed by late fusion of segmentations. Tested on FDG-PET/CT scans from 900 patients, our approach achieves an average cross-validation Dice score of 72.12% for lung cancer, melanoma, and lymphoma. Code is available on <a href="https://github.com/heiligerl/AutoPET_Challenge_Submission">AutoPET_Challenge_Submission</a>.
+            </p>
+            <p class="keywords">Semantic Segmentation, FDG-PET/CT, Swin UNETR, nn-Unet, Late Fusion</p>
+          </div>
         </div>
       </div> 
     </div>
