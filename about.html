@@ -83,6 +83,194 @@
 
       /* C2 (100%) - Full bar */
       .level-c2 { width: 100%; }
+
+
+
+      /* General List Cleanup */
+      .skills-list {
+          list-style-type: none; /* Removes bullets */
+          padding-left: 0;      /* Removes default list padding */
+      }
+
+      /* Flex container for each skill item: Name | Bar | Text */
+      .skill-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 8px;
+          font-size: 14px;
+      }
+
+      /* Skill Name Width */
+      .skill-name {
+          width: 200px; /* Adjust this width to align the bars neatly */
+          flex-shrink: 0;
+      }
+
+      /* Skill Level Text (e.g., 5/5) */
+      .skill-level-text {
+          width: 30px;
+          text-align: right;
+          margin-left: 5px;
+          font-weight: bold;
+      }
+
+      /* --- Bar Container (The empty track) --- */
+      .skill-bar-container {
+          height: 10px;
+          width: 150px; /* Fixed width for the bar area */
+          background-color: #0000006e;
+          border-radius: 5px;
+          margin-left: 10px;
+          overflow: hidden;
+      }
+
+      /* --- Bar Fill (The colored indicator) --- */
+      .skill-bar-fill {
+          height: 100%;
+          background-color: #3498db; /* Green color for skills */
+          border-radius: 5px;
+      }
+
+      /* --- Level-Specific Widths (1-5 scale) --- */
+
+      .level-1 { width: 20%; }
+      .level-2 { width: 40%; }
+      .level-3 { width: 60%; }
+      .level-4 { width: 80%; }
+      .level-5 { width: 100%; }
+
+      .timeline {
+            margin: auto auto;
+            position: relative;
+        }
+        .milestone {
+            display: flex;
+            align-items: center;
+            margin: auto auto;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        .icon {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #000876, #0112ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            z-index: 1;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0);
+            position: absolute;
+            left: 5%;
+            transform: translateX(-50%);
+            flex-shrink: 0;
+          
+        }
+
+        .content {
+            padding: 20px 0 0 10%; /* Top/right/bottom/left: Increases left padding to push text right */
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        .date {
+            color: #000000;
+            margin-bottom: 5px;
+        }
+        .location {
+            color: #000000;
+            font-size: 18px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .milestone:nth-child(1) { animation-delay: 0.2s; }
+        .milestone:nth-child(2) { animation-delay: 0.4s; }
+        .milestone:nth-child(3) { animation-delay: 0.6s; }
+        .milestone:nth-child(4) { animation-delay: 0.8s; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .milestone {
+                flex-direction: column !important;
+                text-align: left !important;
+                margin: 40px 0;
+                padding-left: 60px;
+            }
+            .milestone:nth-child(odd),
+            .milestone:nth-child(even) {
+                flex-direction: column !important;
+            }
+            .milestone .content {
+                padding: 15px;
+                padding-left: 0;
+                text-align: left !important;
+                padding-right: 0 !important;
+            }
+            .icon {
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 80px;
+              height: 80px;
+              font-size: 32px;
+              margin-right: 0;
+            }
+            
+            .title {
+                font-size: 20px;
+            }
+            .location {
+                font-size: 16px;
+            }
+            .milestone:nth-child(odd) .icon {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .milestone {
+                padding-left: 50px;
+                margin: 30px 0;
+            }
+            .icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            .milestone .content {
+                padding: 12px;
+            }
+            .title {
+                font-size: 18px;
+            }
+            .location {
+                font-size: 14px;
+            }
+        }
+
       
     </style>
   </head>
@@ -100,12 +288,15 @@
                 <ul>
                   <li> 📍 University of Minho 🤝 IKIM, Universität Duisburg-Essen </li>
                 </ul>
+              <hr>
               <!-- Tutor -->
               <li class="bold"> 🧑‍🏫 Tutor:</li> 
                 <ul>
                   <li> 📍 University of Minho </li>
                   <li> 📍 MICCAI 2025 RISE </li>
                 </ul>
+              <hr>
+              <!-- Challenges -->
               <li class="bold no-bullet"> 
                   🎉 Winner of multiple international AI challenges in medical imaging:
                   <div class="transparent toggle-link" id="challenge-toggle-text" onclick="toggleVisibility('ai-challenges-content', this)">
@@ -146,6 +337,8 @@
                       </ul>
                   </ul>
                 </div>
+              <hr>
+              <!-- Languages -->
               <li class="no-bullet">💬 Language levels:</li>
               <ul>
                   <li class="language-item">
@@ -174,90 +367,315 @@
         
         <section class="topic">
           <h2>Work experience</h2>
-          <ul>
-              <li class="bold">PhD student</li>
-                <ul>
-                  <li>📅 Sept. 2022 - Aug. 2025?</li>
-                  <li>📍 University of Minho, Braga, Portugal</li>
-                </ul>
-              <li class="bold">Visiting Researcher</li>
-                <ul>
-                  <li>📅 Sept. 2023 - March 2024</li>
-                  <li>📍 RWTH, Aachen, Germany</li>
-                </ul>
-              <li class="bold">Research Assistant</li>
-                <ul>
-                  <li>📅 March 2022 - Aug. 2022</li>
-                  <li>📍 IKIM, Essen, Germany</li>
-                </ul>
-              <li class="bold">Internship Trainee</li>
-                <ul>
-                  <li>📅 May 2021 - Aug. 2021</li>
-                  <li>📍 Neurospin, CEA-Saclay, France</li>
-                </ul>
-        </section>
-        <section class="topic">
-        <h2>Expertise & Technical Proficiencies</h2>
+          <div class="timeline">
         
-        <div class="topic-subsection">
-            <h3>👨‍💻 Experience & Domain Focus</h3>
-            <ul>
-              <li class="bold">Over 4 years of experience in developing complete, end-to-end pipelines for:</li>
-              <ul>
-                <li>Machine Learning</li>
-                <li>Deep Learning</li>
-                <li>Computer Vision</li>
-                <li>Medical Data Analysis</li>
-            </ul>
-            <li class="bold">Specialized in medical/AI projects, with a research focus on:</li>
-              <ul>
-                <li>Generation of synthetic medical data</li>
-                <li>Automatic Segmentation</li>
-                <li>Automatic Classifcation</li>
-                <li>Radiomics Analysis</li>
-              </ul>
-            <li>Skilled in designing and implementing innovative networks, including: </li>
-              <ul>
-                <li>GANs</li> 
-                <li>DDPMS</li>  
-                <li>VAEs</li> 
-                <li>DNNs</li> 
-                <li>ViTs</li> 
-                <li>LLMs</li>
-              </ul>
+            <div class="milestone">
+                <div class="icon">🎓</div>
+                <div class="content">
+                    <div class="title">PhD student</div>
+                    <div class="date">📅 Sept. 2022 - Aug. 2025?</div>
+                    <div class="location">📍 University of Minho, Braga, Portugal</div>
+                </div>
+            </div>
             
-        </div>
+            <div class="milestone">
+                <div class="icon">🌍</div>
+                <div class="content">
+                    <div class="title">Visiting Researcher</div>
+                    <div class="date">📅 Sept. 2023 - March 2024</div>
+                    <div class="location">📍 RWTH Aachen, Germany</div>
+                </div>
+            </div>
+            
+            <div class="milestone">
+                <div class="icon">🔬</div>
+                <div class="content">
+                    <div class="title">Research Assistant</div>
+                    <div class="date">📅 March 2022 - Aug. 2022</div>
+                    <div class="location">📍 IKIM, Essen, Germany</div>
+                </div>
+            </div>
+            
+            <div class="milestone">
+                <div class="icon">🧪</div>
+                <div class="content">
+                    <div class="title">Internship Trainee</div>
+                    <div class="date">📅 May 2021 - Aug. 2021</div>
+                    <div class="location">📍 Neurospin, CEA-Saclay, France</div>
+                </div>
+            </div>
+          </div>
+        </section>
         
-        <div class="topic-subsection">
-            <h3> 🔑 Key Distinctions</h3>
-            <ul>
-            <li>Best Graduate Student of the School of Engineering</strong>" for the 2020/2021 academic year (📍 Braga, Portugal).</li>
-            <li>Fundings: 
+        <section class="topic">
+        <h2>👨‍💻 Domain Focus</h2>
+          <div class="topic-subsection">
               <ul>
-                <li>FCT PhD studentship grant (2022-2026).</li> 
-                <li>Advanced Research Opportunities Program (AROP,📍 Aachen, Germany, 2023-2024).</li> 
-                <li>Gulbenkian Merit Scholarship "Gulbenkian Mais" (2016-2021).</li> 
+                <li class="bold">Over 4 years of experience in developing complete, end-to-end pipelines for:</li>
+                <ul>
+                  <li>Machine Learning</li>
+                  <li>Deep Learning</li>
+                  <li>Computer Vision</li>
+                  <li>Medical Data Analysis</li>
               </ul>
+              <li class="bold">Specialized in medical/AI projects, with a research focus on:</li>
+                <ul>
+                  <li>Generation of synthetic medical data</li>
+                  <li>Automatic Segmentation</li>
+                  <li>Automatic Classifcation</li>
+                  <li>Radiomics Analysis</li>
+                </ul>
+              <li class="bold">Skilled in designing and implementing innovative networks, including: </li>
+                <ul>
+                  <li>GANs</li> 
+                  <li>DDPMS</li>  
+                  <li>VAEs</li> 
+                  <li>DNNs</li> 
+                  <li>ViTs</li> 
+                  <li>LLMs</li>
+                </ul>
+          </div>
+          <section class="skills-section">
+          <h3>Technical Skills
+            <div class="transparent toggle-link" id="challenge-toggle-text" onclick="toggleVisibility('skills-challenges-content', this)">
+              (expand ⇩)
+            </div>
+          </h3>
+          <div id="skills-challenges-content" class="hidden-content">
+            <ul class="skills-list">
+                
+                <li class="skill-item">
+                    <span class="skill-name">Python</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-5"></div>
+                    </div>
+                    <span class="skill-level-text">5/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">PyTorch/MONAI</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-5"></div>
+                    </div>
+                    <span class="skill-level-text">5/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">Sklearn/Pandas/Numpy</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-4"></div>
+                    </div>
+                    <span class="skill-level-text">4/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">SQL</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-4"></div>
+                    </div>
+                    <span class="skill-level-text">4/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">HTML/XML/XSL</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-4"></div>
+                    </div>
+                    <span class="skill-level-text">4/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">Microsoft Office</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-4"></div>
+                    </div>
+                    <span class="skill-level-text">4/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">RapidMiner/Weka</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-4"></div>
+                    </div>
+                    <span class="skill-level-text">4/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">Java</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">TensorFlow</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">Hugging Face</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">openEHR</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">Tableau</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">GraphQL</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">NoSQL</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">FHIR/HL7</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">MATLAB</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">R</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">Git/GitHub/GitLab</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">LaTeX</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-3"></div>
+                    </div>
+                    <span class="skill-level-text">3/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-2"></div>
+                    </div>
+                    <span class="skill-level-text">2/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">BioPython</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-2"></div>
+                    </div>
+                    <span class="skill-level-text">2/5</span>
+                </li>
+                
+                <li class="skill-item">
+                    <span class="skill-name">C</span>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar-fill level-2"></div>
+                    </div>
+                    <span class="skill-level-text">2/5</span>
+                </li>
+                
             </ul>
-        </div>
+          </div>
+      </section>
+        </section>
 
+        <section class="topic">
+          <h2>🔑 Key Distinctions</h2>
+          <div class="topic-subsection">
+              <h3> </h3>
+              <ul>
+              <li class="bold"  >Best Graduate Student of the School of Engineering:</li>
+                <ul>
+                    <li>📅 2020/2021</li>
+                    <li>📍 University of Minho, Braga, Portugal</li>
+                  </ul>
+              <li class="bold">Fundings:</li> 
+                <ul>
+                  <li class="bold">FCT PhD studentship grant:</li> 
+                    <ul>
+                      <li>📅 Sept. 2022 - Aug. 2025?</li>
+                      <li>📍 University of Minho, Braga, Portugal</li>
+                    </ul>
+                  <li class="bold">Advanced Research Opportunities Program (AROP):</li> 
+                    <ul>
+                      <li>📅 Sept. 2023 - March 2024</li>
+                      <li>📍 RWTH, Aachen, Germany</li>
+                    </ul>
+                  <li class="bold">Gulbenkian Merit Scholarship "Gulbenkian Mais" (2016-2021):</li> 
+                    <ul>
+                      <li>📅 Sept. 2016 - August 2021</li>
+                      <li>📍 University of Minho, Braga, Portugal</li>
+                    </ul>
+                </ul>
+              </ul>
+          </div>
+        </section>
+
+        <section class="topic">
+          <h2>🎓 Academic & Research Contributions</h2>
         <div class="topic-subsection">
-            <h3>🎓 Academic & Research Contributions</h3>
+            <h3></h3>
             <ul>
             <li>Experienced in publishing articles in venues such as <strong>MIA, MDPI, MICCAI, and ISBI</strong>.</li>
             <li>Serves as a <strong>peer reviewer</strong> for publications including MIA, MDPI, MICCAI, ISBI, TVCJ, and Springer Nature.</li>
             <li>Active in teaching and mentorship as a <strong>MICCAI Tutor</strong>, <strong>Tutor for master's students</strong>, and <strong>Invited Lecturer</strong>.</li>
             </ul>
         </div>
-        
+        </section>
+
+        <section class="topic">
+          <h2>🌐 Current Development</h2>
         <div class="topic-subsection">
-            <h3>🌐 Current Development & Languages</h3>
             <ul>
             <li>Currently deepening knowledge in <strong>synthetic data generation, foundation models, LLMs, and the German language</strong>.</li>
-            <li><strong>Languages:</strong> Portuguese (Native), English (C1), and German (A2).</li>
             </ul>
         </div>
-        </section>
     </main>
     
     <footer>
@@ -272,20 +690,20 @@
     <script src="/js/responsive.js"></script>
     <script>
       function toggleVisibility(contentId, togglerElement) {
-      const contentElement = document.getElementById(contentId);
-      
-      // Check if the content is currently hidden (by CSS class or inline style)
-      // window.getComputedStyle is reliable for checking the initial state set by CSS
-      if (window.getComputedStyle(contentElement).display === "none" || contentElement.style.display === "none") {
-          // --- ACTION: EXPAND ---
-          contentElement.style.display = "block"; // Show the hidden content
-          togglerElement.innerHTML = '(collapse ⇧)'; // Change the text/arrow
-      } else {
-          // --- ACTION: COLLAPSE ---
-          contentElement.style.display = "none"; // Hide the content
-          togglerElement.innerHTML = '(expand ⇩)'; // Change the text/arrow back
-      }
-  }
+        const contentElement = document.getElementById(contentId);
+        
+        // Check if the content is currently hidden (by CSS class or inline style)
+        // window.getComputedStyle is reliable for checking the initial state set by CSS
+        if (window.getComputedStyle(contentElement).display === "none" || contentElement.style.display === "none") {
+            // --- ACTION: EXPAND ---
+            contentElement.style.display = "block"; // Show the hidden content
+            togglerElement.innerHTML = '(collapse ⇧)'; // Change the text/arrow
+        } else {
+            // --- ACTION: COLLAPSE ---
+            contentElement.style.display = "none"; // Hide the content
+            togglerElement.innerHTML = '(expand ⇩)'; // Change the text/arrow back
+        }
+    }
 </script>
     
   </body>
