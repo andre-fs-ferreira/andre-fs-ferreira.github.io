@@ -1,0 +1,69 @@
+/* about-page.css */
+
+/* --- Base/Body Styles --- */
+body {
+    margin: 0;
+    background-color: #010A21;
+}
+
+/* --- Header Styles --- */
+.header {
+    background-color: #010A21;
+    display: flex;
+    align-items: center;     /* vertically center */
+    justify-content: center; /* horizontally center */
+    width: 100%;
+}
+
+.header h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* --- Topic Section Styles --- */
+.topic {
+    /* Reduced opacity slightly for better contrast if background-pub.css adds complexity */
+    background-color: #ffffffd8; 
+    font-size: 1.2rem;
+    margin: 1rem 1rem 1rem 1rem; /* Consolidated margins */
+    border-radius: 12px; /* adds rounded corners */
+    padding: 0.5rem 1.5rem 1.5rem 1.5rem; /* adds inner spacing */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow for depth */
+}
+
+.topic h2 {
+    color: rgb(0, 0, 83);
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.topic h3 {
+    color: #002b5c;
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* General text styles for paragraphs and list items */
+.topic p,
+.topic li {
+    color: #000000;
+    margin: 10px 0;
+    text-align: left; 
+    max-width: 100%;
+    font-size: 1.1rem; /* normal body text */
+}
+
+.topic ul {
+    padding-left: 20px; /* Indent lists */
+}
+
+/* Nested list correction to ensure readability if multiple list levels are used */
+.topic ul ul {
+    margin-top: 5px; 
+    margin-bottom: 5px;
+}

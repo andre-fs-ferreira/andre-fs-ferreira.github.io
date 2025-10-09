@@ -15,21 +15,32 @@
       margin: 0;
       overflow: hidden; /* Prevents scrollbars from appearing */
     }
+    /* navbar is a flex row already — keep it */
     .navbar {
+      display: flex;
       overflow: visible;
-      position: fixed; 
-      top: auto;
+      position: fixed;
+      top: 5%;
+      z-index: 1000;             
       left: 0;
       right: 0;
       box-sizing: border-box;
       width: 100%;
       background-color: #33333300;
       font-family: Verdana, sans-serif;
+      align-items: stretch;  /* make children same height */
+      flex-wrap: nowrap;     /* keep them on one row (no wrap) */
+      z-index: 1000;
     }
 
     .dropdown {
-      float: left;
+      position: relative; 
+      float: none;
+      display: flex;       /* make container for the button so button can stretch */
+      flex: 1 1 0;         /* each dropdown takes equal share of the row */
+      min-width: 0;        /* critical to allow shrinking and avoid overflow */
       overflow: visible;
+      align-items: stretch;
     }
 
     .dropdown .dropbtn {
@@ -43,6 +54,11 @@
       font-family: inherit;
       margin: 0;
       font-weight: bold;
+      flex: 1 1 0;           /* grow to fill */
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      white-space: nowrap;   /* keep label + caret on one line */
     }
 
     .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
@@ -50,17 +66,18 @@
     }
 
     .dropdown-content {
-      display: none;         /* toggle with JS */
-      position: fixed;       /* so it's not clipped by parents */
-      left: 0;               /* or align to trigger by calculating left in JS */
-      width: auto;           /* or set a fixed width */
+      display: none;               /* toggled by JS */
+      position: fixed;             /* detach from layout and stick to viewport */
+      top: 12%;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      max-height: 85% ;
+      z-index: 900;
       overflow-y: auto;
-      z-index: 1000;
-      height: 80vh;
       background-color: #ffffffc7;
-      border-radius: 12px; /* adds rounded corners */
-      padding: 0.5rem 0.5rem; /* optional: adds inner spacing for better look */
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* optional: subtle shadow for depth */
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     
     .dropdown-content h2 {
