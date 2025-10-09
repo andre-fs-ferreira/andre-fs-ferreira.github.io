@@ -20,7 +20,7 @@
       display: flex;
       overflow: visible;
       position: fixed;
-      top: 5%;
+      top: clamp(1.1rem, 10vw, 3rem);
       z-index: 1000;             
       left: 0;
       right: 0;
@@ -68,7 +68,7 @@
     .dropdown-content {
       display: none;               /* toggled by JS */
       position: fixed;             /* detach from layout and stick to viewport */
-      top: 12%;
+      top: calc(clamp(1.1rem, 10vw, 3rem) + clamp(0.5rem, 4vw, 1.6rem) + 32px);
       left: 0;
       right: 0;
       width: auto;
