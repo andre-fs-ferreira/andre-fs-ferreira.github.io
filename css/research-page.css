@@ -1,0 +1,23 @@
+/* about-page.css */
+
+/* --- Base/Body Styles --- */
+body {
+    margin: 0;
+    background-color: #010A21;
+}
+
+
+/* --- Header Styles --- */
+header {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: #010A21;
+        color: white;
+      }
+
+.header h1 {
+    color: #fff;
+    font-size: clamp(1.1rem, 10vw, 3rem);
+    margin: 0;
+}
+
