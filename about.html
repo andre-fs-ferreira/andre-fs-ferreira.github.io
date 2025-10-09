@@ -11,6 +11,80 @@
     <link rel="stylesheet" href="/css/text.css">
     
     <link rel="stylesheet" href="/css/about-page.css">
+    <style>
+      .hidden-content {
+          display: none; /* Hides the content by default */
+      }
+
+      .toggle-link {
+          cursor: pointer; /* Changes the mouse cursor to indicate it's clickable */
+      }
+      
+      .no-bullet li {
+          list-style-type: none;
+      }
+
+      .transparent{
+        color: rgba(0, 0, 0, 0.312);
+      }
+      
+      .language-item {
+          /* To keep the name and the bar on the same line if desired */
+          display: flex;
+          align-items: center;
+          margin-bottom: 8px; /* Spacing between language entries */
+          list-style-type: none; /* Ensure no bullets on the language items either */
+      }
+
+      .language-name {
+          /* Reserves space for the flag and name */
+          width: 200px; 
+          flex-shrink: 0;
+      }
+
+
+      /* --- 2. The Bar Container (The empty background) --- */
+      .level-bar-container {
+          height: 12px;
+          width: 250px; /* Max width of the bar */
+          background-color: #0000006e; /* Light gray background */
+          border-radius: 6px;
+          margin-left: 10px;
+          overflow: hidden; /* Ensures the fill stays within the rounded container */
+      }
+
+      /* --- 3. The Bar Fill (The colored foreground) --- */
+      .level-bar-fill {
+          height: 100%;
+          background-color: #3498db; /* A nice blue color */
+          transition: width 0.8s ease-in-out; /* Smooth transition for visual effect */
+          border-radius: 6px;
+      }
+
+
+      /* --- 4. Level-Specific Widths (The Magic) --- */
+
+      /* Standard six-level scale: A1, A2, B1, B2, C1, C2 */
+
+      /* A1 (16.67%) - Just the start */
+      .level-a1 { width: 16.67%; } 
+
+      /* A2 (33.33%) */
+      .level-a2 { width: 33.33%; }
+
+      /* B1 (50.00%) - Halfway point */
+      .level-b1 { width: 50.00%; }
+
+      /* B2 (66.67%) */
+      .level-b2 { width: 66.67%; }
+
+      /* C1 (83.33%) */
+      .level-c1 { width: 83.33%; }
+
+      /* C2 (100%) - Full bar */
+      .level-c2 { width: 100%; }
+      
+    </style>
   </head>
   <body>
     <header class="header"> 
@@ -18,39 +92,152 @@
     </header>
 
     <main>
-        <section class="topic"> 
-        <h2>Resume</h2>
-        <p>
-            PhD student in Biomedical Engineering (Medical Informatics) at the University of Minho, currently a visiting researcher at RWTH Uniklinik Aachen. Winner of multiple international AI challenges in medical imaging.
-        </p>
-        </section>
+        <section class="topic no-bullet"> 
+          <h2>Resume</h2>
+            <ul>
+              <!-- PhD -->
+              <li class="bold"> 📚 PhD student in Biomedical Engineering (Medical Informatics): </li> 
+                <ul>
+                  <li> 📍 University of Minho 🤝 IKIM, Universität Duisburg-Essen </li>
+                </ul>
+              <!-- Tutor -->
+              <li class="bold"> 🧑‍🏫 Tutor:</li> 
+                <ul>
+                  <li> 📍 University of Minho </li>
+                  <li> 📍 MICCAI 2025 RISE </li>
+                </ul>
+              <li class="bold no-bullet"> 
+                  🎉 Winner of multiple international AI challenges in medical imaging:
+                  <div class="transparent toggle-link" id="challenge-toggle-text" onclick="toggleVisibility('ai-challenges-content', this)">
+                      (expand ⇩)
+                  </div>
+              </li>
+                <div id="ai-challenges-content" class="hidden-content">
+                  <ul>
+                    <li> 🧠 BraTS 2023</li>
+                      <ul>
+                        <li>🥇 Task 1: Adult Glioma Segmentation</li>
+                      </ul>
+                    <li> 🧠 BraTS-ISBI 2024</li>
+                      <ul>
+                          <li>🥇 GoAT: Generalizability Across Tumors Challenge</li>
+                      </ul>
+                    <li> 🧠 BraTS 2024 </li>
+                      <ul>
+                          <li>🥇 Task 1: Adult Glioma Post Treatment</li>
+                          <li>🥈 Task 8: Inpainting </li>
+                          <li>🥉 Task 3: Meningioma Radiotherapy</li>
+                          <li>🏅 Task 7: Missing MRI </li>
+                      </ul>
+                    
+                    <li> 🏥 HNTS-MRG 2024</li>
+                      <ul>
+                          <li>🥇 Task 1: Pre-RT Segmentation</li>
+                      </ul>
+                    <li>🧠 BraTS 2025</li>
+                      <ul>
+                          <li>🥇 Task 8: Missing MRI</li>
+                          <li>🥇 Task 9: Inpainting </li>
+                      </ul>
+                    <li>🪡 Open Suturing Skills Challenge 2025 </li>
+                      <ul>
+                          <li>🥈 Task 2: OSATS</li>
+                          
+                      </ul>
+                  </ul>
+                </div>
+              <li class="no-bullet">💬 Language levels:</li>
+              <ul>
+                  <li class="language-item">
+                      <span class="language-name">🇵🇹 Portuguese: Native</span>
+                      <div class="level-bar-container" data-level="C2">
+                          <div class="level-bar-fill level-c2"></div>
+                      </div>
+                  </li>
 
+                  <li class="language-item">
+                      <span class="language-name">🇬🇧 English: Fluent</span>
+                      <div class="level-bar-container" data-level="C1">
+                          <div class="level-bar-fill level-c1"></div>
+                      </div>
+                  </li>
+
+                  <li class="language-item">
+                      <span class="language-name">🇩🇪 German: Basic</span>
+                      <div class="level-bar-container" data-level="A2">
+                          <div class="level-bar-fill level-a2"></div>
+                      </div>
+                  </li>
+              </ul>
+              </ul>
+        </section>
+        
+        <section class="topic">
+          <h2>Work experience</h2>
+          <ul>
+              <li class="bold">PhD student</li>
+                <ul>
+                  <li>📅 Sept. 2022 - Aug. 2025?</li>
+                  <li>📍 University of Minho, Braga, Portugal</li>
+                </ul>
+              <li class="bold">Visiting Researcher</li>
+                <ul>
+                  <li>📅 Sept. 2023 - March 2024</li>
+                  <li>📍 RWTH, Aachen, Germany</li>
+                </ul>
+              <li class="bold">Research Assistant</li>
+                <ul>
+                  <li>📅 March 2022 - Aug. 2022</li>
+                  <li>📍 IKIM, Essen, Germany</li>
+                </ul>
+              <li class="bold">Internship Trainee</li>
+                <ul>
+                  <li>📅 May 2021 - Aug. 2021</li>
+                  <li>📍 Neurospin, CEA-Saclay, France</li>
+                </ul>
+        </section>
         <section class="topic">
         <h2>Expertise & Technical Proficiencies</h2>
         
         <div class="topic-subsection">
             <h3>👨‍💻 Experience & Domain Focus</h3>
             <ul>
-            <li>Over <strong>4 years of experience</strong> in developing complete, end-to-end pipelines for Machine Learning, Deep Learning, Computer Vision, and computational engineering.</li>
-            <li>Specialized in medical/AI projects, with a research focus on the <strong>generation of synthetic medical data</strong>.</li>
-            <li>Skilled in designing and implementing innovative networks, including <strong>GANs, VAEs, DNNs, ViTs, Transformers, DDPMS, and LLMs</strong>.</li>
+              <li class="bold">Over 4 years of experience in developing complete, end-to-end pipelines for:</li>
+              <ul>
+                <li>Machine Learning</li>
+                <li>Deep Learning</li>
+                <li>Computer Vision</li>
+                <li>Medical Data Analysis</li>
             </ul>
+            <li class="bold">Specialized in medical/AI projects, with a research focus on:</li>
+              <ul>
+                <li>Generation of synthetic medical data</li>
+                <li>Automatic Segmentation</li>
+                <li>Automatic Classifcation</li>
+                <li>Radiomics Analysis</li>
+              </ul>
+            <li>Skilled in designing and implementing innovative networks, including: </li>
+              <ul>
+                <li>GANs</li> 
+                <li>DDPMS</li>  
+                <li>VAEs</li> 
+                <li>DNNs</li> 
+                <li>ViTs</li> 
+                <li>LLMs</li>
+              </ul>
+            
         </div>
         
         <div class="topic-subsection">
-            <h3>🏆 Key Distinctions & Awards</h3>
+            <h3> 🔑 Key Distinctions</h3>
             <ul>
-            <li><strong>Winner of multiple international AI challenges</strong>:
-                <ul>
-                <li>BraTS 2023 Challenge, Task 1 (🗓️ 2023)</li>
-                <li>BraTS-GOAT 2024 Challenge (🗓️ 2024)</li>
-                <li>BraTS 2024 Challenge, Task 1 (🗓️ 2024)</li>
-                <li>HNTS-MRG24 Challenge, Task 1 (🗓️ 2024)</li>
-                </ul>
-            </li>
-            <li>Achieved a <strong>podium finish</strong> in the BraTS 2024 challenge for Tasks 3 and 7.</li>
-            <li>Named "<strong>Best Graduate Student of the School of Engineering</strong>" for the 2020/2021 academic year (📍 Braga, Portugal).</li>
-            <li>Recipient of a <strong>Gulbenkian Merit Scholarship "Gulbenkian Mais"</strong> (2016-2021) and an <strong>FCT PhD studentship grant</strong> (2022-2026).</li>
+            <li>Best Graduate Student of the School of Engineering</strong>" for the 2020/2021 academic year (📍 Braga, Portugal).</li>
+            <li>Fundings: 
+              <ul>
+                <li>FCT PhD studentship grant (2022-2026).</li> 
+                <li>Advanced Research Opportunities Program (AROP,📍 Aachen, Germany, 2023-2024).</li> 
+                <li>Gulbenkian Merit Scholarship "Gulbenkian Mais" (2016-2021).</li> 
+              </ul>
             </ul>
         </div>
 
@@ -66,7 +253,7 @@
         <div class="topic-subsection">
             <h3>🌐 Current Development & Languages</h3>
             <ul>
-            <li>Currently deepening knowledge in <strong>synthetic data generation, foundation models, and the German language</strong>.</li>
+            <li>Currently deepening knowledge in <strong>synthetic data generation, foundation models, LLMs, and the German language</strong>.</li>
             <li><strong>Languages:</strong> Portuguese (Native), English (C1), and German (A2).</li>
             </ul>
         </div>
@@ -83,6 +270,23 @@
 
     <script src="/js/mask-wave-mouse.js"></script>
     <script src="/js/responsive.js"></script>
+    <script>
+      function toggleVisibility(contentId, togglerElement) {
+      const contentElement = document.getElementById(contentId);
+      
+      // Check if the content is currently hidden (by CSS class or inline style)
+      // window.getComputedStyle is reliable for checking the initial state set by CSS
+      if (window.getComputedStyle(contentElement).display === "none" || contentElement.style.display === "none") {
+          // --- ACTION: EXPAND ---
+          contentElement.style.display = "block"; // Show the hidden content
+          togglerElement.innerHTML = '(collapse ⇧)'; // Change the text/arrow
+      } else {
+          // --- ACTION: COLLAPSE ---
+          contentElement.style.display = "none"; // Hide the content
+          togglerElement.innerHTML = '(expand ⇩)'; // Change the text/arrow back
+      }
+  }
+</script>
     
   </body>
 </html>

@@ -6,6 +6,7 @@ body {
     background-color: #010A21;
 }
 
+
 /* --- Header Styles --- */
 .header {
     background-color: #010A21;
@@ -17,7 +18,7 @@ body {
 
 .header h1 {
     color: #fff;
-    font-size: 2rem;
+    font-size: clamp(1.1rem, 10vw, 3rem);
     margin: 0;
 }
 
@@ -37,6 +38,7 @@ body {
     font-size: 1.6rem;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
+    text-align: center; 
 }
 
 .topic h3 {
@@ -66,4 +68,8 @@ body {
 .topic ul ul {
     margin-top: 5px; 
     margin-bottom: 5px;
+}
+
+.bold {
+    font-weight: bold;
 }
