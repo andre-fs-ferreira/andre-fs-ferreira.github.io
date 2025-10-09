@@ -146,10 +146,11 @@
         .milestone {
             display: flex;
             align-items: center;
-            margin: auto auto;
+            margin: 60px auto;  /* Vertical margins fixed; horizontal auto for centering */
             position: relative;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
+            max-width: 100%;  /* Optional: Cap for very wide screens */
         }
         .icon {
             width: 80px;
@@ -170,7 +171,7 @@
         }
 
         .content {
-            padding: 20px 0 0 10%; /* Top/right/bottom/left: Increases left padding to push text right */
+            padding: 20px 0 0 100px; /* Top/right/bottom/left: Increases left padding to push text right */
             border-radius: 15px;
             backdrop-filter: blur(10px);
             position: relative;
@@ -213,20 +214,14 @@
                 left: 20px;
             }
             .milestone {
-                flex-direction: column !important;
                 text-align: left !important;
-                margin: 40px 0;
-                padding-left: 60px;
-            }
-            .milestone:nth-child(odd),
-            .milestone:nth-child(even) {
-                flex-direction: column !important;
-            }
-            .milestone .content {
+                margin: auto auto;
+            } 
+            .content {
                 padding: 15px;
                 padding-left: 0;
                 text-align: left !important;
-                padding-right: 0 !important;
+                margin: 0 0 0 100px;
             }
             .icon {
               position: absolute;
@@ -236,7 +231,6 @@
               width: 80px;
               height: 80px;
               font-size: 32px;
-              margin-right: 0;
             }
             
             .title {
@@ -245,23 +239,22 @@
             .location {
                 font-size: 16px;
             }
-            .milestone:nth-child(odd) .icon {
-                left: 0;
-            }
+
         }
 
         @media (max-width: 480px) {
             .milestone {
-                padding-left: 50px;
-                margin: 30px 0;
+                margin: 30px auto;
             }
             .icon {
                 width: 50px;
                 height: 50px;
                 font-size: 20px;
             }
-            .milestone .content {
-                padding: 12px;
+            .content {
+                padding-left: 0;
+                text-align: left !important;
+                margin: 0 0 0 60px;
             }
             .title {
                 font-size: 18px;
