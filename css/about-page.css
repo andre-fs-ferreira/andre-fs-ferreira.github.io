@@ -38,9 +38,9 @@ canvas {
     /* Reduced opacity slightly for better contrast if background-pub.css adds complexity */
     background-color: #ffffffd8; 
     font-size: 1.2rem;
-    margin: 1rem 1rem 1rem 1rem; /* Consolidated margins */
+    margin: 1rem 3% 1rem 3%; /* Consolidated margins */
     border-radius: 12px; /* adds rounded corners */
-    padding: 0.5rem 1.5rem 1.5rem 1.5rem; /* adds inner spacing */
+    padding: 0.5rem 0 1.5rem 0; /* adds inner spacing */
     box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow for depth */
 }
 
