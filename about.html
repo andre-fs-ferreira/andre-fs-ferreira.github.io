@@ -35,18 +35,15 @@
 
       .language-name {
           /* Reserves space for the flag and name */
-          width: 200px; 
+          width: 150px; 
           flex-shrink: 0;
       }
-
-
       /* --- 2. The Bar Container (The empty background) --- */
       .level-bar-container {
           height: 12px;
           width: 250px; /* Max width of the bar */
           background-color: #0000006e; /* Light gray background */
           border-radius: 6px;
-          margin-left: 10px;
           overflow: hidden; /* Ensures the fill stays within the rounded container */
       }
 
@@ -107,7 +104,6 @@
       .skill-level-text {
           width: 30px;
           text-align: right;
-          margin-left: 5px;
           font-weight: bold;
       }
 
@@ -117,7 +113,6 @@
           width: 150px; /* Fixed width for the bar area */
           background-color: #0000006e;
           border-radius: 5px;
-          margin-left: 10px;
           overflow: hidden;
       }
 
@@ -336,24 +331,27 @@
                 <li class="no-bullet">💬 Language levels:</li>
                 <ul>
                     <li class="language-item">
-                        <span class="language-name">🇵🇹 Portuguese: Native</span>
+                        <span class="language-name">🇵🇹 Portuguese </span>
                         <div class="level-bar-container" data-level="C2">
                             <div class="level-bar-fill level-c2"></div>
                         </div>
+                        &nbsp Native
                     </li>
 
                     <li class="language-item">
-                        <span class="language-name">🇬🇧 English: Fluent</span>
+                        <span class="language-name">🇬🇧 English </span>
                         <div class="level-bar-container" data-level="C1">
                             <div class="level-bar-fill level-c1"></div>
                         </div>
+                        &nbsp Fluent
                     </li>
 
                     <li class="language-item">
-                        <span class="language-name">🇩🇪 German: Basic</span>
+                        <span class="language-name">🇩🇪 German </span>
                         <div class="level-bar-container" data-level="A2">
                             <div class="level-bar-fill level-a2"></div>
                         </div>
+                        &nbsp Basic
                     </li>
                 </ul>
                 </ul>
