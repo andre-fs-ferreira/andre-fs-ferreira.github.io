@@ -30,16 +30,18 @@
 
     /* Header */
     .header-wrap {
-      margin-top: clamp(50px, 2vh, 120px);
+      margin-top: 3rem;
     }
 
     /* Text box */
     .text-box {
-      margin-top: 1rem;
+      width: clamp(80%, 90vw, 100%);
+      margin-top: 0.25rem; /* tweak to taste (or remove) */
     }
 
     /* Buttons section */
     .buttons-wrap {
+      margin-top: auto;
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -57,11 +59,15 @@
 
     /* Quote styling */
     .quote {
-      font-size: clamp(1rem, 3vw, 2.2rem);
+      font-size: clamp(1rem, 3vw, 1.5rem);
       font-style: italic;
       line-height: 1.4;
     }
 
+    h1 {
+      font-size: clamp(2rem, 10vw, 3.5rem);  
+      line-height: 1.4;
+    }
 
   </style>
 </head>

@@ -9,12 +9,9 @@
     <link rel="stylesheet" href="/css/background-pub.css">
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/text.css">
-    
     <link rel="stylesheet" href="/css/about-page.css">
+    
     <style>
-      .hidden-content {
-          display: none; /* Hides the content by default */
-      }
 
       .toggle-link {
           cursor: pointer; /* Changes the mouse cursor to indicate it's clickable */
@@ -163,7 +160,7 @@
             font-size: 32px;
             z-index: 1;
             box-shadow: 0 4px 20px rgba(255, 107, 53, 0);
-            position: absolute;
+            position: relative;
             left: 5%;
             transform: translateX(-50%);
             flex-shrink: 0;
@@ -171,9 +168,7 @@
         }
 
         .content {
-            padding: 20px 0 0 100px; /* Top/right/bottom/left: Increases left padding to push text right */
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+            padding-left: 5%; /* Top/right/bottom/left: Increases left padding to push text right */
             position: relative;
         }
         .title {
@@ -189,16 +184,6 @@
         .location {
             color: #000000;
             font-size: 18px;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         .milestone:nth-child(1) { animation-delay: 0.2s; }
         .milestone:nth-child(2) { animation-delay: 0.4s; }
@@ -264,98 +249,115 @@
             }
         }
 
-      
+        .right-margin {
+            margin-right: 5%;
+        }
+        .left-margin {
+            margin-left: 5%;
+        }
+        
+        ul.circle {
+            list-style-type: circle;
+        }
+
+        
+
     </style>
   </head>
   <body>
     <header class="header"> 
-      <h1>About</h1>
+        <div class="header-content">
+            <h1>About Me</h1>
+            <p>PhD Student in Biomedical Engineering | AI in Medical Imaging Expert | Challenge Winner & Researcher</p>
+        </div>
     </header>
 
     <main>
         <section class="topic no-bullet"> 
-          <h2>Resume</h2>
-            <ul>
-              <!-- PhD -->
-              <li class="bold"> 📚 PhD student in Biomedical Engineering (Medical Informatics): </li> 
+            <div class="right-margin">
+                <h2>Resume</h2>
                 <ul>
-                  <li> 📍 University of Minho 🤝 IKIM, Universität Duisburg-Essen </li>
-                </ul>
-              <hr>
-              <!-- Tutor -->
-              <li class="bold"> 🧑‍🏫 Tutor:</li> 
+                <!-- PhD -->
+                <li class="bold"> 📚 PhD student in Biomedical Engineering (Medical Informatics): </li> 
+                    <ul>
+                    <li> 📍 University of Minho 🤝 IKIM, Universität Duisburg-Essen </li>
+                    </ul>
+                <hr>
+                <!-- Tutor -->
+                <li class="bold"> 🧑‍🏫 Tutor:</li> 
+                    <ul>
+                    <li> 📍 University of Minho </li>
+                    <li> 📍 MICCAI 2025 RISE </li>
+                    </ul>
+                <hr>
+                <!-- Challenges -->
+                <li class="bold no-bullet"> 
+                    🎉 Winner of multiple international AI challenges in medical imaging:
+                    <div class="transparent toggle-link" id="challenge-toggle-text" onclick="toggleVisibility('ai-challenges-content', this)">
+                        (expand ⇩)
+                    </div>
+                </li>
+                    <div id="ai-challenges-content" class="hidden-content">
+                    <ul>
+                        <li> 🧠 BraTS 2023</li>
+                        <ul>
+                            <li>🥇 Task 1: Adult Glioma Segmentation</li>
+                        </ul>
+                        <li> 🧠 BraTS-ISBI 2024</li>
+                        <ul>
+                            <li>🥇 GoAT: Generalizability Across Tumors Challenge</li>
+                        </ul>
+                        <li> 🧠 BraTS 2024 </li>
+                        <ul>
+                            <li>🥇 Task 1: Adult Glioma Post Treatment</li>
+                            <li>🥈 Task 8: Inpainting </li>
+                            <li>🥉 Task 3: Meningioma Radiotherapy</li>
+                            <li>🏅 Task 7: Missing MRI </li>
+                        </ul>
+                        
+                        <li> 🏥 HNTS-MRG 2024</li>
+                        <ul>
+                            <li>🥇 Task 1: Pre-RT Segmentation</li>
+                        </ul>
+                        <li>🧠 BraTS 2025</li>
+                        <ul>
+                            <li>🥇 Task 8: Missing MRI</li>
+                            <li>🥇 Task 9: Inpainting </li>
+                        </ul>
+                        <li>🪡 Open Suturing Skills Challenge 2025 </li>
+                        <ul>
+                            <li>🥈 Task 2: OSATS</li>
+                            
+                        </ul>
+                    </ul>
+                    </div>
+                <hr>
+                <!-- Languages -->
+                <li class="no-bullet">💬 Language levels:</li>
                 <ul>
-                  <li> 📍 University of Minho </li>
-                  <li> 📍 MICCAI 2025 RISE </li>
+                    <li class="language-item">
+                        <span class="language-name">🇵🇹 Portuguese: Native</span>
+                        <div class="level-bar-container" data-level="C2">
+                            <div class="level-bar-fill level-c2"></div>
+                        </div>
+                    </li>
+
+                    <li class="language-item">
+                        <span class="language-name">🇬🇧 English: Fluent</span>
+                        <div class="level-bar-container" data-level="C1">
+                            <div class="level-bar-fill level-c1"></div>
+                        </div>
+                    </li>
+
+                    <li class="language-item">
+                        <span class="language-name">🇩🇪 German: Basic</span>
+                        <div class="level-bar-container" data-level="A2">
+                            <div class="level-bar-fill level-a2"></div>
+                        </div>
+                    </li>
                 </ul>
-              <hr>
-              <!-- Challenges -->
-              <li class="bold no-bullet"> 
-                  🎉 Winner of multiple international AI challenges in medical imaging:
-                  <div class="transparent toggle-link" id="challenge-toggle-text" onclick="toggleVisibility('ai-challenges-content', this)">
-                      (expand ⇩)
-                  </div>
-              </li>
-                <div id="ai-challenges-content" class="hidden-content">
-                  <ul>
-                    <li> 🧠 BraTS 2023</li>
-                      <ul>
-                        <li>🥇 Task 1: Adult Glioma Segmentation</li>
-                      </ul>
-                    <li> 🧠 BraTS-ISBI 2024</li>
-                      <ul>
-                          <li>🥇 GoAT: Generalizability Across Tumors Challenge</li>
-                      </ul>
-                    <li> 🧠 BraTS 2024 </li>
-                      <ul>
-                          <li>🥇 Task 1: Adult Glioma Post Treatment</li>
-                          <li>🥈 Task 8: Inpainting </li>
-                          <li>🥉 Task 3: Meningioma Radiotherapy</li>
-                          <li>🏅 Task 7: Missing MRI </li>
-                      </ul>
-                    
-                    <li> 🏥 HNTS-MRG 2024</li>
-                      <ul>
-                          <li>🥇 Task 1: Pre-RT Segmentation</li>
-                      </ul>
-                    <li>🧠 BraTS 2025</li>
-                      <ul>
-                          <li>🥇 Task 8: Missing MRI</li>
-                          <li>🥇 Task 9: Inpainting </li>
-                      </ul>
-                    <li>🪡 Open Suturing Skills Challenge 2025 </li>
-                      <ul>
-                          <li>🥈 Task 2: OSATS</li>
-                          
-                      </ul>
-                  </ul>
-                </div>
-              <hr>
-              <!-- Languages -->
-              <li class="no-bullet">💬 Language levels:</li>
-              <ul>
-                  <li class="language-item">
-                      <span class="language-name">🇵🇹 Portuguese: Native</span>
-                      <div class="level-bar-container" data-level="C2">
-                          <div class="level-bar-fill level-c2"></div>
-                      </div>
-                  </li>
-
-                  <li class="language-item">
-                      <span class="language-name">🇬🇧 English: Fluent</span>
-                      <div class="level-bar-container" data-level="C1">
-                          <div class="level-bar-fill level-c1"></div>
-                      </div>
-                  </li>
-
-                  <li class="language-item">
-                      <span class="language-name">🇩🇪 German: Basic</span>
-                      <div class="level-bar-container" data-level="A2">
-                          <div class="level-bar-fill level-a2"></div>
-                      </div>
-                  </li>
-              </ul>
-              </ul>
+                </ul>
+              </div>
         </section>
         
         <section class="topic">
@@ -401,8 +403,8 @@
         </section>
         
         <section class="topic">
-        <h2>👨‍💻 Domain Focus</h2>
-          <div class="topic-subsection">
+            <h2>👨‍💻 Domain Focus</h2>
+            <div class="topic-subsection right-margin left-margin">
               <ul>
                 <li class="bold">Over 4 years of experience in developing complete, end-to-end pipelines for:</li>
                 <ul>
@@ -428,7 +430,8 @@
                   <li>LLMs</li>
                 </ul>
           </div>
-          <section class="skills-section">
+          <section class="skills-section right-margin left-margin">
+            <hr>
           <h3>Technical Skills
             <div class="transparent toggle-link" id="challenge-toggle-text" onclick="toggleVisibility('skills-challenges-content', this)">
               (expand ⇩)
@@ -620,51 +623,50 @@
 
         <section class="topic">
           <h2>🔑 Key Distinctions</h2>
-          <div class="topic-subsection">
-              <h3> </h3>
+          <div class="topic-subsection right-margin left-margin">
               <ul>
               <li class="bold"  >Best Graduate Student of the School of Engineering:</li>
-                <ul>
+                <ul class="circle">
                     <li>📅 2020/2021</li>
                     <li>📍 University of Minho, Braga, Portugal</li>
-                  </ul>
+                </ul>
               <li class="bold">Fundings:</li> 
-                <ul>
+                <ol>
                   <li class="bold">FCT PhD studentship grant:</li> 
-                    <ul>
+                    <ul class="circle">
                       <li>📅 Sept. 2022 - Aug. 2025?</li>
                       <li>📍 University of Minho, Braga, Portugal</li>
                     </ul>
                   <li class="bold">Advanced Research Opportunities Program (AROP):</li> 
-                    <ul>
+                    <ul class="circle">
                       <li>📅 Sept. 2023 - March 2024</li>
                       <li>📍 RWTH, Aachen, Germany</li>
                     </ul>
                   <li class="bold">Gulbenkian Merit Scholarship "Gulbenkian Mais" (2016-2021):</li> 
-                    <ul>
+                    <ul class="circle">
                       <li>📅 Sept. 2016 - August 2021</li>
                       <li>📍 University of Minho, Braga, Portugal</li>
                     </ul>
-                </ul>
+                </ol>
               </ul>
           </div>
         </section>
 
         <section class="topic">
           <h2>🎓 Academic & Research Contributions</h2>
-        <div class="topic-subsection">
+        <div class="topic-subsection right-margin left-margin">
             <h3></h3>
-            <ul>
-            <li>Experienced in publishing articles in venues such as <strong>MIA, MDPI, MICCAI, and ISBI</strong>.</li>
-            <li>Serves as a <strong>peer reviewer</strong> for publications including MIA, MDPI, MICCAI, ISBI, TVCJ, and Springer Nature.</li>
-            <li>Active in teaching and mentorship as a <strong>MICCAI Tutor</strong>, <strong>Tutor for master's students</strong>, and <strong>Invited Lecturer</strong>.</li>
-            </ul>
+            <ol>
+                <li>Experienced in publishing articles in venues such as <strong>MIA, MDPI, MICCAI, and ISBI</strong>.</li>
+                <li>Serves as a <strong>peer reviewer</strong> for publications including MIA, MDPI, MICCAI, ISBI, TVCJ, and Springer Nature.</li>
+                <li>Active in teaching and mentorship as a <strong>MICCAI Tutor</strong>, <strong>Tutor for master's students</strong>, and <strong>Invited Lecturer</strong>.</li>
+            </ol>
         </div>
         </section>
 
         <section class="topic">
           <h2>🌐 Current Development</h2>
-        <div class="topic-subsection">
+        <div class="topic-subsection right-margin left-margin">
             <ul>
             <li>Currently deepening knowledge in <strong>synthetic data generation, foundation models, LLMs, and the German language</strong>.</li>
             </ul>
@@ -683,6 +685,7 @@
 
     <script src="/js/mask-wave-mouse.js"></script>
     <script src="/js/responsive.js"></script>
+    <script src="/js/moving-content.js"></script>
     <script>
       function toggleVisibility(contentId, togglerElement) {
         const contentElement = document.getElementById(contentId);
@@ -698,7 +701,7 @@
             contentElement.style.display = "none"; // Hide the content
             togglerElement.innerHTML = '(expand ⇩)'; // Change the text/arrow back
         }
-    }
+      }
 </script>
     
   </body>

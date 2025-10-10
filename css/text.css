@@ -5,37 +5,56 @@ main {
 }
 
 main h1, main p {
-
 text-align: center; /* centers the text inside */
 }
 
-h1 {
-    font-size: 5vw; /* scales with viewport width */
+/* Additional styles for nicer header */
+
+
+.header {
+        overflow: hidden;
+        display: flex;
+        align-items: center;     /* vertically center */
+        justify-content: center; /* horizontally center */
+        width: 100%;
+        padding: 40px 0px;
+        background: linear-gradient(to bottom, #00228a, #010A21);
+        color: white;
+      }
+
+.header-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
-p {
-    font-size: 3vw; /* scales with viewport width */
-    margin: 0.5rem 0 0 0;
+.header h1 {
+    color: #fff;
+    font-size: clamp(1.1rem, 10vw, 3rem);
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
 }
 
-/* Optional: Media queries for better control on very small or very large screens */
-@media (max-width: 600px) {
-    h1 {
-    font-size: 7vw;
+.header p {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        color: #ddd;
+        margin: auto;
+        opacity: 0.9;
+        animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-    p {
-    font-size: 4vw;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@media (min-width: 1200px) {
-    h1 {
-    font-size: 72px;
-    }
-    p {
-    font-size: 36px;
-    }
-}
 /* full-width row but the glow/band is centered */
 .text-box {
     width: 100vw;

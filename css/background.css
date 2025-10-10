@@ -64,8 +64,8 @@ body{
   .bg-wrap img.bg-image { transition:none; }
 }
 
-main{ position:relative; z-index:6; padding:3.5rem; pointer-events:auto; }
-h1{ margin:0 0 .6rem; font-size:clamp(1.5rem, 3vw, 2.2rem) }
+main{ position:relative; z-index:6; pointer-events:auto; }
+
 
 
 #particle-canvas {

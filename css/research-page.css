@@ -1,4 +1,4 @@
-/* about-page.css */
+/* about-page-adapted.css */
 
 /* --- Base/Body Styles --- */
 body {
@@ -6,18 +6,106 @@ body {
     background-color: #010A21;
 }
 
+canvas {
+    display: block;
+    background-color: #010A21;
+    position: fixed; /* Fixes it to the viewport */
+    top: 0;
+    left: 0;
+    z-index: -1;     /* Places it behind all other standard content */
+    width: 100vw;    /* Ensures it covers the whole screen width */
+    height: 100vh;   /* Ensures it covers the whole screen height */
+}
 
-/* --- Header Styles --- */
-header {
-        text-align: center;
-        padding: 2rem 1rem;
-        background: #010A21;
-        color: white;
+/* --- Topic Section Styles --- */
+.topic {
+    /* Reduced opacity slightly for better contrast if background-pub.css adds complexity */
+    background-color: #ffffffd8; 
+    font-size: 1.2rem;
+    margin: 1rem 3% 1rem 3%; /* Consolidated margins */
+    border-radius: 12px;
+    padding: 0.5rem 0 1.5rem 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.topic:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
       }
 
-.header h1 {
-    color: #fff;
-    font-size: clamp(1.1rem, 10vw, 3rem);
-    margin: 0;
+.topic h2 {
+    color: rgb(0, 0, 83);
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: center; 
 }
+
+.topic h3 {
+    color: #002b5c;
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* General text styles for paragraphs and list items */
+.topic p,
+.topic li {
+    color: #000000;
+    margin: 10px 0;
+    text-align: left; 
+    max-width: 100%;
+    font-size: 1.1rem;
+}
+
+.topic ul {
+    padding-left: 20px; /* Indent lists */
+}
+
+/* Nested list correction */
+.topic ul ul {
+    margin-top: 5px; 
+    margin-bottom: 5px;
+}
+
+.topic-content {
+    margin-left: 5%; 
+    margin-right: 5%;
+}
+.bold {
+    font-weight: bold;
+}
+
+/* -------------------------------
+   Animation: fadeInUp + helpers
+   ------------------------------- */
+
+/* common fadeInUp class to apply to list items */
+.fadeInUp {
+  opacity: 0;
+  transform: translateY(10px);
+  animation-name: fadeInUp;
+  animation-duration: 0.48s;                 /* per-item duration */
+  animation-timing-function: cubic-bezier(.2,.9,.2,1);
+  animation-fill-mode: forwards;
+  /* delay is read from inline style or custom property */
+  animation-delay: var(--delay, 0s);
+}
+
+/* keyframes */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hidden content toggled by JS */
+.hidden-content {
+  display: none;
+}
+
+/* Optional: smoothly reveal/measure space (if you prefer height animation) */
+/* .hidden-content.showing { display:block; animation: revealHeight 0.28s ease; } */
 

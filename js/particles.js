@@ -35,8 +35,8 @@
 
       // --- responsive settings ---
       const AREA_PER_PARTICLE = 30000;
-      const MIN_PARTICLES = 4;
-      const MAX_PARTICLES = 20;
+      const MIN_PARTICLES = 30;
+      const MAX_PARTICLES = 50;
 
       function calcNumParticles() {
         const area = window.innerWidth * window.innerHeight;
@@ -46,7 +46,7 @@
 
       function calcConnectDistance(w, h) {
         const base = Math.max(w, h) * 1.0;
-        return Math.max(120, Math.min(420, Math.round(base)));
+        return Math.max(60, Math.min(120, Math.round(base)));
       }
 
       let numParticles = calcNumParticles();

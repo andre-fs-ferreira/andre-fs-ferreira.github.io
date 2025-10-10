@@ -94,18 +94,27 @@
     bottom: 20px;      /* distance from bottom */
     right: 20px;       /* distance from right */
     z-index: 9999;     /* ensures it appears above other elements */
+    animation: pulse-on-load 1.2s ease-out;
 }
 
-
-    .house-button:hover {
-      transform: scale(1.5);     /* Small zoom on hover */
+@keyframes pulse-on-load {
+    0% {
+        transform: scale(1.5); /* Start larger */
     }
-
-    .house-button svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
+    100% {
+        transform: scale(1);   /* End at original size */
     }
+}
+
+.house-button:hover {
+    transform: scale(1.5);     /* Small zoom on hover */
+}
+
+.house-button svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
 
 /* social links */
 .social-links {

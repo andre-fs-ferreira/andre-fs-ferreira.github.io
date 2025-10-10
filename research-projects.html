@@ -4,46 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Research Projects</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
     <link rel="stylesheet" href="/css/background-pub.css">
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/text.css">
     <link rel="stylesheet" href="/css/research-page.css">
-
     <style>
-
-
-      .project-card {
-        background: white;
-        border-radius: 1rem;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .project-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      }
-
-      .project-image {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-      }
-
-      .project-content {
-        padding: 1.5rem;
-      }
-
-      .project-content h2 {
-        margin-top: 0;
-        font-size: 1.25rem;
-        color: #003366;
-      }
-
       .tags {
         margin: 0.5rem 0;
       }
@@ -78,65 +44,85 @@
         font-style: italic;
         line-height: 1.4;
     }
+
+    
+
     </style>
   </head>
 
   <body>
     
     <header class="header"> 
-      <h1><i class="fa-solid fa-flask"></i> Research Projects</h1>
-      <p class="quote">"If I have seen further it is by standing on the shoulders of Giants." - Isaac Newton</p>
+      <div class="header-content">
+        <h1><i class="fa-solid fa-flask"></i> Research Projects</h1>
+        <p class="quote">"If I have seen further it is by standing on the shoulders of Giants." - Isaac Newton</p>
+      </div>
     </header>
 
     <main>
-      <article class="project-card">
-        <div class="project-content">
-          <h2>Generation of synthetic brain tumors</h2>
-          <p>Development of a pipeline to generate synthetic tumors into MRI scans using GANs. BraTS dataset used for development.</p>
-          <div class="tags">
-            <span class="tag">cGANs</span>
-            <span class="tag">Tumor segmentation</span>
-            <span class="tag">BraTS</span>
+      <article class="topic">
+          <h2 >Generation of synthetic brain tumors</h2>
+          <div class="topic-content">
+            <p>Development of a pipeline to generate synthetic tumors into MRI scans using GANs. BraTS dataset used for development.</p>
+            <div class="tags">
+              <span class="tag">cGANs</span>
+              <span class="tag">Tumor segmentation</span>
+              <span class="tag">BraTS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://link.springer.com/chapter/10.1007/978-3-031-76163-8_8"><i class="fa-solid fa-file-lines"></i> Paper</a>
+              <a href="https://github.com/shadowtwin41/BraTS_2023_2024_solutions" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+            </div>
           </div>
-          <div class="project-links">
-            <a href="https://link.springer.com/chapter/10.1007/978-3-031-76163-8_8"><i class="fa-solid fa-file-lines"></i> Paper</a>
-            <a href="https://github.com/shadowtwin41/BraTS_2023_2024_solutions" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
-          </div>
-        </div>
       </article>
       <br>
-      <article class="project-card">
-        <div class="project-content">
+      <article class="topic">
           <h2>Quality control of data synthetically generated</h2>
-          <p>Proposal of processess to understand if synthatic data is realistic enough to be used in a downstream task. Tested of the BraTS dataset and Head&Neck cancer CT cases</p>
-          <div class="tags">
-            <span class="tag">cGANs</span>
-            <span class="tag">cDDPMs</span>
-            <span class="tag">Tumor segmentation</span>
-            <span class="tag">BraTS MRI</span>
-            <span class="tag">H&N CT</span>
+          <div class="topic-content">
+            <p>Proposal of processess to understand if synthatic data is realistic enough to be used in a downstream task. Tested of the BraTS dataset and Head&Neck cancer CT cases.</p>
+            <div class="tags">
+              <span class="tag">cGANs</span>
+              <span class="tag">cDDPMs</span>
+              <span class="tag">Tumor segmentation</span>
+              <span class="tag">BraTS MRI</span>
+              <span class="tag">H&N CT</span>
+            </div>
+            <div class="project-links">
+              <a href="https://www.arxiv.org/pdf/2506.12106"><i class="fa-solid fa-file-lines"></i>Paper</a>
+              <a href="https://github.com/ShadowTwin41/generative_networks"><i class="fa-brands fa-github"></i>Code</a>
+            </div>
           </div>
-          <div class="project-links">
-            <a href="https://www.arxiv.org/pdf/2506.12106"><i class="fa-solid fa-file-lines"></i>Paper</a>
-            <a href="https://github.com/ShadowTwin41/generative_networks"><i class="fa-brands fa-github"></i>Code</a>
-          </div>
-        </div>
       </article>
       <br>
-      <article class="project-card">
-        <div class="project-content">
+      <article class="topic">
           <h2>Generation of Synthetic Rat Brain MRI scans with a 3D Enhanced Alpha-GAN</h2>
-          <p>Using Enhanced Alpha-GAN to generate synthetic MRI brain of rats to improve segmentation of white matter, grey matter and cerebrospinal fluid.</p>
-          <div class="tags">
-            <span class="tag">GANs</span>
-            <span class="tag">Segmentation</span>
-            <span class="tag">Rat brain MRI</span>
+          <div class="topic-content">
+            <p>Using Enhanced Alpha-GAN to generate synthetic MRI brain of rats to improve segmentation of white matter, grey matter and cerebrospinal fluid.</p>
+            <div class="tags">
+              <span class="tag">GANs</span>
+              <span class="tag">Segmentation</span>
+              <span class="tag">Rat brain MRI</span>
+            </div>
+            <div class="project-links">
+              <a href="https://www.mdpi.com/2076-3417/12/10/4844"><i class="fa-solid fa-file-lines"></i>Paper</a>
+              <a href="https://github.com/ShadowTwin41/alpha-WGAN-SigmaRat"><i class="fa-brands fa-github"></i>Code</a>
+            </div>
           </div>
-          <div class="project-links">
-            <a href="https://www.mdpi.com/2076-3417/12/10/4844><i class="fa-solid fa-file-lines"></i>Paper</a>
-            <a href="https://github.com/ShadowTwin41/alpha-WGAN-SigmaRat"><i class="fa-brands fa-github"></i>Code</a>
+      <br>
+      <article class="topic">
+          <h2>Generation of Synthetic Rat Brain MRI scans with a 3D Enhanced Alpha-GAN</h2>
+          <div class="topic-content">
+            <p>Using Enhanced Alpha-GAN to generate synthetic MRI brain of rats to improve segmentation of white matter, grey matter and cerebrospinal fluid.</p>
+            <div class="tags">
+              <span class="tag">GANs</span>
+              <span class="tag">Segmentation</span>
+              <span class="tag">Rat brain MRI</span>
+            </div>
+            <div class="project-links">
+              <a href="https://www.mdpi.com/2076-3417/12/10/4844"><i class="fa-solid fa-file-lines"></i>Paper</a>
+              <a href="https://github.com/ShadowTwin41/alpha-WGAN-SigmaRat"><i class="fa-brands fa-github"></i>Code</a>
+            </div>
           </div>
-        </div>
       </article>
 
       

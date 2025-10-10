@@ -20,7 +20,7 @@
       display: flex;
       overflow: visible;
       position: fixed;
-      top: clamp(1.1rem, 10vw, 3rem);
+      top: calc(40px + clamp(2rem, 8vw, 4rem) + 10px + clamp(1rem, 4vw, 1.5rem) + 10px);
       z-index: 1000;             
       left: 0;
       right: 0;
@@ -60,26 +60,43 @@
       box-sizing: border-box;
       white-space: nowrap;   /* keep label + caret on one line */
     }
+    .navbar .dropbtn {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.7s ease forwards;
+      /* optional: performance hint */
+      will-change: transform, opacity;
+    }
+
+    .navbar .dropdown:nth-child(1) .dropbtn { animation-delay: 0.08s; }
+    .navbar .dropdown:nth-child(2) .dropbtn { animation-delay: 0.16s; }
+    .navbar .dropdown:nth-child(3) .dropbtn { animation-delay: 0.24s; }
+    .navbar .dropdown:nth-child(4) .dropbtn { animation-delay: 0.32s; }
+    .navbar .dropdown:nth-child(5) .dropbtn { animation-delay: 0.40s; }
+    .navbar .dropdown:nth-child(6) .dropbtn { animation-delay: 0.48s; }
+
 
     .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
       background-color: rgb(0, 0, 83);
     }
 
+    /* prepare for JS-controlled full-width dropdown */
     .dropdown-content {
-      display: none;               /* toggled by JS */
-      position: fixed;             /* detach from layout and stick to viewport */
-      top: calc(clamp(1.1rem, 10vw, 3rem) + clamp(0.5rem, 4vw, 1.6rem) + 32px);
+      display: none;
+      position: fixed;   /* JS will update top/left/right */
       left: 0;
       right: 0;
-      bottom: 0;
       width: auto;
-      max-height: 85% ;
-      z-index: 900;
+      z-index: 1100;
       overflow-y: auto;
       background-color: #ffffffc7;
       padding: 1rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      animation: fadeInUp 0.7s ease forwards;
+       opacity: 0; /* ensure it starts invisible */
     }
+
+
     
     .dropdown-content h2 {
       display: block;                 /* default for h2, explicit for clarity */
@@ -117,21 +134,6 @@
 
       .show {
         display: block;
-      }
-
-      /* Update or add this style */
-     .header {
-        background-color: #010A21;
-        display: flex;
-        align-items: center;     /* vertically center */
-        justify-content: center; /* horizontally center */
-        width: 100%;
-      }
-
-      .header h1 {
-        color: #fff;
-        font-size: clamp(1.1rem, 10vw, 3rem);
-        margin: 0;
       }
 
       .first-author-with-border {
@@ -181,9 +183,12 @@
 </head>
 <body>
 
-  <div class="header"> 
+  <header class="header"> 
+      <div class="header-content">
         <h1>Publications</h1>
-  </div>
+        <p>9 first author publications + 12 mid author publications</p>
+    </div>
+  </header>
 
    <button class="house-button" onclick="location.href='/'" aria-label="Homepage">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -410,82 +415,96 @@
   <!-- JS scripts -->
   <script src="/js/mask-wave-mouse.js"></script>
   <script src="/js/responsive.js"></script>
+  <script src="/js/moving-content.js"></script>
   <script>
     (function(){
-      /**
-       * Requirements:
-       * - Each dropdown content element should have class="dropdown-content" and an id (e.g. id="2025_papers").
-       * - Each trigger/button should have class="dropbtn" and either:
-       *     - a data-target attribute pointing to the content id (recommended), e.g. <button class="dropbtn" data-target="2025_papers">...
-       *     - OR an aria-controls attribute pointing to the content id.
-       * - If you currently use inline functions like myFunction_2025_papers(), the legacy helpers below will keep working.
-       */
+  const navbar = document.querySelector('.navbar');
 
-      function closeAllExcept(idToKeep) {
-        document.querySelectorAll('.dropdown-content.show').forEach(d => {
-          if (d.id !== idToKeep) {
-            d.classList.remove('show');
-            // update any associated button's aria-expanded
-            const btn = document.querySelector(
-              `.dropbtn[data-target="${d.id}"], .dropbtn[aria-controls="${d.id}"]`
-            );
-            if (btn) btn.setAttribute('aria-expanded', 'false');
-          }
-        });
+  function closeAllExcept(idToKeep) {
+    document.querySelectorAll('.dropdown-content.show').forEach(d => {
+      if (d.id !== idToKeep) {
+        d.classList.remove('show');
+        d.style.position = '';
+        d.style.top = '';
+        d.style.left = '';
+        d.style.right = '';
+        d.style.maxHeight = '';
       }
+    });
+    document.querySelectorAll('.dropbtn').forEach(btn => btn.setAttribute('aria-expanded','false'));
+  }
 
-      function toggleById(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const willShow = !el.classList.contains('show');
+  function positionBelowNavbar(el) {
+    const rect = navbar.getBoundingClientRect();
+    el.style.position = 'fixed';
+    el.style.top = (rect.bottom) + 'px';
+    el.style.left = '0';
+    el.style.right = '0';
+    el.style.maxHeight = `calc(100vh - ${rect.bottom}px - 20px)`; // 20px margin from bottom
+    el.style.overflowY = 'auto';
+    el.style.zIndex = 1100;
+  }
 
-        // Close all others first (so only one can be open)
-        closeAllExcept(id);
+  function toggleById(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const willShow = !el.classList.contains('show');
 
-        // Set the desired state on the target
-        el.classList.toggle('show', willShow);
+    // Close all others
+    closeAllExcept(id);
 
-        // Update aria-expanded on the button that controls it (if present)
-        const btn = document.querySelector(
-          `.dropbtn[data-target="${id}"], .dropbtn[aria-controls="${id}"]`
-        );
-        if (btn) btn.setAttribute('aria-expanded', String(willShow));
+    if (willShow) {
+      positionBelowNavbar(el);
+      el.classList.add('show');
+    } else {
+      el.classList.remove('show');
+      // cleanup inline styles
+      el.style.position = '';
+      el.style.top = '';
+      el.style.left = '';
+      el.style.right = '';
+      el.style.maxHeight = '';
+    }
+
+    // Update aria-expanded on the button that controls it
+    const btn = document.querySelector(`.dropbtn[data-target="${id}"], .dropbtn[aria-controls="${id}"]`);
+    if (btn) btn.setAttribute('aria-expanded', String(willShow));
+  }
+
+  // Public helpers for backward compatibility
+  window.toggleDropdown = toggleById;
+  window.myFunction_2025_papers = () => toggleById('2025_papers');
+  window.myFunction_2024_papers = () => toggleById('2024_papers');
+  window.myFunction_2023_papers = () => toggleById('2023_papers');
+  window.myFunction_2022_papers = () => toggleById('2022_papers');
+
+  // click delegation for .dropbtn
+  document.addEventListener('click', function(event) {
+    const btn = event.target.closest('.dropbtn');
+    if (btn) {
+      const targetId = btn.dataset.target || btn.getAttribute('aria-controls') || btn.getAttribute('data-id');
+      if (targetId) {
+        toggleById(targetId);
+        event.preventDefault();
       }
+      return;
+    }
+    // click outside dropdown-content closes all
+    if (!event.target.closest('.dropdown-content')) closeAllExcept(null);
+  });
 
-      // Public API for inline onclick compatibility
-      window.toggleDropdown = toggleById;
+  // reposition any open dropdowns on resize or scroll
+  function recomputeOpenDropdowns() {
+    document.querySelectorAll('.dropdown-content.show').forEach(el => positionBelowNavbar(el));
+  }
+  window.addEventListener('resize', recomputeOpenDropdowns);
+  window.addEventListener('scroll', recomputeOpenDropdowns, true);
 
-      // Compatibility helpers for the functions you originally posted (adjust if you have different IDs)
-      window.myFunction_2025_papers = function(){ toggleById('2025_papers'); };
-      window.myFunction_2024_papers = function(){ toggleById('2024_papers'); };
-      window.myFunction_2023_papers = function(){ toggleById('2023_papers'); };
-      window.myFunction_2022_papers = function(){ toggleById('2022_papers'); };
-
-      // Event delegation for clicks on .dropbtn
-      document.addEventListener('click', function(event) {
-        const btn = event.target.closest('.dropbtn');
-        if (btn) {
-          // prefer data-target, fallback to aria-controls or data-id
-          const targetId = btn.dataset.target || btn.getAttribute('aria-controls') || btn.getAttribute('data-id');
-          if (targetId) {
-            toggleById(targetId);
-            event.preventDefault();
-          }
-          return;
-        }
-
-        // Click outside a .dropbtn: close all unless the click happened inside a dropdown-content
-        if (!event.target.closest('.dropdown-content')) {
-          closeAllExcept(null); // null means close everything
-        }
-      });
-
-      // UX: close all dropdowns on ESC
-      document.addEventListener('keydown', function(e){
-        if (e.key === 'Escape') closeAllExcept(null);
-      });
-
-    })();
+  // ESC to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAllExcept(null);
+  });
+})();
   </script>
 
 </body>
