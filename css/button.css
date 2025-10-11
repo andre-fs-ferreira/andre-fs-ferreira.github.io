@@ -74,8 +74,14 @@
     box-shadow: none;
 }
 
-/* Home button */
+/* Home button - UPDATED */
 .house-button {
+    /* --- ADD THESE LINES --- */
+    -webkit-appearance: none; /* Removes default iOS styling */
+    appearance: none;         /* Standard property for removing default styling */
+    padding: 0;               /* Explicitly remove any default padding */
+
+    /* --- Unchanged properties below --- */
     background-color: #0031ae71;
     border: none;
     border-radius: 100%;
@@ -90,11 +96,24 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     line-height: 1;
-    position: fixed;   /* makes it stay in place */
-    bottom: 20px;      /* distance from bottom */
-    right: 20px;       /* distance from right */
-    z-index: 9999;     /* ensures it appears above other elements */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
     animation: pulse-on-load 1.2s ease-out;
+}
+
+.house-button:hover {
+    transform: scale(1.5);
+}
+
+.house-button svg {
+    /* --- CHANGE THESE LINES --- */
+    width: 55%;  /* Use a relative size */
+    height: 55%; /* Use a relative size */
+
+    /* --- Unchanged property below --- */
+    fill: currentColor;
 }
 
 @keyframes pulse-on-load {
@@ -106,15 +125,7 @@
     }
 }
 
-.house-button:hover {
-    transform: scale(1.5);     /* Small zoom on hover */
-}
 
-.house-button svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-}
 
 /* social links */
 .social-links {

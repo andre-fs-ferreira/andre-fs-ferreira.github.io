@@ -14,14 +14,13 @@
     /* --- Global Styles --- */
     html, body {
       margin: 0;
-      overflow-x: hidden; /* Prevents horizontal scrolling on all devices */
     }
 
     /* --- Header Styles & Animation --- */
     .header {
       max-height: 300px; /* Adjust if your header is taller */
       overflow: hidden;
-      text-align: center; /* This centers the "Publications" title */
+      text-align: center;
       transition: max-height 0.6s ease-in-out, padding 0.6s ease-in-out;
     }
 
@@ -145,10 +144,10 @@
     </div>
   </header>
 
-  <button class="house-button" onclick="location.href='/'" aria-label="Homepage">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75h-5.25v-6h-6v6H3.75A.75.75 0 013 21V9.75z"/>
-      </svg>
+    <button class="house-button" onclick="location.href='/'" aria-label="Homepage">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75h-5.25v-6h-6v6H3.75A.75.75 0 013 21V9.75z"/>
+        </svg>
     </button>
 
   <main>
@@ -156,7 +155,7 @@
     <div class="navbar">
       <!-- 2025 papers -->
       <div class="dropdown">
-        <button class="dropbtn" onclick="myFunction_2025_papers()">2025
+        <button class="dropbtn" data-target="2025_papers">2025
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="2025_papers">
@@ -191,7 +190,7 @@
       </div> 
       <!-- 2024 papers -->
       <div class="dropdown">
-        <button class="dropbtn" onclick="myFunction_2024_papers()">2024
+        <button class="dropbtn" data-target="2024_papers">2024
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="2024_papers">
@@ -278,7 +277,7 @@
     
       <!-- 2023 papers -->
       <div class="dropdown">
-        <button class="dropbtn" onclick="myFunction_2023_papers()">2023
+        <button class="dropbtn" data-target="2023_papers">2023
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="2023_papers">
@@ -320,7 +319,7 @@
 
       <!-- 2022 papers -->
       <div class="dropdown">
-        <button class="dropbtn" onclick="myFunction_2022_papers()">2022
+        <button class="dropbtn" data-target="2022_papers">2022
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="2022_papers">
@@ -372,93 +371,74 @@
   <script src="/js/responsive.js"></script>
   <script src="/js/moving-content.js"></script>
   <script>
-    (function(){
-      const navbar = document.querySelector('.navbar');
-      const body = document.body;
+  document.addEventListener('DOMContentLoaded', () => {
+    const body = document.body;
+    const navbar = document.querySelector('.navbar');
 
-      // Toggles the class on the body to trigger all CSS animations
-      function updateBodyState() {
-        const isAnyDropdownOpen = document.querySelector('.dropdown-content.show') !== null;
-        body.classList.toggle('dropdown-active', isAnyDropdownOpen);
-      }
+    function closeAllDropdowns() {
+      document.querySelectorAll('.dropdown-content.show').forEach(dropdown => {
+        dropdown.classList.remove('show');
+      });
+      document.querySelectorAll('.dropbtn').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+      body.classList.remove('dropdown-active');
+    }
 
-      // Closes all open dropdowns and resets the body state
-      function closeAllDropdowns() {
-        document.querySelectorAll('.dropdown-content.show').forEach(d => {
-          d.classList.remove('show');
-        });
-        document.querySelectorAll('.dropbtn').forEach(btn => btn.setAttribute('aria-expanded','false'));
-        updateBodyState();
-      }
+    function positionDropdown(dropdownElement) {
+      if (!dropdownElement) return;
+      const navBarHeight = navbar.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const availableHeight = viewportHeight - navBarHeight - 20;
 
-      // Calculates and sets the dropdown's position below the navbar
-      function positionBelowNavbar(el) {
-        if (!el) return; // Safety check
+      dropdownElement.style.position = 'fixed';
+      dropdownElement.style.top = `${navBarHeight}px`;
+      dropdownElement.style.left = '0';
+      dropdownElement.style.right = '0';
+      dropdownElement.style.maxHeight = `${availableHeight}px`;
+      dropdownElement.style.overflowY = 'auto';
+    }
 
-        // Because the navbar is now 'position: fixed', its height is all we need.
-        const navBarHeight = navbar.offsetHeight;
-        const viewportHeight = window.innerHeight;
-        const availableHeight = viewportHeight - navBarHeight - 20; // 20px bottom margin
+    document.querySelectorAll('.dropbtn[data-target]').forEach(button => {
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const targetId = button.dataset.target;
+        const targetElement = document.getElementById(targetId);
+        if (!targetElement) return;
 
-        el.style.position = 'fixed';
-        el.style.top = `${navBarHeight}px`; // Position it right below the navbar
-        el.style.left = '0';
-        el.style.right = '0';
-        el.style.maxHeight = `${availableHeight}px`;
-        el.style.overflowY = 'auto';
-      }
-
-      // The main function that handles button clicks
-      function toggleById(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        const wasAlreadyShown = el.classList.contains('show');
-
-        // Always close everything first for a clean state
+        const wasAlreadyOpen = targetElement.classList.contains('show');
         closeAllDropdowns();
 
-        // If the dropdown was previously closed, open it now
-        if (!wasAlreadyShown) {
-          el.classList.add('show');
-          const btn = el.parentElement.querySelector('.dropbtn');
+        if (!wasAlreadyOpen) {
+          body.classList.add('dropdown-active');
+          const btn = targetElement.parentElement.querySelector('.dropbtn');
           if (btn) btn.setAttribute('aria-expanded', 'true');
           
-          // Trigger the CSS changes
-          updateBodyState();
-
-          // Position the dropdown. Since the navbar's position is now instantly fixed by CSS,
-          // there is no animation to wait for. This will always be correct.
-          positionBelowNavbar(el);
-        }
-      }
-
-      // Assign the toggle functions to the global window object
-      window.myFunction_2025_papers = () => toggleById('2025_papers');
-      window.myFunction_2024_papers = () => toggleById('2024_papers');
-      window.myFunction_2023_papers = () => toggleById('2023_papers');
-      window.myFunction_2022_papers = () => toggleById('2022_papers');
-
-      // Add supporting event listeners for better UX
-      document.addEventListener('click', function(event) {
-        if (!event.target.closest('.dropdown')) {
-          closeAllDropdowns();
+          setTimeout(() => {
+            positionDropdown(targetElement);
+            targetElement.classList.add('show');
+          }, 50); // This delay is critical for iOS
         }
       });
-      
-      window.addEventListener('resize', () => {
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.dropdown')) {
+        closeAllDropdowns();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeAllDropdowns();
+      }
+    });
+
+    window.addEventListener('resize', () => {
         const openDropdown = document.querySelector('.dropdown-content.show');
         if (openDropdown) {
-          positionBelowNavbar(openDropdown);
+            positionDropdown(openDropdown);
         }
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          closeAllDropdowns();
-        }
-      });
-    })();
+    });
+  });
 </script>
 
 </body>
