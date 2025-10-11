@@ -44,12 +44,16 @@
         background: linear-gradient(to bottom, #00228a, #010A21);
         /* Ensure text is still centered */
         text-align: center; 
+        transition: opacity 0.8s ease-in-out; /* ✨ Add this for a smooth fade */
+        z-index: 10; /* Optional: ensures header is layered correctly */
     }
 
     /* Text box */
     .text-box {
       width: clamp(80%, 90vw, 100%);
       margin-top: 0.25rem;
+      transition: opacity 0.8s ease-in-out; /* ✨ Add this for a smooth fade */
+      z-index: 10;
     }
 
     /* Buttons section */
