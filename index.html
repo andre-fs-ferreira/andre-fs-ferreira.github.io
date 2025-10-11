@@ -21,41 +21,52 @@
     main {
       display: flex;
       flex-direction: column;
-      height: 100vh; /* Use exact viewport height, not min-height */
+      height: 100vh;
       box-sizing: border-box;
       align-items: center;
-      justify-content: space-between; /* keeps header at top and buttons at bottom */
-      padding: 0 1rem; /* optional padding */
-    }
+      justify-content: space-between;
+      position: relative; 
+      padding-top: 8rem; 
+  }
 
     /* Header */
     .header-wrap {
-      margin-top: 3rem;
+        /* Positioning to span the full screen */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0; /* Stretches from left to right edge */
+        
+        /* Use padding to create space for the text inside */
+        padding-top: 1rem;
+
+        /* The original background */
+        background: linear-gradient(to bottom, #00228a, #010A21);
+        /* Ensure text is still centered */
+        text-align: center; 
     }
 
     /* Text box */
     .text-box {
       width: clamp(80%, 90vw, 100%);
-      margin-top: 0.25rem; /* tweak to taste (or remove) */
+      margin-top: 0.25rem;
     }
 
     /* Buttons section */
     .buttons-wrap {
-      margin-top: auto;
+      /* Use clamp() for fluid top spacing */
+      margin-top: clamp(0rem, 10vh, 8rem); /* (MIN, IDEAL, MAX) */
       display: flex;
       flex-direction: column;
       gap: 1rem;
       width: 100%;
       max-width: 480px;
-      margin-bottom: 3rem; /* controlled bottom space */
+      /* Use clamp() for fluid bottom spacing */
+      margin-bottom: clamp(3rem, 15vh, 6rem); /* (MIN, IDEAL, MAX) */
       box-sizing: border-box;
       padding: 0;
     }
 
-    /* Small-screen tweak */
-    @media (max-height: 600px) {
-      .buttons-wrap { min-height: 56px; }
-    }
 
     /* Quote styling */
     .quote {

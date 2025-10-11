@@ -11,34 +11,60 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
-    body {
+    /* --- Global Styles --- */
+    html, body {
       margin: 0;
-    }
-    /* navbar is a flex row already — keep it */
-    .navbar {
-      display: flex;
-      overflow: visible;
-      position: relative;
-      top: 0;
-      z-index: 1000;             
-      left: 0;
-      right: 0;
-      box-sizing: border-box;
-      width: 100%;
-      background-color: #33333300;
-      font-family: Verdana, sans-serif;
-      align-items: stretch;  /* make children same height */
-      flex-wrap: nowrap;     /* keep them on one row (no wrap) */
-      z-index: 1000;
+      overflow-x: hidden; /* Prevents horizontal scrolling on all devices */
     }
 
+    /* --- Header Styles & Animation --- */
+    .header {
+      max-height: 300px; /* Adjust if your header is taller */
+      overflow: hidden;
+      text-align: center; /* This centers the "Publications" title */
+      transition: max-height 0.6s ease-in-out, padding 0.6s ease-in-out;
+    }
+
+    .header-content {
+      transition: opacity 0.3s ease;
+    }
+
+    body.dropdown-active .header {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    body.dropdown-active .header-content {
+      opacity: 0;
+    }
+
+    /* --- Navbar Styles --- */
+    .navbar {
+      position: -webkit-sticky; /* For Safari */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      display: flex;
+      box-sizing: border-box;
+      background-color: #33333300;
+      font-family: Verdana, sans-serif;
+      align-items: stretch;
+      flex-wrap: nowrap;
+      transition: background-color 0.3s ease;
+    }
+
+    body.dropdown-active .navbar {
+      background-color: rgba(51, 51, 51, 0.95); /* A slightly transparent background when open */
+    }
+    
+    /* --- Dropdown & Button Styles --- */
     .dropdown {
-      position: relative; 
-      float: none;
-      display: flex;       /* make container for the button so button can stretch */
-      flex: 1 1 0;         /* each dropdown takes equal share of the row */
-      min-width: 0;        /* critical to allow shrinking and avoid overflow */
-      overflow: visible;
+      position: relative;
+      display: flex;
+      flex: 1 1 0;
+      min-width: 0;
       align-items: stretch;
     }
 
@@ -53,17 +79,17 @@
       font-family: inherit;
       margin: 0;
       font-weight: bold;
-      flex: 1 1 0;           /* grow to fill */
+      flex: 1 1 0;
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-      white-space: nowrap;   /* keep label + caret on one line */
+      white-space: nowrap;
     }
+    
     .navbar .dropbtn {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.7s ease forwards;
-      /* optional: performance hint */
       will-change: transform, opacity;
     }
 
@@ -74,15 +100,14 @@
     .navbar .dropdown:nth-child(5) .dropbtn { animation-delay: 0.40s; }
     .navbar .dropdown:nth-child(6) .dropbtn { animation-delay: 0.48s; }
 
-
     .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
       background-color: rgb(0, 0, 83);
     }
 
-    /* prepare for JS-controlled full-width dropdown */
+    /* --- Dropdown Content Styles --- */
     .dropdown-content {
       display: none;
-      position: fixed;   /* JS will update top/left/right */
+      position: fixed;
       left: 0;
       right: 0;
       width: auto;
@@ -92,109 +117,40 @@
       padding: 1rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       animation: fadeInUp 0.7s ease forwards;
-       opacity: 0; /* ensure it starts invisible */
-    }
-
-
-    
-    .dropdown-content h2 {
-      display: block;                 /* default for h2, explicit for clarity */
-      margin: 30px auto 1rem;        /* top 30px, horizontal auto -> centers, bottom 1rem */
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: rgb(0, 0, 83);
-      text-align: center;            /* keep to center multi-line text inside the box */
-      max-width: 80%;                /* optional: limit width so it doesn't span full row */
+      opacity: 0;
     }
     
-    .dropdown-content p {
-          margin: 10px 5%; /* 10px top/bottom, 20px left/right */
-          text-align: left; 
-          max-width: 95%;
-          font-size: 0.9rem; /* normal body text */
-          line-height: 1.6;
-      }
-
-
-      .dropdown-content p.keywords {
-          margin: 10px 5%; /* 10px top/bottom, 20px left/right */
-          text-align: left; 
-          text-align: left; 
-          max-width: 100%;
-          font-size: 0.9rem; 
-          line-height: 1.6;
-
-      }
-      .dropdown-content p.keywords::before {
-          content: "Keywords: ";
-          font-weight: bold; /* optional, make "Keywords:" bold */
-          font-size: 1.0rem; 
-      }
-
-      .show {
-        display: block;
-      }
-
-      .first-author-with-border {
-        border-bottom: 2px solid rgb(0, 0, 255);
-        padding: 0;                 /* remove extra space if needed */
-        margin: 0 auto;             /* optional: center container */
-      }
-
-      .first-author-with-border h1 {
+    .show {
       display: block;
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: rgb(0, 0, 255);
-      text-align: center;
-      /* Box styling */         
-      padding: 10px 0;                    
-      margin: 0;                           /* remove default spacing */
-      background-color: rgba(0, 0, 255, 0.05);
-      width: 100%;                         /* full width of container */
     }
-
-    .mid-author-with-border {
-        border-bottom: 2px solid rgb(83, 0, 0);
-        padding: 0;                 /* remove extra space if needed */
-        margin: 0 auto;             /* optional: center container */
-      }
-
-      .mid-author-with-border h1 {
-      display: block;
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: rgb(83, 0, 0);
-      text-align: center;
-      /* Box styling */            
-      padding: 10px 0;                    
-      margin: 0;                           /* remove default spacing */
-      background-color: rgba(255, 0, 0, 0.05);
-      width: 100%;                         /* full width of container */
-      box-sizing: border-box;
-    }
-
-    .mid-author-with-border h2 {
-      color: rgb(83, 0, 0);
-    }
-  </style>
+    
+    .dropdown-content h2 { display: block; margin: 30px auto 1rem; font-size: 1.2rem; font-weight: bold; color: rgb(0, 0, 83); text-align: center; max-width: 80%; }
+    .dropdown-content p { margin: 10px 5%; text-align: left; max-width: 95%; font-size: 0.9rem; line-height: 1.6; }
+    .dropdown-content p.keywords { margin: 10px 5%; text-align: left; max-width: 100%; font-size: 0.9rem; line-height: 1.6; }
+    .dropdown-content p.keywords::before { content: "Keywords: "; font-weight: bold; font-size: 1.0rem; }
+    .first-author-with-border { border-bottom: 2px solid rgb(0, 0, 255); padding: 0; margin: 0 auto; }
+    .first-author-with-border h1 { display: block; font-size: 1.6rem; font-weight: bold; color: rgb(0, 0, 255); text-align: center; padding: 10px 0; margin: 0; background-color: rgba(0, 0, 255, 0.05); width: 100%; }
+    .mid-author-with-border { border-bottom: 2px solid rgb(83, 0, 0); padding: 0; margin: 0 auto; }
+    .mid-author-with-border h1 { display: block; font-size: 1.6rem; font-weight: bold; color: rgb(83, 0, 0); text-align: center; padding: 10px 0; margin: 0; background-color: rgba(255, 0, 0, 0.05); width: 100%; box-sizing: border-box; }
+    .mid-author-with-border h2 { color: rgb(83, 0, 0); }
+</style>
   
 </head>
 <body>
 
-  <header class="header"> 
-      <div class="header-content">
-        <h1>Publications</h1>
-        <p>9 first author publications + 12 mid author publications</p>
+   <header class="header"> 
+    <div class="header-content">
+      <h1>Publications</h1>
+      <p>9 first author publications + 12 mid author publications</p>
     </div>
   </header>
 
-   <button class="house-button" onclick="location.href='/'" aria-label="Homepage">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75h-5.25v-6h-6v6H3.75A.75.75 0 013 21V9.75z"/>
-    </svg>
-  </button>
-  
+  <button class="house-button" onclick="location.href='/'" aria-label="Homepage">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M3 9.75L12 3l9 6.75V21a.75.75 0 01-.75.75h-5.25v-6h-6v6H3.75A.75.75 0 013 21V9.75z"/>
+      </svg>
+    </button>
+
   <main>
     
     <div class="navbar">
@@ -417,94 +373,93 @@
   <script src="/js/moving-content.js"></script>
   <script>
     (function(){
-  const navbar = document.querySelector('.navbar');
+      const navbar = document.querySelector('.navbar');
+      const body = document.body;
 
-  function closeAllExcept(idToKeep) {
-    document.querySelectorAll('.dropdown-content.show').forEach(d => {
-      if (d.id !== idToKeep) {
-        d.classList.remove('show');
-        d.style.position = '';
-        d.style.top = '';
-        d.style.left = '';
-        d.style.right = '';
-        d.style.maxHeight = '';
+      // Toggles the class on the body to trigger all CSS animations
+      function updateBodyState() {
+        const isAnyDropdownOpen = document.querySelector('.dropdown-content.show') !== null;
+        body.classList.toggle('dropdown-active', isAnyDropdownOpen);
       }
-    });
-    document.querySelectorAll('.dropbtn').forEach(btn => btn.setAttribute('aria-expanded','false'));
-  }
 
-  function positionBelowNavbar(el) {
-    const rect = navbar.getBoundingClientRect();
-    el.style.position = 'fixed';
-    el.style.top = (rect.bottom) + 'px';
-    el.style.left = '0';
-    el.style.right = '0';
-    el.style.maxHeight = `calc(100vh - ${rect.bottom}px - 20px)`; // 20px margin from bottom
-    el.style.overflowY = 'auto';
-    el.style.zIndex = 1100;
-  }
-
-  function toggleById(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const willShow = !el.classList.contains('show');
-
-    // Close all others
-    closeAllExcept(id);
-
-    if (willShow) {
-      positionBelowNavbar(el);
-      el.classList.add('show');
-    } else {
-      el.classList.remove('show');
-      // cleanup inline styles
-      el.style.position = '';
-      el.style.top = '';
-      el.style.left = '';
-      el.style.right = '';
-      el.style.maxHeight = '';
-    }
-
-    // Update aria-expanded on the button that controls it
-    const btn = document.querySelector(`.dropbtn[data-target="${id}"], .dropbtn[aria-controls="${id}"]`);
-    if (btn) btn.setAttribute('aria-expanded', String(willShow));
-  }
-
-  // Public helpers for backward compatibility
-  window.toggleDropdown = toggleById;
-  window.myFunction_2025_papers = () => toggleById('2025_papers');
-  window.myFunction_2024_papers = () => toggleById('2024_papers');
-  window.myFunction_2023_papers = () => toggleById('2023_papers');
-  window.myFunction_2022_papers = () => toggleById('2022_papers');
-
-  // click delegation for .dropbtn
-  document.addEventListener('click', function(event) {
-    const btn = event.target.closest('.dropbtn');
-    if (btn) {
-      const targetId = btn.dataset.target || btn.getAttribute('aria-controls') || btn.getAttribute('data-id');
-      if (targetId) {
-        toggleById(targetId);
-        event.preventDefault();
+      // Closes all open dropdowns and resets the body state
+      function closeAllDropdowns() {
+        document.querySelectorAll('.dropdown-content.show').forEach(d => {
+          d.classList.remove('show');
+        });
+        document.querySelectorAll('.dropbtn').forEach(btn => btn.setAttribute('aria-expanded','false'));
+        updateBodyState();
       }
-      return;
-    }
-    // click outside dropdown-content closes all
-    if (!event.target.closest('.dropdown-content')) closeAllExcept(null);
-  });
 
-  // reposition any open dropdowns on resize or scroll
-  function recomputeOpenDropdowns() {
-    document.querySelectorAll('.dropdown-content.show').forEach(el => positionBelowNavbar(el));
-  }
-  window.addEventListener('resize', recomputeOpenDropdowns);
-  window.addEventListener('scroll', recomputeOpenDropdowns, true);
+      // Calculates and sets the dropdown's position below the navbar
+      function positionBelowNavbar(el) {
+        if (!el) return; // Safety check
 
-  // ESC to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeAllExcept(null);
-  });
-})();
-  </script>
+        // Because the navbar is now 'position: fixed', its height is all we need.
+        const navBarHeight = navbar.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        const availableHeight = viewportHeight - navBarHeight - 20; // 20px bottom margin
+
+        el.style.position = 'fixed';
+        el.style.top = `${navBarHeight}px`; // Position it right below the navbar
+        el.style.left = '0';
+        el.style.right = '0';
+        el.style.maxHeight = `${availableHeight}px`;
+        el.style.overflowY = 'auto';
+      }
+
+      // The main function that handles button clicks
+      function toggleById(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        const wasAlreadyShown = el.classList.contains('show');
+
+        // Always close everything first for a clean state
+        closeAllDropdowns();
+
+        // If the dropdown was previously closed, open it now
+        if (!wasAlreadyShown) {
+          el.classList.add('show');
+          const btn = el.parentElement.querySelector('.dropbtn');
+          if (btn) btn.setAttribute('aria-expanded', 'true');
+          
+          // Trigger the CSS changes
+          updateBodyState();
+
+          // Position the dropdown. Since the navbar's position is now instantly fixed by CSS,
+          // there is no animation to wait for. This will always be correct.
+          positionBelowNavbar(el);
+        }
+      }
+
+      // Assign the toggle functions to the global window object
+      window.myFunction_2025_papers = () => toggleById('2025_papers');
+      window.myFunction_2024_papers = () => toggleById('2024_papers');
+      window.myFunction_2023_papers = () => toggleById('2023_papers');
+      window.myFunction_2022_papers = () => toggleById('2022_papers');
+
+      // Add supporting event listeners for better UX
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.dropdown')) {
+          closeAllDropdowns();
+        }
+      });
+      
+      window.addEventListener('resize', () => {
+        const openDropdown = document.querySelector('.dropdown-content.show');
+        if (openDropdown) {
+          positionBelowNavbar(openDropdown);
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeAllDropdowns();
+        }
+      });
+    })();
+</script>
 
 </body>
 </html>
