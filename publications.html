@@ -122,17 +122,62 @@
     .show {
       display: block;
     }
-    
-    .dropdown-content h2 { display: block; margin: 30px auto 1rem; font-size: 1.2rem; font-weight: bold; color: rgb(0, 0, 83); text-align: center; max-width: 80%; }
+
     .dropdown-content p { margin: 10px 5%; text-align: left; max-width: 95%; font-size: 0.9rem; line-height: 1.6; }
     .dropdown-content p.keywords { margin: 10px 5%; text-align: left; max-width: 100%; font-size: 0.9rem; line-height: 1.6; }
     .dropdown-content p.keywords::before { content: "Keywords: "; font-weight: bold; font-size: 1.0rem; }
     .first-author-with-border { border-bottom: 0px solid rgb(0, 0, 255); padding: 0; margin: 0 auto; }
     .first-author-with-border h1 { display: block; font-size: 1.6rem; font-weight: bold; color: rgb(0, 0, 255); text-align: center; padding: 10px 0; margin: 0; background-color: rgba(0, 0, 255, 0.05); width: 100%; }
+    .first-author-with-borde h2 { display: block; margin: 30px auto 1rem; font-size: 1.2rem; font-weight: bold; color: rgb(0, 0, 83); text-align: center; max-width: 80%; }
     .mid-author-with-border { border-bottom: 2px solid rgb(83, 0, 0); padding: 0; margin: 0 auto; }
     .mid-author-with-border h1 { display: block; font-size: 1.6rem; font-weight: bold; color: rgb(83, 0, 0); text-align: center; padding: 10px 0; margin: 0; background-color: rgba(255, 0, 0, 0.05); width: 100%; box-sizing: border-box; }
     .mid-author-with-border h2 { color: rgb(83, 0, 0); }
 
+
+    .first-author-with-border .container-flex .text-content h2 {
+      color: rgb(0, 0, 83); /* Change link color */
+      text-decoration: none; /* Remove underline */
+      font-weight: bold; /* Make it bold */
+      transition: color 0.3s ease; /* Smooth color change on hover */
+    }
+
+    .first-author-with-border .container-flex .text-content h2 a {
+      color: rgb(0, 0, 83); /* Change link color */
+      text-decoration: none; /* Remove underline */
+      font-weight: bold; /* Make it bold */
+      transition: color 0.3s ease; /* Smooth color change on hover */
+    }
+
+    .first-author-with-border .container-flex .text-content h2 a:hover {
+      background-color: #ffffff00;
+      color: rgb(0, 0, 154); /* Darker color on hover */
+      text-decoration: underline; /* Add underline on hover */
+    }
+
+    .first-author-with-border .container-flex .text-content p a:hover {
+      background-color: #ffffff00;
+      color: rgb(0, 0, 154); /* Darker color on hover */
+      text-decoration: underline; /* Add underline on hover */
+    }
+
+    .mid-author-with-border .container-flex .text-content h2 a {
+      color: rgb(83, 0, 0); /* Change link color */
+      text-decoration: none; /* Remove underline */
+      font-weight: bold; /* Make it bold */
+      transition: color 0.3s ease; /* Smooth color change on hover */
+    }
+
+    .mid-author-with-border .container-flex .text-content h2 a:hover {
+      background-color: #ffffff00;
+      color: rgb(154, 0, 0); /* Darker color on hover */
+      text-decoration: underline; /* Add underline on hover */
+    }
+
+    .mid-author-with-border .container-flex .text-content p a:hover {
+      background-color: #ffffff00;
+      color: rgb(0, 0, 154); /* Darker color on hover */
+      text-decoration: underline; /* Add underline on hover */
+    }
     /* ============================================
     === STYLES FOR THE PUBLICATION BLOCK      ===
     ============================================
@@ -173,10 +218,12 @@
 
     /* This is the key fix for the 50/50 split */
     .container-flex > .text-content,
-    .container-flex > .image-content {
-      flex: 1 1 50%; /* Grow/shrink equally from a 50% base */
-      width: auto;   /* Reset mobile width */
-      max-width: none; /* Reset mobile max-width */
+    
+
+    .image-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* This is the key part */
     }
 
     /* This fixes the paragraph margin issue */
@@ -186,12 +233,55 @@
     }
   }
 
+    /* --- [NEW] HOVER AND MODAL STYLES --- */
+    .figure-img {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .figure-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(211, 211, 211);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+    }
+
+    .modal-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-img {
+      transform: scale(1);
+    }
+    
 </style>
   
 </head>
 <body>
 
-   <header class="header"> 
+  <header class="header"> 
     <div class="header-content">
       <h1>Publications</h1>
       <p>9 first author publications + 12 mid author publications</p>
@@ -234,7 +324,7 @@
             <br>
             <div class="container-flex">
               <div class="text-content">
-                <h2>GBM-Reservoir: Brain tumor (Glioblastoma Multiforme) MRI dataset collection with ground truth segmentation masks</h2>
+                <h2> <a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Brain tumor (Glioblastoma Multiforme) MRI dataset collection with ground truth segmentation masks </a> </h2>
                 <p>
                   We present a brain tumor MRI dataset with 23,049 samples, each including FLAIR, T1, T1ce, and T2 scans, plus one or two segmentation masks. The dataset expands 438 original BraTS 2022 cases through registration, generating additional samples with varied tumor locations. Despite heterogeneous imaging protocols, it provides ground truth for each sample, supporting the development of deep learning–based automated tumor segmentation on unseen cases.
                 </p>
@@ -247,7 +337,7 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Beyond Benchmarks: Towards Robust Artificial Intelligence Bone Segmentation in Socio-Technical Systems</h2>
+                <h2><a href="https://www.medrxiv.org/content/10.1101/2025.06.11.25329022v1">Beyond Benchmarks: Towards Robust Artificial Intelligence Bone Segmentation in Socio-Technical Systems</a></h2>
                 <p>
                   We evaluated 20 state-of-the-art mandibular segmentation models on 19,218 segmentations from 1,000 multicenter CT/CBCT scans and found accuracy can vary by up to 25% due to factors like voxel size, bone orientation, and patient conditions. While smaller isotropic voxels and neutral orientation improved performance, metallic osteosynthesis and complex anatomy degraded it. These results highlight that AI models are not “plug-and-play” and provide evidence-based recommendations to improve clinical integration.
                 </p>
@@ -269,7 +359,7 @@
             <h1>First author</h1>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Improved Segmentation with Synthetic Data</h2>
+                <h2> <a href="https://arxiv.org/abs/2411.04632v1?utm_source=tldrai">Improved Segmentation with Synthetic Data</a></h2>
                 <p>
                   We present our winning Task 1 and third-place Task 3 solutions for BraTS, using synthetic data to train SOTA segmentation pipelines—improving robustness for post-treatment glioma segmentation though the pipeline was less suited to meningioma.
                   Results — Task 1 (ET, NETC, RC, SNFH, TC, WT): DSC = 0.790, 0.808, 0.776, 0.893, 0.787, 0.894; HD95 = 35.63, 30.35, 44.58, 16.87, 38.19, 17.95. Task 3 (test): DSC = 0.801, HD95 = 38.26. Code available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.
@@ -283,7 +373,7 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Brain Tumour Removing and Missing Modality Generation using 3D WDM</h2>
+                <h2> <a href="https://arxiv.org/abs/2411.04630">Brain Tumour Removing and Missing Modality Generation using 3D WDM</a></h2>
                 <p>
                   We present our second-place solution for BraTS 2024 Task 8 (and a participation entry for Task 7) that uses conditional 3D wavelet diffusion models to handle lesions and missing MRI modalities. By applying a wavelet transform we train and infer at full resolution on a 48 GB GPU without patching or downsampling—preserving all image information and improving prediction reliability; code is available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.
                 </p>
@@ -296,7 +386,7 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>How we won BraTS 2023 Adult Glioma challenge? Just faking it! Enhanced Synthetic Data Augmentation and Model Ensemble for brain tumour segmentation</h2>
+                <h2><a href="https://arxiv.org/abs/2402.17317">How we won BraTS 2023 Adult Glioma challenge? Just faking it! Enhanced Synthetic Data Augmentation and Model Ensemble for brain tumour segmentation</a></h2>
                 <p>
                   We address limited medical data for BraTS 2023 Task 1 by using GANs and registration to augment training samples for three models: nnU-Net, Swin UNETR, and the BraTS 2021 winning solution. Combining convolutional and transformer architectures enhances performance. On the validation set, our best model achieves Dice = 0.901, 0.867, 0.851 and HD95 = 14.94, 14.47, 17.70 for whole tumor, tumor core, and enhancing tumor, respectively. Code is available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.
                 </p>
@@ -309,7 +399,7 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Generalisation of segmentation using Generative Adversarial Networks</h2>
+                <h2><a href="https://ieeexplore.ieee.org/document/10635839">Generalisation of segmentation using Generative Adversarial Networks</a></h2>
                 <p>
                   We tackle robustness in BraTS 2024 GoAT by using conditional GANs to generate realistic new cases and train a segmentation model that combines convolutions with attention mechanisms. On the validation set we achieve DSC = 0.855 (enhancing tumor), 0.863 (tumor core), 0.883 (whole tumor), and HD95 = 24.83, 24.10, 21.72, respectively.
                 </p>
@@ -322,7 +412,7 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>GAN-based generation of realistic 3D volumetric data: A systematic review and taxonomy</h2>
+                <h2><a href="https://www.sciencedirect.com/science/article/pii/S1361841524000252">GAN-based generation of realistic 3D volumetric data: A systematic review and taxonomy</a></h2>
                 <p>
                   We review GAN-based methods for generating realistic volumetric (3D) data—primarily in medicine—motivated by limited datasets caused by rarity, privacy, and high acquisition cost. We summarize common architectures, loss functions and evaluation metrics, present a novel taxonomy, compare advantages and drawbacks, and outline evaluations, open challenges, and research opportunities to give a holistic overview of volumetric GANs.
                 </p>
@@ -340,7 +430,7 @@
             <br>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Comparative Analysis of nnUNet and MedNeXt for Head and Neck Tumor Segmentation in MRI-Guided Radiotherapy</h2>
+                <h2><a href="https://link.springer.com/chapter/10.1007/978-3-031-83274-1_10">Comparative Analysis of nnUNet and MedNeXt for Head and Neck Tumor Segmentation in MRI-Guided Radiotherapy</a></h2>
                 <p>
                   We address limited medical data for BraTS 2023 Task 1 by using GANs and registration to massively augment training samples for three models: nnU-Net, Swin UNETR, and the BraTS 2021 winning solution. Combining convolutional and transformer architectures improves complementarity. Results on the test set — lesion-wise Dice: 0.885, 0.872, 0.869; lesion-wise HD95: 22.84, 22.97, 16.71 (WT, TC, ET). Code available on <a href="https://github.com/NikooMoradi/HNTSMRG24_team_TUMOR">HNTSMRG24_team_TUMOR</a>.
                 </p>
@@ -353,17 +443,20 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Deep Dive Into MRI: Exploring Deep Learning Applications in 0.55T and 7T MRI</h2>
+                <h2><a href="https://arxiv.org/abs/2407.01318">Deep Dive Into MRI: Exploring Deep Learning Applications in 0.55T and 7T MRI</a></h2>
                 <p>
                   We review the integration of deep learning into emerging 0.55T and 7T MRI technologies, highlighting how DL enhances image detail, tissue characterization, and diagnostic performance. The paper discusses current applications, benefits, and future directions for combining deep learning with advanced MRI to further improve medical imaging.
                 </p>
                 <p class="keywords">Magnetic Resonance Imaging, 0.55T MRI, 7T MRI, Deep Learning</p>
               </div>
+              <figure class="figure image-content">
+                <img src="/imgs/2024/Deep-dive_MRI.png" class="figure-img">
+              </figure>
             </div>
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Insights into Predicting Tooth Extraction from Panoramic Dental Images: Artificial Intelligence vs. Dentists</h2>
+                <h2><a href="https://link.springer.com/article/10.1007/s00784-024-05781-5">Insights into Predicting Tooth Extraction from Panoramic Dental Images: Artificial Intelligence vs. Dentists</a></h2>
                 <p>
                   We trained a ResNet50 model on 26,956 cropped teeth images from panoramic radiographs to predict whether a tooth should be extracted or preserved. The AI achieved ROC-AUC = 0.901 and PR-AUC = 0.749, outperforming dentists (ROC-AUC = 0.797, PR-AUC = 0.589). These results show that AI can support clinical decision-making by improving accuracy and reducing errors in tooth extraction indications.
                 </p>
@@ -376,7 +469,7 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>A Baseline Solution for the ISBI 2024 Dreaming Challenge</h2>
+                <h2><a href="https://ieeexplore.ieee.org/document/10635337">A Baseline Solution for the ISBI 2024 Dreaming Challenge</a></h2>
                 <p>
                   We introduce the DREAMING challenge, which explores Diminished Reality for medicine by removing surgical tools from operation scenes to enhance visibility. A new dataset of simulated surgeries with instrument and hand occlusions is presented, and a baseline using an existing video inpainting model is evaluated. Results show promising performance under some conditions but highlight key limitations for real-world surgical use.
                 </p>
@@ -389,12 +482,15 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Deep PCCT: Photon Counting Computed Tomography Deep Learning Applications Review</h2>
+                <h2><a href="https://arxiv.org/abs/2402.04301">Deep PCCT: Photon Counting Computed Tomography Deep Learning Applications Review</a></h2>
                 <p>
                   This review explores recent advances and applications of Photon Counting Computed Tomography (PCCT) in pre-clinical research, highlighting its ability to overcome traditional imaging limitations like low resolution and noise. It analyzes scanner features, deep learning integration, and radiomic applications, showing PCCT’s promise for improved diagnostic precision while outlining current challenges and future research directions in medical imaging.
                 </p>
                 <p class="keywords">Photon Counting Computed Tomography, Deep Learning, Radiomics</p>
               </div>
+              <figure class="figure image-content">
+                <img src="/imgs/2024/Deep_PCCT.png" class="figure-img">
+              </figure>
             </div>
           </div>
         </div>
@@ -409,7 +505,7 @@
             <h1>First author</h1>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Enhanced Data Augmentation using Synthetic Data for Brain Tumour Segmentation</h2>
+                <h2><a href="https://link.springer.com/chapter/10.1007/978-3-031-76163-8_8">Enhanced Data Augmentation using Synthetic Data for Brain Tumour Segmentation</a></h2>
                 <p>
                   We address limited medical data for BraTS 2023 Task 1 by using GANs and registration to massively augment training samples for three models: nnU-Net, Swin UNETR, and the BraTS 2021 winning solution. Combining convolutional and transformer architectures improves complementarity. Results on the test set — lesion-wise Dice: 0.885, 0.872, 0.869; lesion-wise HD95: 22.84, 22.97, 16.71 (WT, TC, ET). Code available on  <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions"> BraTS_2023_2024_solutions</a>.
                 </p>
@@ -426,7 +522,7 @@
             <br>
             <div class="container-flex">
               <div class="text-content">
-                <h2>MedShapeNet – a large-scale dataset of 3D medical shapes for computer vision</h2>
+                <h2><a href="https://arxiv.org/abs/2308.16139">MedShapeNet – a large-scale dataset of 3D medical shapes for computer vision</a></h2>
                 <p>
                   We introduce MedShapeNet, a large-scale collection of over 100,000 annotated 3D medical shapes derived from real patient imaging, covering anatomy and surgical instruments. Designed to bridge computer vision and medical imaging, it supports tasks such as tumor classification, skull reconstruction, anatomy completion, education, and 3D printing. The data is openly accessible via a web and Python interface, enabling research in discriminative, reconstructive, and variational benchmarks, as well as extended reality applications. The project page is: <a href="https://medshapenet.ikim.nrw/">https://medshapenet.ikim.nrw/</a>.
                 </p>
@@ -439,7 +535,7 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Open-source skull reconstruction with MONAI</h2>
+                <h2><a href="https://www.sciencedirect.com/science/article/pii/S2352711023001280">Open-source skull reconstruction with MONAI</a></h2>
                 <p>
                   We propose an autoencoder-based deep learning model for cranial and facial defect reconstruction within the MONAI framework, pre-trained on the MUG500+ and SkullFix datasets. The work emphasizes open-sourcing, providing accessible code and pre-trained weights via <a href="https://github.com/Project-MONAI/research-contributions/tree/master/SkullRec/"> MONAI’s official repository </a>. This contribution introduces a pre-trained reconstruction model and demonstrates how MONAI tutorials can be easily adapted for new medical imaging applications like skull reconstruction. 
                 </p>
@@ -452,7 +548,7 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Generation of Synthetic X-Rays Images of Rib Fractures Using a 2D Enhanced Alpha-GAN for Data Augmentation</h2>
+                <h2><a href="https://link.springer.com/chapter/10.1007/978-3-031-45642-8_29">Generation of Synthetic X-Rays Images of Rib Fractures Using a 2D Enhanced Alpha-GAN for Data Augmentation</a></h2>
                 <p>
                   We developed a generative model to synthesize X-ray images with subtle rib fractures, addressing the scarcity of public datasets limited by ethical and bureaucratic constraints. Although evaluated with quantitative metrics and a Turing test, the generated images lacked sufficient realism due to high dataset heterogeneity, highlighting challenges in modeling fine fracture details.
                 </p>
@@ -475,7 +571,7 @@
             <h1>First author</h1>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Generation of Synthetic Rat Brain MRI Scans with a 3D Enhanced Alpha Generative Adversarial Network</h2>
+                <h2><a href="https://www.mdpi.com/2076-3417/12/10/4844">Generation of Synthetic Rat Brain MRI Scans with a 3D Enhanced Alpha Generative Adversarial Network</a></h2>
                 <p>
                   We adapt an α-GAN to generate realistic 3D rat-brain MRIs to overcome scanner scarcity, long acquisition times, and data/privacy constraints. To our knowledge this is the first GAN-based generation of rat MRI; with a new normalization layer and loss terms, we validate realism via quantitative metrics, a Turing test, and a segmentation task — and show that training with our synthetic scans improves segmentation more than conventional augmentation.
                 </p>
@@ -488,12 +584,15 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Generation of Synthetic Data: A Generative Adversarial Networks Approach</h2>
+                <h2><a href="https://www.igi-global.com/chapter/generation-of-synthetic-data/301776">Generation of Synthetic Data: A Generative Adversarial Networks Approach</a></h2>
                 <p>
                   We adapt an α-GAN to generate unlimited synthetic 3D rat-brain MRIs as a low-cost way to overcome scarce, unrepresentative medical datasets that traditional augmentation cannot solve. We validate realism by visual assessment and demonstrate practical value by improving performance in a segmentation test.
                 </p>
                 <p class="keywords">Alpha Generative Adversarial Network, Data Augmentation, Deep Learning Models, 3D MRI data sets of rat brain</p>
               </div>
+              <figure class="figure image-content">
+                <img src="/imgs/2022/IGI-SigmaRat.png" class="figure-img">
+              </figure>
             </div>
           </div>
           <br>
@@ -502,7 +601,7 @@
             <br>
             <div class="container-flex">
               <div class="text-content">
-                <h2>Radiomics in Head and Neck Cancer Outcome Predictions</h2>
+                <h2><a href="https://www.mdpi.com/2075-4418/12/11/2733">Radiomics in Head and Neck Cancer Outcome Predictions</a></h2>
                 <p>
                   We use radiomics and machine learning to predict head and neck cancer prognosis—including locoregional recurrences, distant metastases, and overall survival—by extracting features from CT images combined with patient clinical data. Using XGBoost, our models achieved AUC = 0.74 (LR), 0.84 (DM), 0.91 (OS), demonstrating that CT-based radiomic features can effectively support prognosis and clinical decision-making.
                 </p>
@@ -515,7 +614,7 @@
             <hr>
             <div class="container-flex">
               <div class="text-content">
-                <h2>AutoPET Challenge: Combining nn-Unet with Swin UNETR Augmented by Maximum Intensity Projection Classifier</h2>
+                <h2><a href="https://arxiv.org/abs/2209.01112">AutoPET Challenge: Combining nn-Unet with Swin UNETR Augmented by Maximum Intensity Projection Classifier</a></h2>
                 <p>
                   We present an ensemble solution for the AutoPET challenge, combining nnU-Net and Swin UNETR with a maximum intensity projection classifier that gates lesion detection, followed by late fusion of segmentations. Tested on FDG-PET/CT scans from 900 patients, our approach achieves an average cross-validation Dice score of 72.12% for lung cancer, melanoma, and lymphoma. Code is available on <a href="https://github.com/heiligerl/AutoPET_Challenge_Submission">AutoPET_Challenge_Submission</a>.
                 </p>
@@ -530,12 +629,12 @@
       </div> 
     </div>
     
-   
+  
   </main>
- 
+
   <canvas id="particle-canvas"></canvas>
 
-   
+  
   <script src="/js/mask-wave-mouse.js"></script>
   <script src="/js/responsive.js"></script>
   <script src="/js/moving-content.js"></script>
@@ -606,6 +705,41 @@
         if (openDropdown) {
             positionDropdown(openDropdown);
         }
+    });
+
+    // --- IMAGE MODAL LOGIC (WITH FIX) ---
+    const images = document.querySelectorAll('.figure-img');
+
+    images.forEach(image => {
+      image.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.classList.add('modal-overlay');
+
+        const modalImage = document.createElement('img');
+        modalImage.src = image.src;
+        modalImage.classList.add('modal-img');
+
+        overlay.appendChild(modalImage);
+        document.body.appendChild(overlay);
+        
+        setTimeout(() => {
+          overlay.classList.add('active');
+        }, 10);
+
+        // Add a click listener to the overlay to remove it
+        overlay.addEventListener('click', (event) => {
+          // **THIS IS THE FIX**: Stop the click from reaching the document listener
+          event.stopPropagation(); 
+          
+          overlay.classList.remove('active');
+          
+          overlay.addEventListener('transitionend', () => {
+            if (document.body.contains(overlay)) {
+              document.body.removeChild(overlay);
+            }
+          }, { once: true });
+        });
+      });
     });
   });
 </script>
