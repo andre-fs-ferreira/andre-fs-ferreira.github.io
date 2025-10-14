@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/XSL/about.xsl"?>
 <profile>
+  <head_data>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJd/rB7Xj+XyU6K/BEXF8s0FwXG4Tj4e9F/F8Xy6d4+4+4/g+g+g+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/background-pub.css"/>
+    <link rel="stylesheet" href="/css/button.css"/>
+    <link rel="stylesheet" href="/css/text.css"/>
+    <link rel="stylesheet" href="/css/about-page.css"/>
+    <style>
+    <![CDATA[
+      .toggle-link { cursor: pointer; }
+      .no-bullet li { list-style-type: none; }
+      .transparent { color: rgba(0, 0, 0, 0.312); }
+      .language-item { display: flex; align-items: center; margin-bottom: 8px; list-style-type: none; }
+      .language-name { width: 150px; flex-shrink: 0; }
+      .level-bar-container { height: 12px; width: 250px; background-color: #0000006e; border-radius: 6px; overflow: hidden; }
+      .level-bar-fill { height: 100%; background-color: #3498db; transition: width 0.8s ease-in-out; border-radius: 6px; }
+      .level-a1 { width: 16.67%; } .level-a2 { width: 33.33%; } .level-b1 { width: 50.00%; } .level-b2 { width: 66.67%; } .level-c1 { width: 83.33%; } .level-c2 { width: 100%; }
+      .skills-list { list-style-type: none; padding-left: 0; }
+      .skill-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 14px; }
+      .skill-name { width: 200px; flex-shrink: 0; }
+      .skill-level-text { width: 30px; text-align: right; font-weight: bold; }
+      .skill-bar-container { height: 10px; width: 150px; background-color: #0000006e; border-radius: 5px; overflow: hidden; }
+      .skill-bar-fill { height: 100%; background-color: #3498db; border-radius: 5px; }
+      .level-1 { width: 20%; } .level-2 { width: 40%; } .level-3 { width: 60%; } .level-4 { width: 80%; } .level-5 { width: 100%; }
+      .timeline { margin: auto auto; position: relative; }
+      .milestone { display: flex; align-items: center; margin: 60px auto; position: relative; opacity: 0; animation: fadeInUp 0.8s ease forwards; max-width: 100%; }
+      .icon { width: 80px; height: 80px; background: radial-gradient(circle, #000876, #0112ff); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 1; box-shadow: 0 4px 20px rgba(255, 107, 53, 0); position: relative; left: 5%; transform: translateX(-50%); flex-shrink: 0; }
+      .content { padding-left: 5%; position: relative; }
+      .title { font-size: 24px; font-weight: bold; color: #000000; margin-bottom: 10px; }
+      .date { color: #000000; margin-bottom: 5px; }
+      .location { color: #000000; font-size: 18px; }
+      .milestone:nth-child(1) { animation-delay: 0.2s; } .milestone:nth-child(2) { animation-delay: 0.4s; } .milestone:nth-child(3) { animation-delay: 0.6s; } .milestone:nth-child(4) { animation-delay: 0.8s; }
+      @media (max-width: 768px) { body { padding: 0px; } .timeline::before { left: 20px; } .milestone { text-align: left !important; margin: auto auto; } .content { padding: 15px; padding-left: 0; text-align: left !important; margin: 0 0 0 100px; } .icon { position: absolute; left: 1%; top: 50%; transform: translateY(-50%); width: 80px; height: 80px; font-size: 32px; } .title { font-size: 20px; } .location { font-size: 16px; } }
+      @media (max-width: 480px) { .milestone { margin: 30px auto; } .icon { width: 50px; height: 50px; font-size: 20px; } .content { padding-left: 0; text-align: left !important; margin: 0 0 0 60px; } .title { font-size: 18px; } .location { font-size: 14px; } }
+      .right-margin { margin-right: 5%; } .left-margin { margin-left: 5%; } ul.circle { list-style-type: circle; }
+      .cv-link { text-decoration: underline; color: #007bff; cursor: default; transition: color 0.3s ease; }
+      .cv-link:hover { color: #ff4500; cursor: pointer; }
+    ]]>
+    </style>
+  </head_data>
+  
   <header>
     <title>About Me</title>
     <subtitle>PhD Student in Biomedical Engineering | AI in Medical Imaging Expert | Challenge Winner &amp; Researcher</subtitle>
   </header>
 
-  <resume cv_path="/imgs/CV_Andre_Ferreira.pdf">
+  <resume title="Resume" cv_path="/imgs/CV_Andre_Ferreira.pdf" open_cv_text="open CV" challenges_title="🎉 Winner of multiple international AI challenges in medical imaging:" languages_title="💬 Language levels:" expand_text="(expand ⇩)" collapse_text="(collapse ⇧)">
     <item title="📚 PhD student in Biomedical Engineering (Medical Informatics):">
       <detail>📍 University of Minho 🤝 IKIM, Universität Duisburg-Essen</detail>
     </item>
@@ -45,7 +88,7 @@
     </languages>
   </resume>
 
-  <workExperience>
+  <workExperience title="Work experience">
     <milestone icon="🎓">
       <title>PhD student</title>
       <date>📅 Sept. 2022 - Aug. 2025?</date>
@@ -68,7 +111,7 @@
     </milestone>
   </workExperience>
 
-  <domainFocus>
+  <domainFocus title="👨‍💻 Domain Focus">
     <focusArea title="Over 4 years of experience in developing complete, end-to-end pipelines for:">
       <point>Machine Learning</point>
       <point>Deep Learning</point>
@@ -91,7 +134,7 @@
     </focusArea>
   </domainFocus>
 
-  <skills>
+  <skills title="Technical Skills" expand_text="(expand ⇩)" collapse_text="(collapse ⇧)">
     <skill name="Python" level="5"/>
     <skill name="PyTorch/MONAI" level="5"/>
     <skill name="Sklearn/Pandas/Numpy" level="4"/>
@@ -116,7 +159,7 @@
     <skill name="C" level="2"/>
   </skills>
 
-  <distinctions>
+  <distinctions title="🔑 Key Distinctions">
     <distinction title="Best Graduate Student of the School of Engineering:">
       <detail date="📅 2020/2021" location="📍 University of Minho, Braga, Portugal"/>
     </distinction>
@@ -133,13 +176,13 @@
     </funding>
   </distinctions>
 
-  <contributions>
+  <contributions title="🎓 Academic &amp; Research Contributions">
     <contribution>Experienced in publishing articles in venues such as <strong>MIA, MDPI, MICCAI, and ISBI</strong>.</contribution>
     <contribution>Serves as a <strong>peer reviewer</strong> for publications including MIA, MDPI, MICCAI, ISBI, TVCJ, and Springer Nature.</contribution>
     <contribution>Active in teaching and mentorship as a <strong>MICCAI Tutor</strong>, <strong>Tutor for master's students</strong>, and <strong>Invited Lecturer</strong>.</contribution>
   </contributions>
 
-  <currentDevelopment>
+  <currentDevelopment title="🌐 Current Development">
     <item>Currently deepening knowledge in <strong>synthetic data generation, foundation models, LLMs, and the German language</strong>.</item>
   </currentDevelopment>
 </profile>

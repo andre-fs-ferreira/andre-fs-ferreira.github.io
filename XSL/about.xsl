@@ -5,44 +5,7 @@
   <xsl:template match="/">
     <html lang="en">
       <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>About</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJd/rB7Xj+XyU6K/BEXF8s0FwXG4Tj4e9F/F8Xy6d4+4+4/g+g+g+g+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="/css/background-pub.css"/>
-        <link rel="stylesheet" href="/css/button.css"/>
-        <link rel="stylesheet" href="/css/text.css"/>
-        <link rel="stylesheet" href="/css/about-page.css"/>
-        <style>
-          .toggle-link { cursor: pointer; }
-          .no-bullet li { list-style-type: none; }
-          .transparent { color: rgba(0, 0, 0, 0.312); }
-          .language-item { display: flex; align-items: center; margin-bottom: 8px; list-style-type: none; }
-          .language-name { width: 150px; flex-shrink: 0; }
-          .level-bar-container { height: 12px; width: 250px; background-color: #0000006e; border-radius: 6px; overflow: hidden; }
-          .level-bar-fill { height: 100%; background-color: #3498db; transition: width 0.8s ease-in-out; border-radius: 6px; }
-          .level-a1 { width: 16.67%; } .level-a2 { width: 33.33%; } .level-b1 { width: 50.00%; } .level-b2 { width: 66.67%; } .level-c1 { width: 83.33%; } .level-c2 { width: 100%; }
-          .skills-list { list-style-type: none; padding-left: 0; }
-          .skill-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 14px; }
-          .skill-name { width: 200px; flex-shrink: 0; }
-          .skill-level-text { width: 30px; text-align: right; font-weight: bold; }
-          .skill-bar-container { height: 10px; width: 150px; background-color: #0000006e; border-radius: 5px; overflow: hidden; }
-          .skill-bar-fill { height: 100%; background-color: #3498db; border-radius: 5px; }
-          .level-1 { width: 20%; } .level-2 { width: 40%; } .level-3 { width: 60%; } .level-4 { width: 80%; } .level-5 { width: 100%; }
-          .timeline { margin: auto auto; position: relative; }
-          .milestone { display: flex; align-items: center; margin: 60px auto; position: relative; opacity: 0; animation: fadeInUp 0.8s ease forwards; max-width: 100%; }
-          .icon { width: 80px; height: 80px; background: radial-gradient(circle, #000876, #0112ff); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 1; box-shadow: 0 4px 20px rgba(255, 107, 53, 0); position: relative; left: 5%; transform: translateX(-50%); flex-shrink: 0; }
-          .content { padding-left: 5%; position: relative; }
-          .title { font-size: 24px; font-weight: bold; color: #000000; margin-bottom: 10px; }
-          .date { color: #000000; margin-bottom: 5px; }
-          .location { color: #000000; font-size: 18px; }
-          .milestone:nth-child(1) { animation-delay: 0.2s; } .milestone:nth-child(2) { animation-delay: 0.4s; } .milestone:nth-child(3) { animation-delay: 0.6s; } .milestone:nth-child(4) { animation-delay: 0.8s; }
-          @media (max-width: 768px) { body { padding: 0px; } .timeline::before { left: 20px; } .milestone { text-align: left !important; margin: auto auto; } .content { padding: 15px; padding-left: 0; text-align: left !important; margin: 0 0 0 100px; } .icon { position: absolute; left: 1%; top: 50%; transform: translateY(-50%); width: 80px; height: 80px; font-size: 32px; } .title { font-size: 20px; } .location { font-size: 16px; } }
-          @media (max-width: 480px) { .milestone { margin: 30px auto; } .icon { width: 50px; height: 50px; font-size: 20px; } .content { padding-left: 0; text-align: left !important; margin: 0 0 0 60px; } .title { font-size: 18px; } .location { font-size: 14px; } }
-          .right-margin { margin-right: 5%; } .left-margin { margin-left: 5%; } ul.circle { list-style-type: circle; }
-          .cv-link { text-decoration: underline; color: #007bff; cursor: default; transition: color 0.3s ease; }
-          .cv-link:hover { color: #ff4500; cursor: pointer; }
-        </style>
+        <xsl:copy-of select="/profile/head_data/*"/>
       </head>
       <body>
         <xsl:apply-templates select="/profile/header"/>
@@ -51,14 +14,14 @@
           <xsl:apply-templates select="/profile/workExperience"/>
           
           <section class="topic">
-            <h2>👨‍💻 Domain Focus</h2>
+            <h2><xsl:value-of select="/profile/domainFocus/@title"/></h2>
             <div class="topic-subsection right-margin left-margin">
               <xsl:apply-templates select="/profile/domainFocus"/>
             </div>
             <section class="skills-section right-margin left-margin">
               <hr/>
-              <h3>Technical Skills
-                <div class="transparent toggle-link" onclick="toggleVisibility('skills-challenges-content', this)">(expand ⇩)</div>
+              <h3><xsl:value-of select="/profile/skills/@title"/>
+                <div class="transparent toggle-link" onclick="toggleVisibility('skills-challenges-content', this)"><xsl:value-of select="/profile/skills/@expand_text"/></div>
               </h3>
               <div id="skills-challenges-content" class="hidden-content">
                 <xsl:apply-templates select="/profile/skills"/>
@@ -111,7 +74,7 @@
   <xsl:template match="resume">
     <section class="topic no-bullet">
       <div class="right-margin">
-        <h2>Resume (<a href="{@cv_path}" target="_blank" class="cv-link">open CV</a>)</h2>
+        <h2><xsl:value-of select="@title"/> (<a href="{@cv_path}" target="_blank" class="cv-link"><xsl:value-of select="@open_cv_text"/></a>)</h2>
         <ul>
           <xsl:for-each select="item">
             <li class="bold"><xsl:value-of select="@title"/></li>
@@ -123,7 +86,7 @@
             <hr/>
           </xsl:for-each>
           
-          <li class="bold no-bullet">🎉 Winner of multiple international AI challenges in medical imaging:
+          <li class="bold no-bullet"><xsl:value-of select="@challenges_title"/>
             <div class="transparent toggle-link" id="challenge-toggle-text" onclick="toggleVisibility('ai-challenges-content', this)">(expand ⇩)</div>
           </li>
           <div id="ai-challenges-content" class="hidden-content">
@@ -140,7 +103,7 @@
           </div>
           <hr/>
 
-          <li class="no-bullet">💬 Language levels:</li>
+          <li class="no-bullet"><xsl:value-of select="@languages_title"/></li>
           <ul>
             <xsl:for-each select="languages/language">
               <li class="language-item">
@@ -161,7 +124,7 @@
 
   <xsl:template match="workExperience">
     <section class="topic">
-      <h2>Work experience</h2>
+      <h2><xsl:value-of select="@title"/></h2>
       <div class="timeline">
         <xsl:for-each select="milestone">
           <div class="milestone">
@@ -208,7 +171,7 @@
 
   <xsl:template match="distinctions">
     <section class="topic">
-      <h2>🔑 Key Distinctions</h2>
+      <h2><xsl:value-of select="@title"/></h2>
       <div class="topic-subsection right-margin left-margin">
         <ul>
           <xsl:for-each select="distinction">
@@ -239,7 +202,7 @@
   
   <xsl:template match="contributions">
     <section class="topic">
-      <h2>🎓 Academic &amp; Research Contributions</h2>
+      <h2><xsl:value-of select="@title"/></h2>
       <div class="topic-subsection right-margin left-margin">
         <ol>
           <xsl:for-each select="contribution">
@@ -252,7 +215,7 @@
 
   <xsl:template match="currentDevelopment">
     <section class="topic">
-      <h2>🌐 Current Development</h2>
+      <h2><xsl:value-of select="@title"/></h2>
       <div class="topic-subsection right-margin left-margin">
         <ul>
           <xsl:for-each select="item">

@@ -91,7 +91,7 @@
         waveRAF = requestAnimationFrame(frame);
       } else {
         const settleStart = performance.now();
-        const settleDuration = 700;
+        const settleDuration = 2000;
         const settleFrom = { size, feather, vig };
         function settle(now2) {
           const elapsed2 = now2 - settleStart;
@@ -124,11 +124,11 @@
     animateWave({
       startSize: 0.8,
       startFeather: 6,
-      peakSize: 65,
+      peakSize: 30,
       peakFeather: 28,
       startVignette: 0.35,
       peakVignette: 0.05,
-      duration: 4000
+      duration: 2000
     });
   }
 

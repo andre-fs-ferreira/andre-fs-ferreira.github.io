@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale-1" />
   <title>André Ferreira</title>
   <link rel="stylesheet" href="/css/background.css">
   <link rel="stylesheet" href="/css/button.css">
@@ -27,50 +27,41 @@
       justify-content: space-between;
       position: relative; 
       padding-top: 8rem; 
-  }
+    }
 
     /* Header */
     .header-wrap {
-        /* Positioning to span the full screen */
         position: absolute;
         top: 0;
         left: 0;
-        right: 0; /* Stretches from left to right edge */
-        
-        /* Use padding to create space for the text inside */
+        right: 0;
         padding-top: 1rem;
-
-        /* The original background */
         background: linear-gradient(to bottom, #00228a, #010A21);
-        /* Ensure text is still centered */
         text-align: center; 
-        transition: opacity 0.8s ease-in-out; /* ✨ Add this for a smooth fade */
-        z-index: 10; /* Optional: ensures header is layered correctly */
+        transition: opacity 0.8s ease-in-out;
+        z-index: 10;
     }
 
     /* Text box */
     .text-box {
       width: clamp(80%, 90vw, 100%);
       margin-top: 0.25rem;
-      transition: opacity 0.8s ease-in-out; /* ✨ Add this for a smooth fade */
+      /* MODIFIED: Transition is now handled by a new class */
       z-index: 10;
     }
 
     /* Buttons section */
     .buttons-wrap {
-      /* Use clamp() for fluid top spacing */
-      margin-top: clamp(0rem, 10vh, 8rem); /* (MIN, IDEAL, MAX) */
+      margin-top: clamp(0rem, 10vh, 8rem);
       display: flex;
       flex-direction: column;
       gap: 1rem;
       width: 100%;
       max-width: 480px;
-      /* Use clamp() for fluid bottom spacing */
-      margin-bottom: clamp(3rem, 15vh, 6rem); /* (MIN, IDEAL, MAX) */
+      margin-bottom: clamp(3rem, 15vh, 6rem);
       box-sizing: border-box;
       padding: 0;
     }
-
 
     /* Quote styling */
     .quote {
@@ -83,15 +74,45 @@
       font-size: clamp(2rem, 10vw, 3.5rem);  
       line-height: 1.4;
     }
+    
+    /* --- CSS FOR LANGUAGE SWITCHER --- */
+    #language-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
 
+    #language-switcher button {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0.5;
+    }
+
+    #language-switcher button.active-lang {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+    
+    /* --- NEW CSS FOR FADING EFFECT --- */
+    .fade-container {
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    .fade-container.fading {
+      opacity: 0;
+    }
+    /* --- END NEW CSS --- */
   </style>
 </head>
 
 <body>
-  <!-- particle canvas -->
   <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-  <!-- background image -->
   <div class="bg-wrap" aria-hidden="true">
     <img class="bg-image" src="/imgs/background.jpg" alt="">
   </div>
@@ -101,36 +122,123 @@
       <h1>André Ferreira</h1>
     </div>
 
-    <div class="text-box">
-      <!-- <p>Empowering Healthcare with AI and Data</p> -->
-      <p class="quote">"I think the biggest innovations of the 21st century will be at the intersection of biology and technology. <br>A new era is beginning." - Steve Jobs </p>
+    <div id="translatable-text" class="text-box fade-container">
+      <p id="quote" class="quote">"I think the biggest innovations of the 21st century will be at the intersection of biology and technology. <br>A new era is beginning." - Steve Jobs </p>
     </div>
 
-    <div class="buttons-wrap" role="navigation" aria-label="Main navigation">
-      <button class="push-button" onclick="location.href='/XML/about.xml'">About</button>
-      <button class="push-button" onclick="location.href='/XML/projects.xml'">Research Projects</button>
-      <button class="push-button" onclick="location.href='/XML/publications.xml'">Publications</button>
+    <div class="buttons-wrap fade-container" role="navigation" aria-label="Main navigation">
+      
+      <div id="language-switcher">
+        <button id="lang-eng" aria-label="Switch to English">🇬🇧</button>
+        <button id="lang-pt" aria-label="Mudar para Português">🇵🇹</button>
+      </div>
+
+      <button id="btn-about" class="push-button">About</button>
+      <button id="btn-projects" class="push-button">Research Projects</button>
+      <button id="btn-publications" class="push-button">Publications</button>
 
       <div class="social-links">
-        <a class="social-button" href="https://github.com/ShadowTwin41" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a class="social-button" href="https://scholar.google.com/citations?user=Xi_0Q9wAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-          <i class="fas fa-graduation-cap"></i>
-        </a>
-        <a class="social-button" href="mailto:id10656@alunos.uminho.pt" aria-label="Email">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a class="social-button" href="https://pt.linkedin.com/in/andre-filipe-de-sousa-ferreira" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
+        <a class="social-button" href="https://github.com/ShadowTwin41" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a class="social-button" href="https://scholar.google.com/citations?user=Xi_0Q9wAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        <a class="social-button" href="mailto:id10656@alunos.uminho.pt" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a class="social-button" href="https://pt.linkedin.com/in/andre-filipe-de-sousa-ferreira" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
   </main>
 
-  <!-- JS scripts -->
   <script src="/js/mask-wave.js"></script>
   <script src="/js/particles.js"></script>
   <script src="/js/responsive.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- NEW: Object to hold all translations ---
+      const translations = {
+        Eng: {
+          about: 'About',
+          projects: 'Research Projects',
+          publications: 'Publications',
+          quote: `"I think the biggest innovations of the 21st century will be at the intersection of biology and technology. <br>A new era is beginning." - Steve Jobs`
+        },
+        PT: {
+          about: 'Sobre',
+          projects: 'Projetos de Investigação',
+          publications: 'Publicações',
+          quote: `"Acredito que as maiores inovações do século XXI estarão na interseção da biologia e da tecnologia. <br>Uma nova era está a começar." - Steve Jobs`
+        }
+      };
+
+      // --- Get references to all elements we need to change ---
+      const btnPt = document.getElementById('lang-pt');
+      const btnEng = document.getElementById('lang-eng');
+      
+      const aboutButton = document.getElementById('btn-about');
+      const projectsButton = document.getElementById('btn-projects');
+      const publicationsButton = document.getElementById('btn-publications');
+      const quoteElement = document.getElementById('quote');
+
+      const textContainer = document.getElementById('translatable-text');
+      const buttonsContainer = document.querySelector('.buttons-wrap');
+
+      // --- Function to update text content (without animation) ---
+      const updateContent = (lang) => {
+        const content = translations[lang];
+        
+        // Update text
+        aboutButton.textContent = content.about;
+        projectsButton.textContent = content.projects;
+        publicationsButton.textContent = content.publications;
+        quoteElement.innerHTML = content.quote; // Use innerHTML to render the <br> tag
+
+        // Update button links
+        aboutButton.onclick = () => location.href = `/${lang}/about.xml`;
+        projectsButton.onclick = () => location.href = `/${lang}/projects.xml`;
+        publicationsButton.onclick = () => location.href = `/${lang}/publications.xml`;
+        
+        // Update language switcher style
+        if (lang === 'PT') {
+          btnPt.classList.add('active-lang');
+          btnEng.classList.remove('active-lang');
+        } else {
+          btnEng.classList.add('active-lang');
+          btnPt.classList.remove('active-lang');
+        }
+      };
+
+      // --- Main function to handle the language switch with animation ---
+      const setLanguage = (lang) => {
+        const currentLang = localStorage.getItem('preferredLanguage');
+        if (lang === currentLang) {
+          return; // Do nothing if the language is already selected
+        }
+
+        // 1. Start the fade-out
+        textContainer.classList.add('fading');
+        buttonsContainer.classList.add('fading');
+
+        // 2. Wait for the fade-out to finish, then update content
+        setTimeout(() => {
+          updateContent(lang);
+          localStorage.setItem('preferredLanguage', lang);
+
+          // 3. Start the fade-in by removing the class
+          textContainer.classList.remove('fading');
+          buttonsContainer.classList.remove('fading');
+        }, 400); // This duration MUST match the CSS transition-duration (0.4s)
+      };
+
+      // --- Add click listeners ---
+      btnPt.addEventListener('click', () => setLanguage('PT'));
+      btnEng.addEventListener('click', () => setLanguage('Eng'));
+
+      // --- Initial Setup on Page Load ---
+      const savedLang = localStorage.getItem('preferredLanguage');
+      const initialLang = savedLang || 'Eng'; // Default to English
+      
+      // Set the initial content directly without animation
+      updateContent(initialLang);
+      localStorage.setItem('preferredLanguage', initialLang);
+    });
+  </script>
 </body>
 </html>

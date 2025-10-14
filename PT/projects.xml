@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/XSL/projects.xsl"?>
+<research>
+  <header>
+    <title>Projetos de Investigação</title>
+    <icon>fa-solid fa-flask</icon>
+    <quote author="Isaac Newton">"Se vi mais longe foi por estar sobre ombros de gigantes."</quote>
+  </header>
+  <projects>
+    <project id="gen-tumor">
+      <title>Geração de tumores cerebrais sintéticos</title>
+      <description>Desenvolvimento de um pipeline para gerar tumores sintéticos em imagens de ressonância magnética (RM) utilizando Redes Adversariais Generativas (GANs). O conjunto de dados BraTS foi empregue neste desenvolvimento. Vencedor de múltiplos <a href="/about.html/#challenges-awards">prémios</a>.</description>
+      <tags>
+        <tag>cGANs</tag>
+        <tag>Segmentação de tumores</tag>
+        <tag>BraTS</tag>
+      </tags>
+      <links>
+        <link href="https://link.springer.com/chapter/10.1007/978-3-031-76163-8_8" icon="fa-solid fa-file-lines">Artigo</link>
+        <link href="https://github.com/shadowtwin41/BraTS_2023_2024_solutions" icon="fa-brands fa-github" target="_blank">Código</link>
+      </links>
+    </project>
+    <project id="qc-synth">
+      <title>Controlo de qualidade de dados gerados sinteticamente</title>
+      <description>Investigação de Redes Adversariais Generativas (GANs) e Modelos de Difusão para a síntese de imagens médicas (TC/RM), com uma validação rigorosa do seu <b>realismo e utilidade</b> através de Radiomics, VTT e DSC em tarefas de segmentação.</description>
+      <tags>
+        <tag>cGANs</tag>
+        <tag>cDDPMs</tag>
+        <tag>Segmentação de tumores</tag>
+        <tag>BraTS MRI</tag>
+        <tag>H&amp;N CT</tag>
+      </tags>
+      <links>
+        <link href="https://www.arxiv.org/pdf/2506.12106" icon="fa-solid fa-file-lines">Artigo</link>
+        <link href="https://github.com/ShadowTwin41/generative_networks" icon="fa-brands fa-github" target="_blank">Código</link>
+      </links>
+    </project>
+    <project id="hn-seg">
+      <title>Pipeline de aprendizagem profunda para a segmentação automática de alta precisão de GTVs de cancro da cabeça e pescoço em ressonância magnética multi-temporal.</title>
+      <description> <a href="/about.html/#challenges-awards">Vencedor do primeiro lugar</a> no Desafio HNTS-MRG24 MICCAI para a segmentação automática de GTVs de cancro da cabeça e pescoço em radioterapia guiada por ressonância magnética. Foi desenvolvida e otimizada uma pipeline de aprendizagem profunda multi-modelo (nnUNet/MedNeXt), que alcançou um Coeficiente de Similaridade de Dice agregado de 0.8254, considerado estado-da-arte.</description>
+      <tags>
+        <tag>nnUNet</tag>
+        <tag>MedNeXt</tag>
+        <tag>Segmentação</tag>
+        <tag>H&amp;N MRI</tag>
+      </tags>
+      <links>
+        <link href="https://arxiv.org/pdf/2411.14752" icon="fa-solid fa-file-lines">Artigo</link>
+        <link href="https://github.com/NikooMoradi/HNTSMRG24_team_TUMOR" icon="fa-brands fa-github" target="_blank">Código</link>
+      </links>
+    </project>
+    <project id="rat-brain">
+      <title>Geração de imagens sintéticas de ressonância magnética de cérebro de rato com uma Alpha-GAN 3D melhorada</title>
+      <description><b>Pioneiro</b> na abordagem inicial baseada em Redes Adversariais Generativas (GANs) para gerar imagens realistas de ressonância magnética 3D de cérebro de rato, abordando a escassez crítica de dados e os desafios éticos (3Rs) na neurociência translacional. O realismo do modelo foi validado através de métricas quantitativas, um Teste de Turing e aplicações de segmentação, demonstrando que os dados sintéticos superaram a aumentação de dados convencional na melhoria do desempenho do modelo de segmentação.</description>
+      <tags>
+        <tag>GANs</tag>
+        <tag>Segmentação</tag>
+        <tag>RM cérebro de rato</tag>
+      </tags>
+      <links>
+        <link href="https://www.mdpi.com/2076-3417/12/10/4844" icon="fa-solid fa-file-lines">Artigo</link>
+        <link href="https://github.com/ShadowTwin41/alpha-WGAN-SigmaRat" icon="fa-brands fa-github" target="_blank">Código</link>
+      </links>
+    </project>
+  </projects>
+</research>
