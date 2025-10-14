@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/XSL/projects.xsl"?>
+<research>
+  <header>
+    <title>Research Projects</title>
+    <icon>fa-solid fa-flask</icon>
+    <quote author="Isaac Newton">"If I have seen further it is by standing on the shoulders of Giants."</quote>
+  </header>
+  <projects>
+    <project id="gen-tumor">
+      <title>Generation of synthetic brain tumors</title>
+      <description>Development of a pipeline to generate synthetic tumors into MRI scans using GANs. BraTS dataset used for development. Multiple <a href="/about.html/#challenges-awards">award winner</a>.</description>
+      <tags>
+        <tag>cGANs</tag>
+        <tag>Tumor segmentation</tag>
+        <tag>BraTS</tag>
+      </tags>
+      <links>
+        <link href="https://link.springer.com/chapter/10.1007/978-3-031-76163-8_8" icon="fa-solid fa-file-lines">Paper</link>
+        <link href="https://github.com/shadowtwin41/BraTS_2023_2024_solutions" icon="fa-brands fa-github" target="_blank">Code</link>
+      </links>
+    </project>
+    <project id="qc-synth">
+      <title>Quality control of data synthetically generated</title>
+      <description>Investigated GANs and Diffusion Models for medical image synthesis (CT/MRI), rigorously validating <b>realism and utility</b> using Radiomics, VTT, and DSC for segmentation tasks.</description>
+      <tags>
+        <tag>cGANs</tag>
+        <tag>cDDPMs</tag>
+        <tag>Tumor segmentation</tag>
+        <tag>BraTS MRI</tag>
+        <tag>H&amp;N CT</tag>
+      </tags>
+      <links>
+        <link href="https://www.arxiv.org/pdf/2506.12106" icon="fa-solid fa-file-lines">Paper</link>
+        <link href="https://github.com/ShadowTwin41/generative_networks" icon="fa-brands fa-github" target="_blank">Code</link>
+      </links>
+    </project>
+    <project id="hn-seg">
+      <title>Deep learning pipeline for highly accurate automated segmentation of Head and Neck Cancer GTVs in multi-timepoint MRI.</title>
+      <description> <a href="/about.html/#challenges-awards">First place winner</a> in the HNTS-MRG24 MICCAI Challenge for automated Head and Neck Cancer GTV segmentation in MRI-guided radiotherapy.
+                Developed and optimized a multi-model deep learning pipeline (nnUNet/MedNeXt) achieving a state-of-the-art aggregated Dice Similarity Coefficient of 0.8254.</description>
+      <tags>
+        <tag>nnUNet</tag>
+        <tag>MedNeXt</tag>
+        <tag>Segmentation</tag>
+        <tag>H&amp;N MRI</tag>
+      </tags>
+      <links>
+        <link href="https://arxiv.org/pdf/2411.14752" icon="fa-solid fa-file-lines">Paper</link>
+        <link href="https://github.com/NikooMoradi/HNTSMRG24_team_TUMOR" icon="fa-brands fa-github" target="_blank">Code</link>
+      </links>
+    </project>
+    <project id="rat-brain">
+      <title>Generation of Synthetic Rat Brain MRI scans with a 3D Enhanced Alpha-GAN</title>
+      <description><b>Pioneered</b> the first GAN-based approach to generate realistic 3D synthetic rat brain MRI scans, addressing critical data scarcity and ethical (3Rs) challenges in translational neuroscience. Validated model realism using quantitative metrics, a Turing Test, and segmentation applications, demonstrating that synthetic data outperformed conventional data augmentation in improving segmentation model performance.</description>
+      <tags>
+        <tag>GANs</tag>
+        <tag>Segmentation</tag>
+        <tag>Rat brain MRI</tag>
+      </tags>
+      <links>
+        <link href="https://www.mdpi.com/2076-3417/12/10/4844" icon="fa-solid fa-file-lines">Paper</link>
+        <link href="https://github.com/ShadowTwin41/alpha-WGAN-SigmaRat" icon="fa-brands fa-github" target="_blank">Code</link>
+      </links>
+    </project>
+  </projects>
+</research>

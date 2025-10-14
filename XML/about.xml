@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/XSL/about.xsl"?>
+<profile>
+  <header>
+    <title>About Me</title>
+    <subtitle>PhD Student in Biomedical Engineering | AI in Medical Imaging Expert | Challenge Winner &amp; Researcher</subtitle>
+  </header>
+
+  <resume cv_path="/imgs/CV_Andre_Ferreira.pdf">
+    <item title="📚 PhD student in Biomedical Engineering (Medical Informatics):">
+      <detail>📍 University of Minho 🤝 IKIM, Universität Duisburg-Essen</detail>
+    </item>
+    <item title="🧑‍🏫 Tutor:">
+      <detail>📍 University of Minho</detail>
+      <detail>📍 MICCAI 2025 RISE</detail>
+    </item>
+    <challenges>
+      <challengeGroup name="🧠 BraTS 2023">
+        <award icon="🥇">Task 1: Adult Glioma Segmentation</award>
+      </challengeGroup>
+      <challengeGroup name="🧠 BraTS-ISBI 2024">
+        <award icon="🥇">GoAT: Generalizability Across Tumors Challenge</award>
+      </challengeGroup>
+      <challengeGroup name="🧠 BraTS 2024">
+        <award icon="🥇">Task 1: Adult Glioma Post Treatment</award>
+        <award icon="🥈">Task 8: Inpainting</award>
+        <award icon="🥉">Task 3: Meningioma Radiotherapy</award>
+        <award icon="🏅">Task 7: Missing MRI</award>
+      </challengeGroup>
+      <challengeGroup name="🏥 HNTS-MRG 2024">
+        <award icon="🥇">Task 1: Pre-RT Segmentation</award>
+      </challengeGroup>
+      <challengeGroup name="🧠 BraTS 2025">
+        <award icon="🥇">Task 8: Missing MRI</award>
+        <award icon="🥇">Task 9: Inpainting</award>
+      </challengeGroup>
+      <challengeGroup name="🪡 Open Suturing Skills Challenge 2025">
+        <award icon="🥈">Task 2: OSATS</award>
+      </challengeGroup>
+    </challenges>
+    <languages>
+      <language name="Portuguese" flag="🇵🇹" levelCode="c2" levelText="Native"/>
+      <language name="English" flag="🇬🇧" levelCode="c1" levelText="Fluent"/>
+      <language name="German" flag="🇩🇪" levelCode="a2" levelText="Basic"/>
+    </languages>
+  </resume>
+
+  <workExperience>
+    <milestone icon="🎓">
+      <title>PhD student</title>
+      <date>📅 Sept. 2022 - Aug. 2025?</date>
+      <location>📍 University of Minho, Braga, Portugal</location>
+    </milestone>
+    <milestone icon="🌍">
+      <title>Visiting Researcher</title>
+      <date>📅 Sept. 2023 - March 2024</date>
+      <location>📍 RWTH Aachen, Germany</location>
+    </milestone>
+    <milestone icon="🔬">
+      <title>Research Assistant</title>
+      <date>📅 March 2022 - Aug. 2022</date>
+      <location>📍 IKIM, Essen, Germany</location>
+    </milestone>
+    <milestone icon="🧪">
+      <title>Internship Trainee</title>
+      <date>📅 May 2021 - Aug. 2021</date>
+      <location>📍 Neurospin, CEA-Saclay, France</location>
+    </milestone>
+  </workExperience>
+
+  <domainFocus>
+    <focusArea title="Over 4 years of experience in developing complete, end-to-end pipelines for:">
+      <point>Machine Learning</point>
+      <point>Deep Learning</point>
+      <point>Computer Vision</point>
+      <point>Medical Data Analysis</point>
+    </focusArea>
+    <focusArea title="Specialized in medical/AI projects, with a research focus on:">
+      <point>Generation of synthetic medical data</point>
+      <point>Automatic Segmentation</point>
+      <point>Automatic Classifcation</point>
+      <point>Radiomics Analysis</point>
+    </focusArea>
+    <focusArea title="Skilled in designing and implementing innovative networks, including:">
+      <point>GANs</point>
+      <point>DDPMS</point>
+      <point>VAEs</point>
+      <point>DNNs</point>
+      <point>ViTs</point>
+      <point>LLMs</point>
+    </focusArea>
+  </domainFocus>
+
+  <skills>
+    <skill name="Python" level="5"/>
+    <skill name="PyTorch/MONAI" level="5"/>
+    <skill name="Sklearn/Pandas/Numpy" level="4"/>
+    <skill name="SQL" level="4"/>
+    <skill name="HTML/XML/XSL" level="4"/>
+    <skill name="Microsoft Office" level="4"/>
+    <skill name="RapidMiner/Weka" level="4"/>
+    <skill name="Java" level="3"/>
+    <skill name="TensorFlow" level="3"/>
+    <skill name="Hugging Face" level="3"/>
+    <skill name="openEHR" level="3"/>
+    <skill name="Tableau" level="3"/>
+    <skill name="GraphQL" level="3"/>
+    <skill name="NoSQL" level="3"/>
+    <skill name="FHIR/HL7" level="3"/>
+    <skill name="MATLAB" level="3"/>
+    <skill name="R" level="3"/>
+    <skill name="Git/GitHub/GitLab" level="3"/>
+    <skill name="LaTeX" level="3"/>
+    <skill name="JavaScript" level="2"/>
+    <skill name="BioPython" level="2"/>
+    <skill name="C" level="2"/>
+  </skills>
+
+  <distinctions>
+    <distinction title="Best Graduate Student of the School of Engineering:">
+      <detail date="📅 2020/2021" location="📍 University of Minho, Braga, Portugal"/>
+    </distinction>
+    <funding title="Fundings:">
+      <grant title="FCT PhD studentship grant:">
+        <detail date="📅 Sept. 2022 - Aug. 2025?" location="📍 University of Minho, Braga, Portugal"/>
+      </grant>
+      <grant title="Advanced Research Opportunities Program (AROP):">
+        <detail date="📅 Sept. 2023 - March 2024" location="📍 RWTH, Aachen, Germany"/>
+      </grant>
+      <grant title="Gulbenkian Merit Scholarship &quot;Gulbenkian Mais&quot; (2016-2021):">
+        <detail date="📅 Sept. 2016 - August 2021" location="📍 University of Minho, Braga, Portugal"/>
+      </grant>
+    </funding>
+  </distinctions>
+
+  <contributions>
+    <contribution>Experienced in publishing articles in venues such as <strong>MIA, MDPI, MICCAI, and ISBI</strong>.</contribution>
+    <contribution>Serves as a <strong>peer reviewer</strong> for publications including MIA, MDPI, MICCAI, ISBI, TVCJ, and Springer Nature.</contribution>
+    <contribution>Active in teaching and mentorship as a <strong>MICCAI Tutor</strong>, <strong>Tutor for master's students</strong>, and <strong>Invited Lecturer</strong>.</contribution>
+  </contributions>
+
+  <currentDevelopment>
+    <item>Currently deepening knowledge in <strong>synthetic data generation, foundation models, LLMs, and the German language</strong>.</item>
+  </currentDevelopment>
+</profile>
