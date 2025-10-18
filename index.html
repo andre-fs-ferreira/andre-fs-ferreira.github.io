@@ -65,22 +65,25 @@
 
     /* Quote styling */
     .quote {
-      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-size: clamp(1.1rem, 1.7vw, 1.4rem);
       font-style: italic;
       line-height: 1.4;
+      width: 90%;
+      padding-left: 5%;
     }
 
     h1 {
-      font-size: clamp(2rem, 10vw, 3.5rem);  
+      font-size: clamp(2.5rem, 5vw, 3.5rem);  
       line-height: 1.4;
     }
     
     /* --- CSS FOR LANGUAGE SWITCHER --- */
     #language-switcher {
+      margin-top: 0rem;
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0rem;
     }
 
     #language-switcher button {
@@ -101,6 +104,7 @@
     /* --- NEW CSS FOR FADING EFFECT --- */
     .fade-container {
       transition: opacity 0.4s ease-in-out;
+      border-radius: 50px;
     }
 
     .fade-container.fading {
@@ -123,7 +127,7 @@
     </div>
 
     <div id="translatable-text" class="text-box fade-container">
-      <p id="quote" class="quote">"I think the biggest innovations of the 21st century will be at the intersection of biology and technology. <br>A new era is beginning." - Steve Jobs </p>
+      <p id="quote" class="quote">"I think the biggest innovations of the 21st century will be at the intersection of biology and technology. A new era is beginning." - Steve Jobs </p>
     </div>
 
     <div class="buttons-wrap fade-container" role="navigation" aria-label="Main navigation">
