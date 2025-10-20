@@ -9,7 +9,7 @@
   <year value="2025">
     <author-group type="first" title="Primeiro autor">
       <publication>
-        <title>Geração de Amostras 10x Mais Rápida com DDPM Condicional</title>
+        <title>Geração de casos 10x mais rápido com DDPM Condicional</title>
         <description>Apresentamos uma framework unificada de denoising-diffusion para as Tarefas 8 (síntese de modalidades de RM em falta) e 9 (inpainting de regiões sem patologia) do BraTS 2025, com uma estratégia de inferência rápida, mais de 10x mais veloz que a nossa solução do BraTS 2024, mantendo um baixo custo computacional. Resultados — Tarefa 8: Dice 0.86, SSIM 0.77; Tarefa 9: RMSE 0.053, PSNR 26.77, SSIM 0.918. O código será disponibilizado em breve.</description>
         <keywords>Conditional Denoising Diffusion, IDDPM, Geração de Dados Sintéticos, Reconstrução de RM, Eficiência Computacional, Image Inpainting</keywords>
         <image src="/imgs/2025/Brats_2025_task8_9.png"/>
@@ -17,13 +17,19 @@
     </author-group>
     <author-group type="mid" title="Coautor">
       <publication>
+        <title><![CDATA[<a href=""> Skeletal Muscle Radiation Attenuation at C3 Predicts Survival in Head and Neck Cancer </a>]]></title>
+        <description>Brevemente...</description>
+        <keywords>Brevemente...</keywords>
+        <image src="/imgs/work_in_progress.png"/>
+      </publication>
+      <publication>
         <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Brain tumor (Glioblastoma Multiforme) MRI dataset collection with ground truth segmentation masks </a>]]></title>
         <description>Apresentamos um dataset de imagens de RM de tumores cerebrais com 23,049 amostras, cada uma incluindo imagens FLAIR, T1, T1ce e T2, além de uma ou duas máscaras de segmentação. O dataset expande 438 casos originais do BraTS 2022 através de registo, gerando amostras adicionais com localizações tumorais variadas. Apesar dos protocolos de imagem heterogéneos, fornece ground truth para cada amostra, apoiando o desenvolvimento de modelos de deep learning para segmentação automática de tumores em casos nunca antes vistos.</description>
         <keywords>Segmentação de tumores cerebrais, Aumentação de dados, Registo, BraTS, Deep learning</keywords>
         <image src="/imgs/2025/GBM-Reservoir.png"/>
       </publication>
       <publication>
-        <title><![CDATA[<a href="https://www.medrxiv.org/content/10.1101/2025.06.11.25329022v1">Beyond Benchmarks: Towards Robust Artificial Intelligence Bone Segmentation in Socio-Technical Systems</a>]]></title>
+        <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S0957417425036474">Beyond Benchmarks: Towards Robust Artificial Intelligence Bone Segmentation in Socio-Technical Systems</a>]]></title>
         <description>Avaliámos 20 modelos de segmentação mandibular de última geração em 19,218 segmentações de 1,000 exames de TC/CBCT multicêntricos e descobrimos que a precisão pode variar até 25% devido a fatores como o tamanho do voxel, orientação do osso e condições do paciente. Embora voxels isotrópicos menores e uma orientação neutra tenham melhorado o desempenho, a osteossíntese metálica e a anatomia complexa degradaram-no. Estes resultados destacam que os modelos de IA não são “plug-and-play” e fornecem recomendações baseadas em evidências para melhorar a integração clínica.</description>
         <keywords>Inteligência Artificial, Processamento de Imagem, Imagem Assistida por Computador, Tridimensional, Tomografia, Tomografia Computadorizada, Guias de Prática Clínica, Mandíbula</keywords>
         <image src="/imgs/2025/Beyond_Benchmarks.png"/>

@@ -17,13 +17,19 @@
     </author-group>
     <author-group type="mid" title="Co-author">
       <publication>
+        <title><![CDATA[<a href=""> Skeletal Muscle Radiation Attenuation at C3 Predicts Survival in Head and Neck Cancer </a>]]></title>
+        <description>Coming soon...</description>
+        <keywords>Coming soon...</keywords>
+        <image src="/imgs/work_in_progress.png"/>
+      </publication>
+      <publication>
         <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Brain tumor (Glioblastoma Multiforme) MRI dataset collection with ground truth segmentation masks </a>]]></title>
         <description>We present a brain tumor MRI dataset with 23,049 samples, each including FLAIR, T1, T1ce, and T2 scans, plus one or two segmentation masks. The dataset expands 438 original BraTS 2022 cases through registration, generating additional samples with varied tumor locations. Despite heterogeneous imaging protocols, it provides ground truth for each sample, supporting the development of deep learning–based automated tumor segmentation on unseen cases.</description>
         <keywords>Brain tumor segmentation, Data augmentation, Registration, BraTS, Deep learning</keywords>
         <image src="/imgs/2025/GBM-Reservoir.png"/>
       </publication>
       <publication>
-        <title><![CDATA[<a href="https://www.medrxiv.org/content/10.1101/2025.06.11.25329022v1">Beyond Benchmarks: Towards Robust Artificial Intelligence Bone Segmentation in Socio-Technical Systems</a>]]></title>
+        <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S0957417425036474">Beyond Benchmarks: Towards Robust Artificial Intelligence Bone Segmentation in Socio-Technical Systems</a>]]></title>
         <description>We evaluated 20 state-of-the-art mandibular segmentation models on 19,218 segmentations from 1,000 multicenter CT/CBCT scans and found accuracy can vary by up to 25% due to factors like voxel size, bone orientation, and patient conditions. While smaller isotropic voxels and neutral orientation improved performance, metallic osteosynthesis and complex anatomy degraded it. These results highlight that AI models are not “plug-and-play” and provide evidence-based recommendations to improve clinical integration.</description>
         <keywords>Artificial Intelligence, Image Processing, Computer-Assisted Imaging, Three-Dimensional, 50 Tomography, X-Ray Computed, Practice Guideline, Mandible</keywords>
         <image src="/imgs/2025/Beyond_Benchmarks.png"/>
