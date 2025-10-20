@@ -139,7 +139,7 @@
     <author-group type="first" title="Primeiro autor">
       <publication>
         <title><![CDATA[<a href="https://www.mdpi.com/2076-3417/12/10/4844">Geração de Imagens Sintéticas de Ressonância Magnética de Cérebro de Rato com uma Rede Generativa Adversarial Alpha 3D Melhorada</a>]]></title>
-        <description>Adaptamos uma α-GAN para gerar imagens de RM de cérebro de rato 3D realistas para superar a escassez de scanners, longos tempos de aquisição e restrições de dados/privacidade. Pelo nosso conhecimento, esta é a primeira geração baseada em GAN de RM de rato; com uma nova camada de normalização e termos de perda, validamos o realismo através de métricas quantitativas, um teste de Turing e uma tarefa de segmentação — e mostramos que o treino com as nossas imagens sintéticas melhora a segmentação mais do que a aumentação convencional.</description>
+        <description><![CDATA[Adaptamos uma α-GAN para gerar imagens de RM de cérebro de rato 3D realistas para superar a escassez de scanners, longos tempos de aquisição e restrições de dados/privacidade. Pelo nosso conhecimento, esta é a primeira geração baseada em GAN de RM de rato; com uma nova camada de normalização e termos de perda, validamos o realismo através de métricas quantitativas, um teste de Turing e uma tarefa de segmentação — e mostramos que o treino com as nossas imagens sintéticas melhora a segmentação mais do que a aumentação convencional. Code available on <a href="https://github.com/ShadowTwin41/alpha-WGAN-SigmaRat">alpha-WGAN-SigmaRat</a>.]]></description>
         <keywords>Rede Generativa Adversarial Alpha, Aumentação de Dados, Dados Sintéticos, RM de cérebro de rato</keywords>
         <image src="/imgs/2022/SigmaRat.png"/>
       </publication>

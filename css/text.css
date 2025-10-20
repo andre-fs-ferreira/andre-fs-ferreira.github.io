@@ -18,7 +18,7 @@ main p {
 /* Global link styling */
 a {
   color: rgba(0, 0, 0, 1); /* Makes the text black */
-  text-decoration: none; /* Removes underline */
+  text-decoration: underline;
   font-weight: bold;
 }
 

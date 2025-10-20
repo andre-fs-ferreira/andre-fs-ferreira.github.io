@@ -138,8 +138,9 @@
   <year value="2022">
     <author-group type="first" title="First author">
       <publication>
+      
         <title><![CDATA[<a href="https://www.mdpi.com/2076-3417/12/10/4844">Generation of Synthetic Rat Brain MRI Scans with a 3D Enhanced Alpha Generative Adversarial Network</a>]]></title>
-        <description>We adapt an α-GAN to generate realistic 3D rat-brain MRIs to overcome scanner scarcity, long acquisition times, and data/privacy constraints. To our knowledge this is the first GAN-based generation of rat MRI; with a new normalization layer and loss terms, we validate realism via quantitative metrics, a Turing test, and a segmentation task — and show that training with our synthetic scans improves segmentation more than conventional augmentation.</description>
+        <description><![CDATA[We adapt an α-GAN to generate realistic 3D rat-brain MRIs to overcome scanner scarcity, long acquisition times, and data/privacy constraints. To our knowledge this is the first GAN-based generation of rat MRI; with a new normalization layer and loss terms, we validate realism via quantitative metrics, a Turing test, and a segmentation task — and show that training with our synthetic scans improves segmentation more than conventional augmentation. Code available on <a href="https://github.com/ShadowTwin41/alpha-WGAN-SigmaRat">alpha-WGAN-SigmaRat</a>.]]></description>
         <keywords>Alpha Generative Adversarial Network, Data Augmentation, Synthetic Data, MRI rat brain</keywords>
         <image src="/imgs/2022/SigmaRat.png"/>
       </publication>
