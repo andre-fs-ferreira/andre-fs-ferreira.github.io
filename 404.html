@@ -1,24 +1,47 @@
----
-layout: default
----
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>André Ferreira</title>
+  <link rel="stylesheet" href="/css/background.css">
+  <link rel="stylesheet" href="/css/button.css">
+  <link rel="stylesheet" href="/css/text.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* This centers the 'Go back' button and adds space */
+    .push-button {
+      position: absolute;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50vh; 
+    }
+  </style>
+</head>
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+<body>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-<div class="container">
-  <h1>404</h1>
+  <div class="bg-wrap" aria-hidden="true">
+    <img class="bg-image" src="/imgs/background.jpg" alt="">
+  </div>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <main>
+    <div class="header-wrap">
+      <h1>André Ferreira</h1>
+    </div>
+
+    <div class="text-box fade-container">
+      <p class="quote">Page not found </p>
+    </div>
+    <button class="push-button" onclick="window.location.href='/'">Go back to main page</button>
+  </main>
+
+  <script src="/js/mask-wave.js"></script>
+  <script src="/js/index-particles.js"></script>
+  <script src="/js/responsive.js"></script>
+
+</body>
+</html>
