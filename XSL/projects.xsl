@@ -9,41 +9,9 @@
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title><xsl:value-of select="research/header/title"/></title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="/css/background-pub.css" />
         <link rel="stylesheet" href="/css/button.css" />
         <link rel="stylesheet" href="/css/text.css" />
-        <link rel="stylesheet" href="/css/research-page.css" />
-        <style>
-          .tags {
-            margin: 0.5rem 0;
-          }
-          .tag {
-            display: inline-block;
-            background: #eef3ff;
-            color: #003366;
-            font-size: 0.85rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            margin-right: 0.5rem;
-          }
-          .project-links a {
-            text-decoration: none;
-            margin-right: 1rem;
-            color: #004e92;
-          }
-          .project-links a:hover {
-            text-decoration: underline;
-          }
-          footer {
-            text-align: center;
-            padding: 1.5rem;
-          }
-          .quote {
-            font-size: 1.5rem;
-            font-style: italic;
-            line-height: 1.4;
-          }
-        </style>
+        <link rel="stylesheet" href="/css/projects.css" />
       </head>
       <body>
         <xsl:apply-templates select="research/header"/>
@@ -61,7 +29,7 @@
           </button>
         </footer>
 
-        <script src="/js/mask-wave-mouse.js"></script>
+        <script src="/js/paticles.js"></script>
         <script src="/js/responsive.js"></script>
       </body>
     </html>

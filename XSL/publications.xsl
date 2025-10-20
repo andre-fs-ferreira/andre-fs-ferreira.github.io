@@ -5,7 +5,14 @@
   <xsl:template match="/">
     <html lang="en">
       <head>
-        <xsl:copy-of select="/publications/head_data/*"/>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <title>Publications</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+        <link rel="stylesheet" href="/css/button.css"/>
+        <link rel="stylesheet" href="/css/text.css"/>
+        <link rel="stylesheet" href="/css/publications.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
       </head>
       <body>
         <xsl:apply-templates select="/publications/header"/>
@@ -27,9 +34,8 @@
         
         <canvas id="particle-canvas"></canvas>
 
-        <script src="/js/mask-wave-mouse.js"></script>
+        <script src="/js/paticles.js"></script>
         <script src="/js/responsive.js"></script>
-        <script src="/js/moving-content.js"></script>
         <script>
           document.addEventListener('DOMContentLoaded', () => {
             const body = document.body;

@@ -1,107 +1,353 @@
-/* about-page-adapted.css */
+/* ===================================
+   1. Base & Page-Level Styles
+   =================================== */
 
-/* --- Base/Body Styles --- */
 body {
-    margin: 0;
-    background-color: #010A21;
+  margin: 0;
+  background-color: #010A21;
 }
 
 canvas {
-    display: block;
-    background-color: #010A21;
-    position: fixed; /* Fixes it to the viewport */
-    top: 0;
-    left: 0;
-    z-index: -1;     /* Places it behind all other standard content */
-    width: 100vw;    /* Ensures it covers the whole screen width */
-    height: 100vh;   /* Ensures it covers the whole screen height */
+  display: block;
+  background-color: #010A21;
+  position: fixed; /* Fixes it to the viewport */
+  top: 0;
+  left: 0;
+  z-index: -1; /* Places it behind all other standard content */
+  width: 100vw; /* Ensures it covers the whole screen width */
+  height: 100vh; /* Ensures it covers the whole screen height */
 }
 
-/* --- Topic Section Styles --- */
-.topic {
-    /* Reduced opacity slightly for better contrast if background-pub.css adds complexity */
-    background-color: #ffffffd8; 
-    font-size: 1.2rem;
-    margin: 1rem 3% 1rem 3%; /* Consolidated margins */
-    border-radius: 12px;
-    padding: 0.5rem 0 1.5rem 0;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.topic:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      }
-
-.topic h2 {
-    color: rgb(0, 0, 83);
-    font-size: 1.6rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    text-align: center; 
-}
-
-.topic h3 {
-    color: #002b5c;
-    font-size: 1.3rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-/* General text styles for paragraphs and list items */
-.topic p,
-.topic li {
-    color: #000000;
-    margin: 10px 0;
-    text-align: left; 
-    max-width: 100%;
-    font-size: 1.1rem;
-}
-
-.topic ul {
-    padding-left: 20px; /* Indent lists */
-}
-
-/* Nested list correction */
-.topic ul ul {
-    margin-top: 5px; 
-    margin-bottom: 5px;
-}
+/* ===================================
+   2. Utility Classes
+   =================================== */
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-/* -------------------------------
-   Animation: fadeInUp + helpers
-   ------------------------------- */
-
-/* common fadeInUp class to apply to list items */
-.fadeInUp {
-  opacity: 0;
-  transform: translateY(10px);
-  animation-name: fadeInUp;
-  animation-duration: 0.48s;                 /* per-item duration */
-  animation-timing-function: cubic-bezier(.2,.9,.2,1);
-  animation-fill-mode: forwards;
-  /* delay is read from inline style or custom property */
-  animation-delay: var(--delay, 0s);
-}
-
-/* keyframes */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Hidden content toggled by JS */
 .hidden-content {
   display: none;
 }
 
-/* Optional: smoothly reveal/measure space (if you prefer height animation) */
-/* .hidden-content.showing { display:block; animation: revealHeight 0.28s ease; } */
+.toggle-link {
+  cursor: pointer;
+}
 
+.no-bullet li {
+  list-style-type: none;
+}
+
+ul.circle {
+  list-style-type: circle;
+}
+
+.transparent {
+  color: rgba(0, 0, 0, 0.312);
+}
+
+.right-margin {
+  margin-right: 5%;
+}
+
+.left-margin {
+  margin-left: 5%;
+}
+
+.cv-link {
+  text-decoration: underline;
+  color: #007bff;
+  cursor: default;
+  transition: color 0.3s ease;
+}
+
+.cv-link:hover {
+  color: #ff4500;
+  cursor: pointer;
+}
+
+/* ===================================
+   3. Components
+   =================================== */
+
+/* --- Component: .topic Section --- */
+.topic {
+  background-color: #ffffffd8;
+  font-size: 1.2rem;
+  margin: 1rem 3% 1rem 3%;
+  border-radius: 12px;
+  padding: 0.5rem 0 1.5rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.topic:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.topic h2 {
+  color: rgb(0, 0, 83);
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.topic h3 {
+  color: #002b5c;
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.topic p,
+.topic li {
+  color: #000000;
+  margin: 10px 0;
+  text-align: left;
+  max-width: 100%;
+  font-size: 1.1rem;
+}
+
+.topic ul {
+  padding-left: 20px;
+}
+
+.topic ul ul {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* --- Component: Language Skills --- */
+.language-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  list-style-type: none;
+}
+
+.language-name {
+  width: 150px;
+  flex-shrink: 0;
+}
+
+.level-bar-container {
+  height: 12px;
+  width: 250px;
+  background-color: #0000006e;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.level-bar-fill {
+  height: 100%;
+  background-color: #3498db;
+  transition: width 0.8s ease-in-out;
+  border-radius: 6px;
+}
+
+/* Language Levels (CEFR) */
+.level-a1 { width: 16.67%; }
+.level-a2 { width: 33.33%; }
+.level-b1 { width: 50.00%; }
+.level-b2 { width: 66.67%; }
+.level-c1 { width: 83.33%; }
+.level-c2 { width: 100%; }
+
+/* --- Component: General Skills --- */
+.skills-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.skill-name {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.skill-level-text {
+  width: 30px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.skill-bar-container {
+  height: 10px;
+  width: 150px;
+  background-color: #0000006e;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background-color: #3498db;
+  border-radius: 5px;
+}
+
+/* General Levels (1-5) */
+.level-1 { width: 20%; }
+.level-2 { width: 40%; }
+.level-3 { width: 60%; }
+.level-4 { width: 80%; }
+.level-5 { width: 100%; }
+
+/* --- Component: Timeline --- */
+.timeline {
+  margin: auto auto;
+  position: relative;
+}
+
+.milestone {
+  display: flex;
+  align-items: center;
+  margin: 60px auto;
+  position: relative;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  max-width: 100%;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #000876, #0112ff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  z-index: 1;
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0);
+  position: relative;
+  left: 5%;
+  transform: translateX(-50%);
+  flex-shrink: 0;
+}
+
+.content {
+  padding-left: 5%;
+  position: relative;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.date {
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.location {
+  color: #000000;
+  font-size: 18px;
+}
+
+/* ===================================
+   4. Animations
+   =================================== */
+
+/* --- Keyframes (used by .fadeInUp and .milestone) --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Animation Class (from about-page-adapted.css) --- */
+.fadeInUp {
+  opacity: 0;
+  transform: translateY(10px);
+  animation-name: fadeInUp;
+  animation-duration: 0.48s;
+  animation-timing-function: cubic-bezier(0.2, 0.9, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+/* --- Timeline Animation Delays --- */
+.milestone:nth-child(1) { animation-delay: 0.2s; }
+.milestone:nth-child(2) { animation-delay: 0.4s; }
+.milestone:nth-child(3) { animation-delay: 0.6s; }
+.milestone:nth-child(4) { animation-delay: 0.8s; }
+
+/* ===================================
+   5. Responsive Styles
+   =================================== */
+
+/* --- Tablet (max-width: 768px) --- */
+@media (max-width: 768px) {
+  body {
+    padding: 0px;
+  }
+  .timeline::before {
+    left: 20px;
+  }
+  .milestone {
+    text-align: left !important;
+    margin: auto auto;
+  }
+  .content {
+    padding: 15px;
+    padding-left: 0;
+    text-align: left !important;
+    margin: 0 0 0 100px;
+  }
+  .icon {
+    position: absolute;
+    left: 1%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .location {
+    font-size: 16px;
+  }
+}
+
+/* --- Mobile (max-width: 480px) --- */
+@media (max-width: 480px) {
+  .milestone {
+    margin: 30px auto;
+  }
+  .icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  .content {
+    padding-left: 0;
+    text-align: left !important;
+    margin: 0 0 0 60px;
+  }
+  .title {
+    font-size: 18px;
+  }
+  .location {
+    font-size: 14px;
+  }
+}

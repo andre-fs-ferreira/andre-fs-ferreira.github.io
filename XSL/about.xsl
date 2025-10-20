@@ -5,7 +5,13 @@
   <xsl:template match="/">
     <html lang="en">
       <head>
-        <xsl:copy-of select="/profile/head_data/*"/>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>About</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJd/rB7Xj+XyU6K/BEXF8s0FwXG4Tj4e9F/F8Xy6d4+4+4/g+g+g+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/css/button.css"/>
+        <link rel="stylesheet" href="/css/text.css"/>
+        <link rel="stylesheet" href="/css/about-page.css"/>
       </head>
       <body>
         <xsl:apply-templates select="/profile/header"/>
@@ -43,21 +49,9 @@
           </button>
         </footer>
         
-        <script src="/js/mask-wave-mouse.js"></script>
+        <script src="/js/paticles.js"></script>
         <script src="/js/responsive.js"></script>
         <script src="/js/moving-content.js"></script>
-        <script>
-          function toggleVisibility(contentId, togglerElement) {
-            const contentElement = document.getElementById(contentId);
-            if (window.getComputedStyle(contentElement).display === "none" || contentElement.style.display === "none") {
-                contentElement.style.display = "block";
-                togglerElement.innerHTML = '(collapse ⇧)';
-            } else {
-                contentElement.style.display = "none";
-                togglerElement.innerHTML = '(expand ⇩)';
-            }
-          }
-        </script>
       </body>
     </html>
   </xsl:template>

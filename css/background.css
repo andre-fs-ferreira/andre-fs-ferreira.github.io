@@ -1,77 +1,120 @@
-:root{
+/* ===================================
+   1. Global Variables (Root)
+   =================================== */
+
+:root {
+  /* Variables for the mouse-follow mask effect */
   --mouse-x: 100%;
   --mouse-y: 100%;
-  --mask-size: 1%;    
-  --mask-feather: 6%; 
+  --mask-size: 1%;
+  --mask-feather: 6%;
+
+  /* Variables for visual styling */
   --image-brightness: 1.15;
   --vignette-opacity: 0.35;
 }
 
-html,body{height:100%;margin:0}
-body{
-  background:#010A21;
-  color:#fff;
-  font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  min-height:100vh;
-  position:relative;
-  overflow:auto;
+/* ===================================
+   2. Base Page Styles
+   =================================== */
+
+html,
+
+html {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
 }
 
-.bg-wrap{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  overflow:auto;
+body {
+  background: #010A21;
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  position: relative;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
 }
 
-.bg-wrap img.bg-image{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:100%;
-  height:100%;
-  max-width:100%;
-  max-height:100%;
-  transform:translate(-50%,-50%);
-  object-fit:contain;
-  filter:brightness(var(--image-brightness));
+/* ===================================
+   3. Main Content Layout
+   =================================== */
+
+main {
+  position: relative;
+  z-index: 6; /* Sits on top of all background effects */
+  pointer-events: auto; /* Allows interaction with main content */
+}
+
+/* ===================================
+   4. Background & Effects
+   =================================== */
+
+/* Wrapper for all background elements */
+.bg-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* Base layer */
+  pointer-events: none; /* Lets clicks pass through to 'main' */
+  overflow: auto; /* This may be redundant given body's overflow */
+}
+
+/* The main background image with the radial mask effect */
+.bg-wrap img.bg-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: brightness(var(--image-brightness));
   transition: width 220ms ease, height 220ms ease;
   will-change: mask-image, -webkit-mask-image;
+
+  /* The mask follows CSS variables (--mouse-x, --mouse-y) */
   mask-image: radial-gradient(
     circle at var(--mouse-x) var(--mouse-y),
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,1) var(--mask-size),
-    rgba(0,0,0,0) calc(var(--mask-size) + var(--mask-feather))
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) var(--mask-size),
+    rgba(0, 0, 0, 0) calc(var(--mask-size) + var(--mask-feather))
   );
   -webkit-mask-image: radial-gradient(
     circle at var(--mouse-x) var(--mouse-y),
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,1) var(--mask-size),
-    rgba(0,0,0,0) calc(var(--mask-size) + var(--mask-feather))
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) var(--mask-size),
+    rgba(0, 0, 0, 0) calc(var(--mask-size) + var(--mask-feather))
   );
 }
 
-.bg-wrap::after{
-  content:'';
-  position:absolute; inset:0;
-  mix-blend-mode:multiply;
-  background: radial-gradient(120% 120% at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,var(--vignette-opacity)) 100%);
-  pointer-events:none;
+/* Vignette overlay (sits inside .bg-wrap) */
+.bg-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  background: radial-gradient(120% 120% at 50% 50%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, var(--vignette-opacity)) 100%);
+  pointer-events: none;
 }
 
-@media (prefers-reduced-motion: reduce){
-  .bg-wrap img.bg-image { transition:none; }
-}
-
-main{ position:relative; z-index:6; pointer-events:auto; }
-
-
-
+/* Particle effect canvas */
 #particle-canvas {
   position: fixed;
   inset: 0;
-  z-index:2;
+  z-index: 2; /* Sits above .bg-wrap (0) but below main (6) */
   pointer-events: none;
-  display:block;
+  display: block;
+}
+
+/* ===================================
+   5. Accessibility
+   =================================== */
+
+/* Disable transitions for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bg-wrap img.bg-image {
+    transition: none;
+  }
 }
