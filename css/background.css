@@ -41,7 +41,6 @@ body {
    =================================== */
 
 main {
-  position: relative;
   z-index: 6; /* Sits on top of all background effects */
   pointer-events: auto; /* Allows interaction with main content */
 }

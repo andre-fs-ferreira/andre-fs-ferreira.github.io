@@ -17,10 +17,10 @@
     </author-group>
     <author-group type="mid" title="Co-author">
       <publication>
-        <title><![CDATA[<a href=""> Skeletal Muscle Radiation Attenuation at C3 Predicts Survival in Head and Neck Cancer </a>]]></title>
-        <description>Coming soon...</description>
-        <keywords>Coming soon...</keywords>
-        <image src="/imgs/work_in_progress.png"/>
+        <title><![CDATA[<a href="https://www.mdpi.com/1718-7729/32/10/587"> Skeletal Muscle Radiation Attenuation at C3 Predicts Survival in Head and Neck Cancer </a>]]></title>
+        <description>Our study demonstrates a practical and powerful way to predict outcomes in head and neck cancer (HNC). While low muscle mass is a known risk factor, it's typically measured at the L3 vertebra, which is missed in HNC scans. Using a deep learning analysis of 904 patients, we validate that measurements at the C3 vertebra—an area already included in routine scans—are highly prognostic. We found that both low muscle quantity (SMA) and low muscle quality (SMRA) at C3 independently correlate with worse locoregional control and overall survival, establishing C3 muscle metrics as a critical, accessible new biomarker for HNC.</description>
+        <keywords> Head and neck neoplasms, Skeletal muscle, Myosteatosis; Survival analysis; Tomography</keywords>
+        <image src="/imgs/2025/C3_Predicts.png"/>
       </publication>
       <publication>
         <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Brain tumor (Glioblastoma Multiforme) MRI dataset collection with ground truth segmentation masks </a>]]></title>

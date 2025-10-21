@@ -17,19 +17,19 @@
     </author-group>
     <author-group type="mid" title="Coautor">
       <publication>
-        <title><![CDATA[<a href=""> Skeletal Muscle Radiation Attenuation at C3 Predicts Survival in Head and Neck Cancer </a>]]></title>
-        <description>Brevemente...</description>
-        <keywords>Brevemente...</keywords>
+        <title><![CDATA[<a href="https://www.mdpi.com/1718-7729/32/10/587"> A Atenuação da Radiação do Músculo Esquelético em C3 Prevê a Sobrevida no Cancro de Cabeça e Pescoço </a>]]></title>
+        <description>O nosso estudo demonstra uma forma prática e poderosa de prever os resultados no cancro de cabeça e pescoço (HNC). Embora a baixa massa muscular seja um fator de risco conhecido, esta é tipicamente medida na vértebra L3, que não é abrangida pelas tomografias de HNC. Utilizando uma análise de deep learning em 904 doentes, validamos que as medições na vértebra C3 — uma área já incluída nos exames de rotina — são altamente prognósticas. Descobrimos que tanto a baixa quantidade de músculo (SMA) como a baixa qualidade muscular (SMRA) em C3 se correlacionam independentemente com um pior controlo locorregional e uma menor sobrevida global, estabelecendo as métricas musculares em C3 como um novo biomarcador crítico e acessível para o HNC.</description>
+        <keywords>Neoplasias da cabeça e pescoço, Músculo esquelético, Miosteatose; Análise de sobrevida; Tomografia</keywords>
         <image src="/imgs/work_in_progress.png"/>
       </publication>
       <publication>
-        <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Brain tumor (Glioblastoma Multiforme) MRI dataset collection with ground truth segmentation masks </a>]]></title>
+        <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Coleção de um conjunto de dados de RM de tumor cerebral (Glioblastoma Multiforme) com máscaras de segmentação de referência  </a>]]></title>
         <description>Apresentamos um dataset de imagens de RM de tumores cerebrais com 23,049 amostras, cada uma incluindo imagens FLAIR, T1, T1ce e T2, além de uma ou duas máscaras de segmentação. O dataset expande 438 casos originais do BraTS 2022 através de registo, gerando amostras adicionais com localizações tumorais variadas. Apesar dos protocolos de imagem heterogéneos, fornece ground truth para cada amostra, apoiando o desenvolvimento de modelos de deep learning para segmentação automática de tumores em casos nunca antes vistos.</description>
         <keywords>Segmentação de tumores cerebrais, Aumentação de dados, Registo, BraTS, Deep learning</keywords>
         <image src="/imgs/2025/GBM-Reservoir.png"/>
       </publication>
       <publication>
-        <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S0957417425036474">Beyond Benchmarks: Towards Robust Artificial Intelligence Bone Segmentation in Socio-Technical Systems</a>]]></title>
+        <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S0957417425036474">Beyond Benchmarks: Rumo a uma segmentação óssea robusta por Inteligência Artificial em sistemas sociotécnicos </a>]]></title>
         <description>Avaliámos 20 modelos de segmentação mandibular de última geração em 19,218 segmentações de 1,000 exames de TC/CBCT multicêntricos e descobrimos que a precisão pode variar até 25% devido a fatores como o tamanho do voxel, orientação do osso e condições do paciente. Embora voxels isotrópicos menores e uma orientação neutra tenham melhorado o desempenho, a osteossíntese metálica e a anatomia complexa degradaram-no. Estes resultados destacam que os modelos de IA não são “plug-and-play” e fornecem recomendações baseadas em evidências para melhorar a integração clínica.</description>
         <keywords>Inteligência Artificial, Processamento de Imagem, Imagem Assistida por Computador, Tridimensional, Tomografia, Tomografia Computadorizada, Guias de Prática Clínica, Mandíbula</keywords>
         <image src="/imgs/2025/Beyond_Benchmarks.png"/>
