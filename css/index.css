@@ -63,7 +63,7 @@ h1 {
 }
 
 .quote {
-  font-size: clamp(1.1rem, 3vh, 2rem);
+  font-size: clamp(1.1rem, 3vmin, 2rem);
   font-style: italic;
   line-height: 1.4;
   width: 90%;
