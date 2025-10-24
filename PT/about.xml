@@ -91,22 +91,22 @@
     <skill name="Python" level="5"/>
     <skill name="PyTorch/MONAI" level="5"/>
     <skill name="Sklearn/Pandas/Numpy" level="4"/>
-    <skill name="SQL" level="4"/>
     <skill name="HTML/XML/XSL" level="4"/>
     <skill name="Microsoft Office" level="4"/>
     <skill name="RapidMiner/Weka" level="4"/>
+    <skill name="SQL" level="3"/>
+    <skill name="NoSQL" level="3"/>
     <skill name="Java" level="3"/>
     <skill name="TensorFlow" level="3"/>
     <skill name="Hugging Face" level="3"/>
-    <skill name="openEHR" level="3"/>
     <skill name="Tableau" level="3"/>
     <skill name="GraphQL" level="3"/>
-    <skill name="NoSQL" level="3"/>
-    <skill name="FHIR/HL7" level="3"/>
+    <skill name="FHIR/HL7" level="2"/>
     <skill name="MATLAB" level="3"/>
     <skill name="R" level="3"/>
     <skill name="Git/GitHub/GitLab" level="3"/>
     <skill name="LaTeX" level="3"/>
+    <skill name="openEHR" level="2"/>
     <skill name="JavaScript" level="2"/>
     <skill name="BioPython" level="2"/>
     <skill name="C" level="2"/>
