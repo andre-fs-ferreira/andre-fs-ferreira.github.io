@@ -16,6 +16,24 @@ main {
   padding-top: clamp(4rem, 17vh, 7rem)
 }
 
+.center-group {
+  /* 1. Enable Flexbox */
+  display: flex;
+  
+  /* 2. Horizontal Alignment: Center the entire group */
+  justify-content: center;
+  
+  /* 3. Vertical Alignment: Align items to the center (important for the image) */
+  align-items: center; 
+  
+  /* 4. Optional: Add a small gap between the button and the image */
+  gap: 10px; 
+}
+
+/* Optional: Fixes a common issue where the image sits slightly low */
+.social-button img {
+    vertical-align: middle;
+}
 /* ===================================
    2. Page Components
    =================================== */
