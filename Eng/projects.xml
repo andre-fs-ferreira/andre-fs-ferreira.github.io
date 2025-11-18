@@ -9,7 +9,7 @@
   <projects>
     <project id="gen-tumor">
       <title>Generation of synthetic brain tumors</title>
-      <description>Development of a pipeline to generate synthetic tumors into MRI scans using GANs. BraTS dataset used for development. Multiple <a href="/about.html/#challenges-awards">award winner</a>.</description>
+      <description>Development of a pipeline to generate synthetic tumors into MRI scans using GANs. BraTS dataset used for development. Multiple <a href="/Eng/about.xml/#challenges-awards">award winner</a>.</description>
       <tags>
         <tag>cGANs</tag>
         <tag>Tumor segmentation</tag>
@@ -37,7 +37,7 @@
     </project>
     <project id="hn-seg">
       <title>Deep learning pipeline for highly accurate automated segmentation of Head and Neck Cancer GTVs in multi-timepoint MRI.</title>
-      <description> <a href="/about.html/#challenges-awards">First place winner</a> in the HNTS-MRG24 MICCAI Challenge for automated Head and Neck Cancer GTV segmentation in MRI-guided radiotherapy.
+      <description> <a href="/Eng/about.xml/#challenges-awards">First place winner</a> in the HNTS-MRG24 MICCAI Challenge for automated Head and Neck Cancer GTV segmentation in MRI-guided radiotherapy.
                 Developed and optimized a multi-model deep learning pipeline (nnUNet/MedNeXt) achieving a state-of-the-art aggregated Dice Similarity Coefficient of 0.8254.</description>
       <tags>
         <tag>nnUNet</tag>

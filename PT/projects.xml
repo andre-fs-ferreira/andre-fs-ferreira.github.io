@@ -9,7 +9,7 @@
   <projects>
     <project id="gen-tumor">
       <title>Geração de tumores cerebrais sintéticos</title>
-      <description>Desenvolvimento de um pipeline para gerar tumores sintéticos em imagens de ressonância magnética (RM) utilizando Redes Adversariais Generativas (GANs). O conjunto de dados BraTS foi empregue neste desenvolvimento. Vencedor de múltiplos <a href="/about.html/#challenges-awards">prémios</a>.</description>
+      <description>Desenvolvimento de um pipeline para gerar tumores sintéticos em imagens de ressonância magnética (RM) utilizando Redes Adversariais Generativas (GANs). O conjunto de dados BraTS foi empregue neste desenvolvimento. Vencedor de múltiplos <a href="/PT/about.xml/#challenges-awards">prémios</a>.</description>
       <tags>
         <tag>cGANs</tag>
         <tag>Segmentação de tumores</tag>
@@ -37,7 +37,7 @@
     </project>
     <project id="hn-seg">
       <title>Pipeline de aprendizagem profunda para a segmentação automática de alta precisão de GTVs de cancro da cabeça e pescoço em ressonância magnética multi-temporal.</title>
-      <description> <a href="/about.html/#challenges-awards">Vencedor do primeiro lugar</a> no Desafio HNTS-MRG24 MICCAI para a segmentação automática de GTVs de cancro da cabeça e pescoço em radioterapia guiada por ressonância magnética. Foi desenvolvida e otimizada uma pipeline de aprendizagem profunda multi-modelo (nnUNet/MedNeXt), que alcançou um Coeficiente de Similaridade de Dice agregado de 0.8254, considerado estado-da-arte.</description>
+      <description> <a href="/PT/about.xml/#challenges-awards">Vencedor do primeiro lugar</a> no Desafio HNTS-MRG24 MICCAI para a segmentação automática de GTVs de cancro da cabeça e pescoço em radioterapia guiada por ressonância magnética. Foi desenvolvida e otimizada uma pipeline de aprendizagem profunda multi-modelo (nnUNet/MedNeXt), que alcançou um Coeficiente de Similaridade de Dice agregado de 0.8254, considerado estado-da-arte.</description>
       <tags>
         <tag>nnUNet</tag>
         <tag>MedNeXt</tag>
