@@ -23,6 +23,12 @@
         <image src="/imgs/2025/C3_Predicts.png"/>
       </publication>
       <publication>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2405.18383"> Analysis of the 2024 BraTS Meningioma Radiotherapy Planning Automated Segmentation Challenge </a>]]></title>
+        <description> The 2024 BraTS-MEN-RT challenge advanced automated segmentation for meningioma radiotherapy using a 750-case multi-institutional MRI dataset with expert GTV annotations. Six teams developed and evaluated models using modified lesion-wise DSC and 95HD metrics, with the best achieving 0.815 DSC and 26.92 mm 95HD. The challenge provides a strong foundation for improving precision and personalization in radiotherapy planning. </description>
+        <keywords> Meningioma; BraTS; Machine Learning; Segmentation; BraTS-Meningioma; Image Analysis Challenge; Artificial Intelligence; AI; Radiation Oncology; Radiotherapy; Stereotactic Radiosurgery; Gamma Knife</keywords>
+        <image src="/imgs/2025/BraTS_Meningioma.png"/>
+      </publication>
+      <publication>
         <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Brain tumor (Glioblastoma Multiforme) MRI dataset collection with ground truth segmentation masks </a>]]></title>
         <description>We present a brain tumor MRI dataset with 23,049 samples, each including FLAIR, T1, T1ce, and T2 scans, plus one or two segmentation masks. The dataset expands 438 original BraTS 2022 cases through registration, generating additional samples with varied tumor locations. Despite heterogeneous imaging protocols, it provides ground truth for each sample, supporting the development of deep learning–based automated tumor segmentation on unseen cases.</description>
         <keywords>Brain tumor segmentation, Data augmentation, Registration, BraTS, Deep learning</keywords>

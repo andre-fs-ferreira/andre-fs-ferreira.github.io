@@ -51,6 +51,19 @@ main {
   z-index: 10; /* Sits above other main content */
 }
 
+/* ADD THIS SECTION */
+.header-wrap h1 {
+  /* 1. Prevent line breaks */
+  white-space: nowrap; 
+  
+  /* 2. Fluid Sizing */
+  /* Syntax: clamp(minimum-size, preferred-size, maximum-size) */
+  font-size: clamp(2.5rem, 5vw, 5rem); 
+  
+  /* Optional: remove default browser margins to keep it vertically centered */
+  margin: 1rem 0; 
+}
+
 /* Main text container */
 .text-box {
   width: clamp(80%, 90vw, 100%);

@@ -20,7 +20,13 @@
         <title><![CDATA[<a href="https://www.mdpi.com/1718-7729/32/10/587"> A Atenuação da Radiação do Músculo Esquelético em C3 Prevê a Sobrevida no Cancro de Cabeça e Pescoço </a>]]></title>
         <description>O nosso estudo demonstra uma forma prática e poderosa de prever os resultados no cancro de cabeça e pescoço (HNC). Embora a baixa massa muscular seja um fator de risco conhecido, esta é tipicamente medida na vértebra L3, que não é abrangida pelas tomografias de HNC. Utilizando uma análise de deep learning em 904 doentes, validamos que as medições na vértebra C3 — uma área já incluída nos exames de rotina — são altamente prognósticas. Descobrimos que tanto a baixa quantidade de músculo (SMA) como a baixa qualidade muscular (SMRA) em C3 se correlacionam independentemente com um pior controlo locorregional e uma menor sobrevida global, estabelecendo as métricas musculares em C3 como um novo biomarcador crítico e acessível para o HNC.</description>
         <keywords>Neoplasias da cabeça e pescoço, Músculo esquelético, Miosteatose; Análise de sobrevida; Tomografia</keywords>
-        <image src="/imgs/work_in_progress.png"/>
+        <image src="/imgs/2025/C3_Predicts.png"/>
+      </publication>
+      <publication>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2405.18383"> Análise do Desafio de Segmentação Automatizada para Planeamento de Radioterapia de Meningioma BraTS 2024 </a>]]></title>
+        <description> O desafio BraTS-MEN-RT 2024 impulsionou a segmentação automatizada para radioterapia de meningioma, utilizando um conjunto de dados de RM multi-institucional com 750 casos e anotações GTV de especialistas. Seis equipas desenvolveram e avaliaram modelos usando métricas modificadas de DSC por lesão e 95HD, com o melhor a atingir 0,815 DSC e 26,92 mm de 95HD. O desafio oferece uma base sólida para melhorar a precisão e a personalização no planeamento da radioterapia. </description>
+        <keywords> Meningioma; BraTS; Aprendizagem Máquina; Segmentação; BraTS-Meningioma; Desafio de Análise de Imagem; Inteligência Artificial; IA; Oncologia de Radiação; Radioterapia; Radiocirurgia Estereotáxica; Gamma Knife</keywords>
+        <image src="/imgs/2025/BraTS_Meningioma.png"/>
       </publication>
       <publication>
         <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Coleção de um conjunto de dados de RM de tumor cerebral (Glioblastoma Multiforme) com máscaras de segmentação de referência  </a>]]></title>
