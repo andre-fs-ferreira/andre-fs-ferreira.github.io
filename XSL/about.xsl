@@ -49,7 +49,7 @@
           </button>
         </footer>
         
-        <script src="/js/paticles.js"></script>
+        <script src="/js/particles.js"></script>
         <script src="/js/responsive.js"></script>
         <script src="/js/moving-content.js"></script>
       </body>

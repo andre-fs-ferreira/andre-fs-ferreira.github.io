@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="/css/button.css"/>
         <link rel="stylesheet" href="/css/text.css"/>
         <link rel="stylesheet" href="/css/publications.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
       </head>
       <body>
         <xsl:apply-templates select="/publications/header"/>
@@ -34,102 +33,11 @@
         
         <canvas id="particle-canvas"></canvas>
 
-        <script src="/js/paticles.js"></script>
+        <script src="/js/particles.js"></script>
         <script src="/js/responsive.js"></script>
-        <script>
-          document.addEventListener('DOMContentLoaded', () => {
-            const body = document.body;
-            const navbar = document.querySelector('.navbar');
+        <script src="/js/publications.js"></script>  <!-- New external script link -->
 
-            function closeAllDropdowns() {
-              document.querySelectorAll('.dropdown-content.show').forEach(dropdown => {
-                dropdown.classList.remove('show');
-              });
-              document.querySelectorAll('.dropbtn').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
-              body.classList.remove('dropdown-active');
-            }
-
-            function positionDropdown(dropdownElement) {
-              if (!dropdownElement) return;
-              const navBarHeight = navbar.offsetHeight;
-              const viewportHeight = window.innerHeight;
-              const availableHeight = viewportHeight - navBarHeight - 20;
-
-              dropdownElement.style.position = 'fixed';
-              dropdownElement.style.top = `${navBarHeight}px`;
-              dropdownElement.style.left = '0';
-              dropdownElement.style.right = '0';
-              dropdownElement.style.maxHeight = `${availableHeight}px`;
-              dropdownElement.style.overflowY = 'auto';
-            }
-
-            document.querySelectorAll('.dropbtn[data-target]').forEach(button => {
-              button.addEventListener('click', (event) => {
-                event.stopPropagation();
-                const targetId = button.dataset.target;
-                const targetElement = document.getElementById(targetId);
-                if (!targetElement) return;
-
-                const wasAlreadyOpen = targetElement.classList.contains('show');
-                closeAllDropdowns();
-
-                if (!wasAlreadyOpen) {
-                  body.classList.add('dropdown-active');
-                  const btn = targetElement.parentElement.querySelector('.dropbtn');
-                  if (btn) btn.setAttribute('aria-expanded', 'true');
-                  
-                  setTimeout(() => {
-                    positionDropdown(targetElement);
-                    targetElement.classList.add('show');
-                  }, 50);
-                }
-              });
-            });
-
-            document.addEventListener('click', (event) => {
-              if (!event.target.closest('.dropdown')) {
-                closeAllDropdowns();
-              }
-            });
-
-            document.addEventListener('keydown', (e) => {
-              if (e.key === 'Escape') {
-                closeAllDropdowns();
-              }
-            });
-
-            window.addEventListener('resize', () => {
-                const openDropdown = document.querySelector('.dropdown-content.show');
-                if (openDropdown) {
-                    positionDropdown(openDropdown);
-                }
-            });
-
-            const images = document.querySelectorAll('.figure-img');
-            images.forEach(image => {
-              image.addEventListener('click', () => {
-                const overlay = document.createElement('div');
-                overlay.classList.add('modal-overlay');
-                const modalImage = document.createElement('img');
-                modalImage.src = image.src;
-                modalImage.classList.add('modal-img');
-                overlay.appendChild(modalImage);
-                document.body.appendChild(overlay);
-                setTimeout(() => { overlay.classList.add('active'); }, 10);
-                overlay.addEventListener('click', (event) => {
-                  event.stopPropagation(); 
-                  overlay.classList.remove('active');
-                  overlay.addEventListener('transitionend', () => {
-                    if (document.body.contains(overlay)) {
-                      document.body.removeChild(overlay);
-                    }
-                  }, { once: true });
-                });
-              });
-            });
-          });
-        </script>
-      </body>
+        </body>
     </html>
   </xsl:template>
 
@@ -144,13 +52,21 @@
 
   <xsl:template match="year">
     <div class="dropdown">
-      <button class="dropbtn">
-        <xsl:attribute name="data-target"><xsl:value-of select="@value"/>_papers</xsl:attribute>
+      <!-- button: use attribute value templates and type="button" -->
+      <button class="dropbtn"
+              type="button"
+              data-target="{@value}_papers"
+              aria-expanded="false"
+              aria-controls="{@value}_papers">
         <xsl:value-of select="@value"/>
-        <i class="fa fa-caret-down"></i>
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
       </button>
-      <div class="dropdown-content">
-        <xsl:attribute name="id"><xsl:value-of select="@value"/>_papers</xsl:attribute>
+
+      <!-- dropdown content with id using attribute value template -->
+      <div class="dropdown-content"
+          id="{@value}_papers"
+          role="region"
+          aria-hidden="true">
         <xsl:apply-templates select="author-group"/>
       </div>
     </div>
@@ -179,10 +95,10 @@
         <p><xsl:value-of select="description" disable-output-escaping="yes"/></p>
         <p class="keywords"><xsl:value-of select="keywords"/></p>
       </div>
+
       <figure class="figure image-content">
-        <img class="figure-img">
-          <xsl:attribute name="src"><xsl:value-of select="image/@src"/></xsl:attribute>
-        </img>
+        <!-- correct, void element usage -->
+        <img class="figure-img" src="{image/@src}" alt="{title}"/>
       </figure>
     </div>
     <xsl:if test="position() != last()">

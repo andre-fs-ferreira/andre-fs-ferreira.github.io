@@ -43,6 +43,9 @@ canvas {
     width: 100vw;    /* Ensures it covers the whole screen width */
     height: 100vh;   /* Ensures it covers the whole screen height */
 }
+canvas {
+  pointer-events: none; /* ensure canvas never intercepts clicks in any browser */
+}
 
 /* ===================================
    3. Main Navigation Bar
@@ -81,6 +84,7 @@ body.dropdown-active .navbar {
 }
 
 .dropdown .dropbtn {
+  display: flex; /* Added to ensure flex properties apply consistently */
   cursor: pointer;
   font-size: clamp(0.5rem, 4vw, 1.6rem);
   border: none;
@@ -112,6 +116,16 @@ body.dropdown-active .navbar {
   animation: fadeInUp 0.7s ease forwards;
   will-change: transform, opacity;
 }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Staggered animation delays */
 .navbar .dropdown:nth-child(1) .dropbtn { animation-delay: 0.08s; }
@@ -126,7 +140,6 @@ body.dropdown-active .navbar {
    =================================== */
 
 .dropdown-content {
-  display: none;
   position: fixed;
   left: 0;
   right: 0;
@@ -136,34 +149,16 @@ body.dropdown-active .navbar {
   background-color: #ffffffc7;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.7s ease forwards;
+
+  /* hidden state */
   opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease; /* Removed transform from transition */
 }
 
-.show {
-  display: block;
-}
-
-.dropdown-content p {
-  margin: 10px 5%;
-  text-align: left;
-  max-width: 95%;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.dropdown-content p.keywords {
-  margin: 10px 5%;
-  text-align: left;
-  max-width: 100%;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.dropdown-content p.keywords::before {
-  content: "Palavras-chave: ";
-  font-weight: bold;
-  font-size: 1rem;
+.dropdown-content.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* ===================================
@@ -173,7 +168,7 @@ body.dropdown-active .navbar {
 /* --- First Author Theme (Blue) --- */
 
 .first-author-with-border {
-  border-bottom: 0px solid rgb(0, 0, 255);
+  border-bottom: 2px solid rgb(0, 0, 255); /* Changed from 0px for visibility/consistency */
   padding: 0;
   margin: 0 auto;
 }
