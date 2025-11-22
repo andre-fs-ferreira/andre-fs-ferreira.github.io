@@ -159,15 +159,16 @@ ul.circle {
 
 /* --- Component: General Skills --- */
 .skills-list {
-  list-style-type: none;
-  padding-left: 0;
+  list-style-type: disc; /* Change from 'none' to 'disc' */
+  padding-left: 20px;    /* Add padding so bullets aren't cut off */
+  margin-top: 5px;
 }
 
 .skill-item {
-  display: flex;
-  align-items: center;
+  display: list-item;    /* Changed from 'flex' to allow bullets */
   margin-bottom: 8px;
   font-size: 14px;
+  /* align-items: center;  <-- Remove or comment this out as it applies to flex */
 }
 
 .skill-name {

@@ -29,7 +29,7 @@
               <h3><xsl:value-of select="/profile/skills/@title"/>
                 <div class="transparent toggle-link" onclick="toggleVisibility('skills-challenges-content', this)"><xsl:value-of select="/profile/skills/@expand_text"/></div>
               </h3>
-              <div id="skills-challenges-content" class="hidden-content">
+              <div id="skills-challenges-content">
                 <xsl:apply-templates select="/profile/skills"/>
               </div>
             </section>
@@ -148,19 +148,24 @@
   </xsl:template>
 
   <xsl:template match="skills">
-    <ul class="skills-list">
-      <xsl:for-each select="skill">
-        <li class="skill-item">
-          <span class="skill-name"><xsl:value-of select="@name"/></span>
-          <div class="skill-bar-container">
-            <div class="skill-bar-fill">
-              <xsl:attribute name="class">skill-bar-fill level-<xsl:value-of select="@level"/></xsl:attribute>
-            </div>
-          </div>
-          <span class="skill-level-text"><xsl:value-of select="@level"/>/5</span>
-        </li>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0px; max-width: 500px; page-break-inside: avoid;">
+      
+      <xsl:for-each select="group">
+        <div>
+          <h4 style="margin-top: 0; margin-bottom: 10px; color: #555; font-weight: bold;">
+            <xsl:value-of select="@name"/>
+          </h4>
+          <ul class="skills-list">
+            <xsl:for-each select="skill">
+              <li class="skill-item">
+                <span class="skill-name"><xsl:value-of select="@name"/></span>
+              </li>
+            </xsl:for-each>
+          </ul>
+        </div>
       </xsl:for-each>
-    </ul>
+
+    </div>
   </xsl:template>
 
   <xsl:template match="distinctions">
