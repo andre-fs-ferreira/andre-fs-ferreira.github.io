@@ -9,6 +9,18 @@
   <year value="2025">
     <author-group type="first" title="First author">
       <publication>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2506.12106"> Enhancing Privacy: The Utility of Stand-Alone Synthetic CT and MRI for Tumor and Bone Segmentation </a>]]></title>
+        <description>Investigated the efficacy of standalone synthetic medical imaging for segmentation by generating 
+        head/neck CT and brain glioma MRI datasets using GANs and diffusion models. 
+        Evaluated data realism and utility through MAE, MS-SSIM, Radiomics, and a 
+        Visual Turing Test conducted with five radiologists. Demonstrated high 
+        fidelity in synthetic MRIs (DSC=0.834) and bone segmentation (DSC=0.841), 
+        while identifying critical limitations in synthetic CT tissue realism 
+        (0.5461 correlation) and complex tumor segmentation.</description>
+        <keywords>CT, MRI, GANs, DDPMs, Segmentation, Visual Turing Test</keywords>
+        <image src="/imgs/2025/Stand-alone.png"/>
+      </publication>
+      <publication>
         <title>Achieving Over 10× Faster Sample Generation with conditional DDPM</title>
         <description>We present a unified denoising-diffusion framework for BraTS 2025 Task 8 (synthesizing missing MRI modalities) and Task 9 (inpainting pathology-free regions), with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. Results — Task 8: Dice 0.86, SSIM 0.77; Task 9: RMSE 0.053, PSNR 26.77, SSIM 0.918. Code to be released soon.</description>
         <keywords>Conditional Denoising Diffusion, IDDPM, Synthetic Data Generation, MRI Reconstruction, Computational Efficiency, Image Inpainting</keywords>
