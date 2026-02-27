@@ -17,6 +17,12 @@
     </author-group>
     <author-group type="mid" title="Co-author">
       <publication>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2601.16759"> Curated endoscopic retrograde cholangiopancreatography images dataset </a>]]></title>
+        <description>Endoscopic Retrograde Cholangiopancreatography (ERCP) is an essential procedure for diagnosing and treating biliary and pancreatic diseases. Although artificial intelligence offers promising solutions for automated diagnosis, the lack of publicly available ERCP datasets limits progress in this field. To address this gap, this study presents a large, curated ERCP image dataset comprising 19,018 raw images and 19,317 processed images from 1,602 patients. Among these, 5,519 images are labeled and ready for immediate use. All images were manually reviewed and annotated by two experienced gastroenterologists and validated by a senior specialist, ensuring high-quality standards. The dataset’s utility was demonstrated through a classification experiment, positioning it as a potential benchmark for automated ERCP analysis and diagnosis.</description>
+        <keywords> ERCP; Classification; DataSet</keywords>
+        <image src="/imgs/2025/ERCP_dataset.png"/>
+      </publication>
+      <publication>
         <title><![CDATA[<a href="https://www.mdpi.com/1718-7729/32/10/587"> Skeletal Muscle Radiation Attenuation at C3 Predicts Survival in Head and Neck Cancer </a>]]></title>
         <description>Our study demonstrates a practical and powerful way to predict outcomes in head and neck cancer (HNC). While low muscle mass is a known risk factor, it's typically measured at the L3 vertebra, which is missed in HNC scans. Using a deep learning analysis of 904 patients, we validate that measurements at the C3 vertebra—an area already included in routine scans—are highly prognostic. We found that both low muscle quantity (SMA) and low muscle quality (SMRA) at C3 independently correlate with worse locoregional control and overall survival, establishing C3 muscle metrics as a critical, accessible new biomarker for HNC.</description>
         <keywords> Head and neck neoplasms, Skeletal muscle, Myosteatosis; Survival analysis; Tomography</keywords>
