@@ -22,7 +22,10 @@
       </publication>
       <publication>
         <title>Achieving Over 10× Faster Sample Generation with conditional DDPM</title>
-        <description>We present a unified denoising-diffusion framework for BraTS 2025 Task 8 (synthesizing missing MRI modalities) and Task 9 (inpainting pathology-free regions), with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. Results — Task 8: Dice 0.86, SSIM 0.77; Task 9: RMSE 0.053, PSNR 26.77, SSIM 0.918. Code to be released soon.</description>
+        <description>We present a unified denoising-diffusion framework for BraTS 2025 Task 8 
+          (synthesizing missing MRI modalities) and Task 9 (inpainting pathology-free regions), 
+          with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. 
+          Results — Task 8: Dice 0.86, SSIM 0.77; Task 9: RMSE 0.053, PSNR 26.77, SSIM 0.918. The code is available at <a href="https://github.com/andre-fs-ferreira/BraTS2025_by_Faking_it">BraTS2025_by_Faking_it</a>.</description>
         <keywords>Conditional Denoising Diffusion, IDDPM, Synthetic Data Generation, MRI Reconstruction, Computational Efficiency, Image Inpainting</keywords>
         <image src="/imgs/2025/Brats_2025_task8_9.png"/>
       </publication>
