@@ -5,7 +5,6 @@
     <title>About Me</title>
     <subtitle>PhD Student in Biomedical Engineering | AI in Medical Imaging Expert | Challenge Winner &amp; Researcher</subtitle>
   </header>
-
   <resume title="Resume" cv_path="/imgs/CV_Andre_Ferreira.pdf" open_cv_text="open CV" challenges_title="🎉 Winner of multiple international AI challenges in medical imaging:" languages_title="💬 Language levels:" expand_text="(expand ⇩)" collapse_text="(collapse ⇧)">
     <item title="📚 PhD student in Biomedical Engineering (Medical Informatics):">
       <detail>📍 University of Minho 🤝 IKIM, Universität Duisburg-Essen</detail>
@@ -39,9 +38,9 @@
       </challengeGroup>
     </challenges>
     <languages>
-      <language name="Portuguese" flag="🇵🇹" levelCode="c2" levelText="Native"/>
-      <language name="English" flag="🇬🇧" levelCode="c1" levelText="Fluent"/>
-      <language name="German" flag="🇩🇪" levelCode="a2" levelText="Basic"/>
+      <language name="Portuguese" flag="pt" levelCode="c2" levelText="Native"/>
+      <language name="English" flag="gb" levelCode="c1" levelText="Fluent"/>
+      <language name="German" flag="de" levelCode="a2" levelText="Basic"/>
     </languages>
   </resume>
 

@@ -38,9 +38,9 @@
       </challengeGroup>
     </challenges>
     <languages>
-      <language name="Português" flag="🇵🇹" levelCode="c2" levelText="Nativo"/>
-      <language name="Inglês" flag="🇬🇧" levelCode="c1" levelText="Fluente"/>
-      <language name="Alemão" flag="🇩🇪" levelCode="a2" levelText="Básico"/>
+      <language name="Portuguese" flag="pt" levelCode="c2" levelText="Native"/>
+      <language name="English" flag="gb" levelCode="c1" levelText="Fluent"/>
+      <language name="German" flag="de" levelCode="a2" levelText="Basic"/>
     </languages>
   </resume>
   <workExperience title="Experiência Profissional">

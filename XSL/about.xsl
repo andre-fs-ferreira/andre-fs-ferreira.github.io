@@ -101,7 +101,10 @@
           <ul>
             <xsl:for-each select="languages/language">
               <li class="language-item">
-                <span class="language-name"><xsl:value-of select="@flag"/> <xsl:value-of select="@name"/></span>
+                <span class="language-name">
+                  <img class="flag-icon" src="https://flagcdn.com/w40/{@flag}.png" alt=""/>
+                  <xsl:value-of select="@name"/>
+                </span>
                 <div class="level-bar-container">
                   <div class="level-bar-fill">
                     <xsl:attribute name="class">level-bar-fill level-<xsl:value-of select="@levelCode"/></xsl:attribute>

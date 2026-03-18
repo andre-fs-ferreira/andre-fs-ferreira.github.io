@@ -352,3 +352,18 @@ ul.circle {
     font-size: 14px;
   }
 }
+
+.flag-icon {
+          width: 24px;
+          height: 16px;
+          object-fit: cover;
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 8px;
+          border: 1px solid #eee;
+        }
+.lang-item {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}

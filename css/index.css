@@ -141,3 +141,10 @@ h1 {
 .fade-container.fading {
   opacity: 0;
 }
+
+#language-switcher img {
+  width: 30px;        /* Set a fixed width */
+  height: 20px;       /* Set a fixed height */
+  object-fit: cover;  /* Prevents stretching/distortion */
+  border: 1px solid #eee; /* Optional: adds a nice subtle border */
+}
