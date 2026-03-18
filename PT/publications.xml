@@ -9,8 +9,27 @@
   <year value="2025">
     <author-group type="first" title="Primeiro autor">
       <publication>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2506.12106"> 
+        Reforço da Privacidade: A Utilidade de TC e RM Sintéticas Autónomas para a Segmentação de Tumores e Ossos </a>]]>
+        </title>
+        <description>
+        Investigou-se a eficácia de imagens médicas sintéticas autónomas para a segmentação, 
+        através da geração de conjuntos de dados de TC de cabeça/pescoço e RM de glioma cerebral utilizando GANs e modelos de difusão. 
+        A realidade e utilidade dos dados foram avaliadas através de MAE, MS-SSIM, Radiómica e um Teste de Turing Visual realizado com cinco radiologistas. 
+        Demonstrou-se uma elevada fidelidade em RMs sintéticas (DSC=0,834) e na segmentação óssea (DSC=0,841), 
+        identificando simultaneamente limitações críticas no realismo dos tecidos em TC sintéticas (correlação de 0,5461) 
+        e na segmentação de tumores complexos.</description>
+        <keywords>TC, RM, GANs, DDPMs, Segmentação, Teste de Turing Visual</keywords>
+        <image src="/imgs/2025/Stand-alone.png"/>
+      </publication>
+      <publication>
         <title>Geração de casos 10x mais rápido com DDPM Condicional</title>
-        <description>Apresentamos uma framework unificada de denoising-diffusion para as Tarefas 8 (síntese de modalidades de RM em falta) e 9 (inpainting de regiões sem patologia) do BraTS 2025, com uma estratégia de inferência rápida, mais de 10x mais veloz que a nossa solução do BraTS 2024, mantendo um baixo custo computacional. Resultados — Tarefa 8: Dice 0.86, SSIM 0.77; Tarefa 9: RMSE 0.053, PSNR 26.77, SSIM 0.918. O código será disponibilizado em breve.</description>
+        <description>
+        <![CDATA[Apresentamos uma framework unificada de denoising-diffusion para as Tarefas 8 (síntese de modalidades de RM em falta) 
+        e 9 (inpainting de regiões sem patologia) do BraTS 2025, com uma estratégia de inferência rápida, 
+        mais de 10x mais veloz que a nossa solução do BraTS 2024, mantendo um baixo custo computacional. 
+        Resultados — Tarefa 8: Dice 0.86, SSIM 0.77; Tarefa 9: RMSE 0.053, PSNR 26.77, SSIM 0.918. 
+        O código está disponível em <a href="https://github.com/andre-fs-ferreira/BraTS2025_by_Faking_it">BraTS2025_by_Faking_it</a>.]]></description>
         <keywords>Conditional Denoising Diffusion, IDDPM, Geração de Dados Sintéticos, Reconstrução de RM, Eficiência Computacional, Image Inpainting</keywords>
         <image src="/imgs/2025/Brats_2025_task8_9.png"/>
       </publication>
