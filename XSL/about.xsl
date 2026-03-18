@@ -68,7 +68,7 @@
   <xsl:template match="resume">
     <section class="topic no-bullet">
       <div class="right-margin">
-        <h2><xsl:value-of select="@title"/> (<a href="{@cv_path}" target="_blank" class="cv-link"><xsl:value-of select="@open_cv_text"/></a>)</h2>
+        <h2><xsl:value-of select="@title"/></h2>
         <ul>
           <xsl:for-each select="item">
             <li class="bold"><xsl:value-of select="@title"/></li>

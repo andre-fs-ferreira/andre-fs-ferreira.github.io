@@ -5,7 +5,7 @@
     <title>Sobre Mim</title>
     <subtitle>Doutorando em Engenharia Biomédica | Especialista em IA em Imagem Médica | Vencedor de Desafios &amp; Investigador</subtitle>
   </header>
-  <resume title="Currículo" cv_path="/imgs/CV_Andre_Ferreira.pdf" open_cv_text="abrir CV" challenges_title="🎉 Vencedor de múltiplos desafios internacionais de IA em imagem médica:" languages_title="💬 Níveis de proficiência linguística:">
+  <resume title="Currículo" challenges_title="🎉 Vencedor de múltiplos desafios internacionais de IA em imagem médica:" languages_title="💬 Níveis de proficiência linguística:">
     <item title="📚 Doutorando em Engenharia Biomédica (Informática Médica):">
       <detail>📍 Universidade do Minho 🤝 IKIM, Universität Duisburg-Essen</detail>
     </item>
