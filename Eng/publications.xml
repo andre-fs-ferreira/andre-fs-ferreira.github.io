@@ -21,7 +21,7 @@
         <image src="/imgs/2025/Stand-alone.png"/>
       </publication>
       <publication>
-        <title>Achieving Over 10× Faster Sample Generation with conditional DDPM</title>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-16370-7_11"> Achieving Over 10× Faster Sample Generation with conditional DDPM </a>]]></title>
         <description><![CDATA[We present a unified denoising-diffusion framework for BraTS 2025 Task 8 
           (synthesizing missing MRI modalities) and Task 9 (inpainting pathology-free regions), 
           with a fast inference strategy over 10× quicker than our BraTS 2024 solution while keeping low computational cost. 
