@@ -23,7 +23,7 @@
         <image src="/imgs/2025/Stand-alone.png"/>
       </publication>
       <publication>
-        <title>Geração de casos 10x mais rápido com DDPM Condicional</title>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-16370-7_11"> Geração de casos 10x mais rápido com DDPM Condicional </a>]]></title>
         <description>
         <![CDATA[Apresentamos uma framework unificada de denoising-diffusion para as Tarefas 8 (síntese de modalidades de RM em falta) 
         e 9 (inpainting de regiões sem patologia) do BraTS 2025, com uma estratégia de inferência rápida, 
