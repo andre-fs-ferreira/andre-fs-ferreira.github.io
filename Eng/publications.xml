@@ -6,14 +6,14 @@
     <subtitle>9 first author publications + 12 Co-author publications</subtitle>
   </header>
 
-  <year value="2025">
+  <year value="2026">
     <author-group type="first" title="First author">
       <publication>
         <title><![CDATA[<a href="https://arxiv.org/pdf/2506.12106"> VS-DDPM: Efficient Low-Cost Diffusion Model for Medical Modality Translation </a>]]></title>
-        <description>The authors propose 3D VS-DDPM, a framework designed to speed up the slow generation times of traditional diffusion models while maintaining high image quality. 
-          Tested in the BraTS2025 and SynthRAD2025 challenges, the model achieved state-of-the-art results in missing MRI synthesis and MRI tumor removal. 
-          While it was competitive in MRI-to-sCT and CBCT-to-sCT tasks, it did not reach the top benchmarks there, likely due to data processing or loss function settings. O
-          verall, it provides a fast, robust, and efficient solution for synthetic medical imaging. The code is available at <a href="https://github.com/andre-fs-ferreira/SynthRAD_by_Faking_it">SynthRAD2025_by_Faking_it</a>.]]></description>
+        <description>The authors propose 3D VS-DDPM, a framework designed to speed up the slow generation times of traditional diffusion models while maintaining high image quality. 
+  Tested in the BraTS2025 and SynthRAD2025 challenges, the model achieved state-of-the-art results in missing MRI synthesis and MRI tumor removal. 
+  While it was competitive in MRI-to-sCT and CBCT-to-sCT tasks, it did not reach the top benchmarks there, likely due to data processing or loss function settings. O
+  verall, it provides a fast, robust, and efficient solution for synthetic medical imaging. The code is available at <a href="https://github.com/andre-fs-ferreira/SynthRAD_by_Faking_it">SynthRAD2025_by_Faking_it</a>.]]></description>
         <keywords>BraTS 2025, SynthRAD2025, Diffusion Models, Medical Imaging, Translation, Inpaintin</keywords>
         <image src="/imgs/2025/Stand-alone.png"/>
       </publication>
