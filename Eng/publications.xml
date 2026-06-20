@@ -15,10 +15,18 @@
   While it was competitive in MRI-to-sCT and CBCT-to-sCT tasks, it did not reach the top benchmarks there, likely due to data processing or loss function settings. O
   verall, it provides a fast, robust, and efficient solution for synthetic medical imaging. The code is available at <a href="https://github.com/andre-fs-ferreira/SynthRAD_by_Faking_it">SynthRAD2025_by_Faking_it</a>.]]></description>
         <keywords>BraTS 2025, SynthRAD2025, Diffusion Models, Medical Imaging, Translation, Inpaintin</keywords>
-        <image src="/imgs/2025/Stand-alone.png"/>
+        <image src="/imgs/2026/Stand-alone.png"/>
       </publication>
     </author-group>
     <author-group type="mid" title="Co-author">
+      <publication>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2605.22200"> OSS: Open Suturing Skills Vision-Based Assessment Challenge 2024-2025 </a>]]></title>
+        <description><![CDATA[The authors present the results of the OSS Challenge, a dedicated MICCAI initiative aimed at benchmarking vision-based skill assessment in open surgery. 
+  Using a dataset of open suturing training videos recorded in a dry-lab setting, the challenge evaluated participants across three independent tasks: classifying skill levels, predicting fine-grained Objective Structured Assessment of Technical Skills (OSATS) scores, and tracking hands and surgical tools. 
+  Results showed that general-purpose spatiotemporal video models consistently achieved the strongest performance. While predicting exact OSATS scores and reliable keypoint tracking remain difficult due to frequent occlusions, the work successfully benchmarks diverse machine learning approaches, highlighting both the promise and current limitations of automated video analysis for surgical training.]]></description>
+        <keywords>surgical skill training, suturing, open surgery, video analysis, skill assessment, machine learning, deep learning, OSATS, keypoint tracking</keywords>
+        <image src="/imgs/2026/OSS-Challenge.png"/>
+      </publication>
     </author-group>
   </year>
 
