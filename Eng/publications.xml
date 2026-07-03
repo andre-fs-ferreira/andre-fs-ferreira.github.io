@@ -15,7 +15,7 @@
   While it was competitive in MRI-to-sCT and CBCT-to-sCT tasks, it did not reach the top benchmarks there, likely due to data processing or loss function settings. O
   verall, it provides a fast, robust, and efficient solution for synthetic medical imaging. The code is available at <a href="https://github.com/andre-fs-ferreira/SynthRAD_by_Faking_it">SynthRAD2025_by_Faking_it</a>.]]></description>
         <keywords>BraTS 2025, SynthRAD2025, Diffusion Models, Medical Imaging, Translation, Inpaintin</keywords>
-        <image src="/imgs/2026/Stand-alone.png"/>
+        <image src="/imgs/2026/vs-ddpm_tables.png"/>
       </publication>
     </author-group>
     <author-group type="mid" title="Co-author">
