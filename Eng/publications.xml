@@ -20,6 +20,18 @@
     </author-group>
     <author-group type="mid" title="Co-author">
       <publication>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-32026-1_44"> Automatic Parsing of Colonoscopy Medical Reports with LLMs </a>]]></title>
+        <description>We present a modular Large Language Model (LLM) pipeline designed to automatically extract key colonoscopy quality metrics—such as progression, preparation, limitations, alterations, and polyp count—from unstructured medical reports. Evaluated on a Portuguese hospital dataset, the system achieved over 84% accuracy across all categories (reaching 98.0% for alterations) and processed 20 reports in under 6 minutes. By exporting to JSON and Excel, it seamlessly integrates into clinical workflows to support scalable, data-driven quality monitoring.</description>
+        <keywords>Large Language Models, Colonoscopy, Medical Informatics, Medical Reports</keywords>
+        <image src="TODO"/>
+      </publication>
+      <publication>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-32026-1_46"> Automatic Transcription of Endoscopic Audio Medical Reports </a>]]></title>
+        <description>This work introduces an end-to-end pipeline for the automatic transcription and structuring of endoscopic audio for colonoscopy and ERCP procedures. Using smartphone-recorded summaries processed by Voxtral—an open-source medical speech recognition model—the transcriptions are subsequently fed into a modular LLM pipeline to extract key clinical data. Tested on a pilot dataset, this proof-of-concept demonstrates a viable approach to reducing the manual documentation burden, standardizing reporting, and enabling automated quality assessment in digestive endoscopy.</description>
+        <keywords>Audio transcription, Colonoscopy, Endoscopic Retrograde Cholangiopancreatography, Medical Reports, Medical Informatics</keywords>
+        <image src="TODO"/>
+      </publication>
+      <publication>
         <title><![CDATA[<a href="https://arxiv.org/pdf/2605.22200"> OSS: Open Suturing Skills Vision-Based Assessment Challenge 2024-2025 </a>]]></title>
         <description><![CDATA[The authors present the results of the OSS Challenge, a dedicated MICCAI initiative aimed at benchmarking vision-based skill assessment in open surgery. 
   Using a dataset of open suturing training videos recorded in a dry-lab setting, the challenge evaluated participants across three independent tasks: classifying skill levels, predicting fine-grained Objective Structured Assessment of Technical Skills (OSATS) scores, and tracking hands and surgical tools. 
