@@ -6,35 +6,59 @@
     <subtitle>9 publicações como primeiro autor + 12 como coautor</subtitle>
   </header>
 
+  <year value="2026">
+    <author-group type="first" title="Primeiro autor">
+      <publication>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2604.22942"> VS-DDPM: Modelo de Difusão Eficiente e de Baixo Custo para Tradução de Modalidade Médica </a>]]></title>
+        <description><![CDATA[Os autores propõem o 3D VS-DDPM, uma framework concebida para acelerar os lentos tempos de geração dos modelos de difusão tradicionais, mantendo uma elevada qualidade de imagem. Testado nos desafios BraTS2025 e SynthRAD2025, o modelo alcançou resultados de estado-da-arte na síntese de RM em falta e remoção de tumores em RM. Embora competitivo nas tarefas de RM para sCT e CBCT para sCT, não atingiu os melhores benchmarks nestas áreas, provavelmente devido a definições de processamento de dados ou função de perda. No geral, fornece uma solução rápida, robusta e eficiente para imagiologia médica sintética. O código está disponível em <a href="https://github.com/andre-fs-ferreira/SynthRAD_by_Faking_it">SynthRAD2025_by_Faking_it</a>.]]></description>
+        <keywords>BraTS 2025, SynthRAD2025, Modelos de Difusão, Imagiologia Médica, Tradução, Inpainting</keywords>
+        <image src="/imgs/2026/vs-ddpm_tables.png"/>
+      </publication>
+    </author-group>
+    <author-group type="mid" title="Coautor">
+      <publication>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-32026-1_44"> Análise Automática de Relatórios Médicos de Colonoscopia com LLMs </a>]]></title>
+        <description>Apresentamos uma pipeline modular de Grandes Modelos de Linguagem (LLM) concebida para extrair automaticamente métricas-chave de qualidade da colonoscopia — tais como progressão, preparação, limitações, alterações e contagem de pólipos — a partir de relatórios médicos não estruturados. Avaliado num dataset de um hospital português, o sistema alcançou uma precisão superior a 84% em todas as categorias (atingindo 98,0% para alterações) e processou 20 relatórios em menos de 6 minutos. Através da exportação para JSON e Excel, integra-se perfeitamente nos fluxos de trabalho clínicos para apoiar uma monitorização da qualidade escalável e baseada em dados.</description>
+        <keywords>Grandes Modelos de Linguagem, Colonoscopia, Informática Médica, Relatórios Médicos</keywords>
+        <image src="/imgs/2026/Parsing_Colonoscopy.png"/>
+      </publication>
+      <publication>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-32026-1_46"> Transcrição Automática de Relatórios Médicos de Áudio Endoscópico </a>]]></title>
+        <description>Este trabalho introduz uma pipeline de ponta a ponta para a transcrição e estruturação automática de áudio endoscópico para procedimentos de colonoscopia e CPRE. Utilizando resumos gravados por smartphone e processados pelo Voxtral — um modelo de reconhecimento de fala médica de código aberto — as transcrições são posteriormente alimentadas numa pipeline modular de LLM para extrair dados clínicos cruciais. Testado num conjunto de dados piloto, esta prova de conceito demonstra uma abordagem viável para reduzir a carga de documentação manual, padronizar relatórios e permitir a avaliação automatizada da qualidade em endoscopia digestiva.</description>
+        <keywords>Transcrição de áudio, Colonoscopia, Colangiopancreatografia Retrógrada Endoscópica, Relatórios Médicos, Informática Médica</keywords>
+        <image src="/imgs/2026/Transcription_Endoscopic.png"/>
+      </publication>
+      <publication>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2605.22200"> OSS: Desafio de Avaliação de Competências de Sutura Aberta Baseada em Visão 2024-2025 </a>]]></title>
+        <description><![CDATA[Os autores apresentam os resultados do desafio OSS, uma iniciativa do MICCAI destinada a fazer o benchmark da avaliação de competências baseada em visão em cirurgia aberta. Utilizando um dataset de vídeos de treino de sutura aberta gravados num ambiente de laboratório seco, o desafio avaliou os participantes em três tarefas independentes: classificar níveis de competência, prever pontuações granulares de Objective Structured Assessment of Technical Skills (OSATS) e localizar mãos e instrumentos cirúrgicos. Os resultados mostraram que os modelos de vídeo espaciotemporais de propósito geral alcançaram consistentemente o desempenho mais forte. Embora a previsão de pontuações OSATS exatas e o rastreamento fiável de pontos-chave permaneçam difíceis devido a oclusões frequentes, o trabalho faz com sucesso o benchmark de diversas abordagens de aprendizagem máquina, destacando tanto a promessa como as limitações atuais da análise de vídeo automatizada para formação cirúrgica.]]></description>
+        <keywords>Formação de competências cirúrgicas, sutura, cirurgia aberta, análise de vídeo, avaliação de competências, aprendizagem máquina, aprendizagem profunda, OSATS, rastreamento de pontos-chave</keywords>
+        <image src="/imgs/2026/OSS-Challenge.png"/>
+      </publication>
+    </author-group>
+  </year>
+
   <year value="2025">
     <author-group type="first" title="Primeiro autor">
       <publication>
-        <title><![CDATA[<a href="https://arxiv.org/pdf/2506.12106"> 
-        Reforço da Privacidade: A Utilidade de TC e RM Sintéticas Autónomas para a Segmentação de Tumores e Ossos </a>]]>
-        </title>
-        <description>
-        Investigou-se a eficácia de imagens médicas sintéticas autónomas para a segmentação, 
-        através da geração de conjuntos de dados de TC de cabeça/pescoço e RM de glioma cerebral utilizando GANs e modelos de difusão. 
-        A realidade e utilidade dos dados foram avaliadas através de MAE, MS-SSIM, Radiómica e um Teste de Turing Visual realizado com cinco radiologistas. 
-        Demonstrou-se uma elevada fidelidade em RMs sintéticas (DSC=0,834) e na segmentação óssea (DSC=0,841), 
-        identificando simultaneamente limitações críticas no realismo dos tecidos em TC sintéticas (correlação de 0,5461) 
-        e na segmentação de tumores complexos.</description>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2506.12106"> Reforço da Privacidade: A Utilidade de TC e RM Sintéticas Autónomas para a Segmentação de Tumores e Ossos </a>]]></title>
+        <description>Investigou-se a eficácia de imagens médicas sintéticas autónomas para a segmentação, através da geração de conjuntos de dados de TC de cabeça/pescoço e RM de glioma cerebral utilizando GANs e modelos de difusão. A realidade e utilidade dos dados foram avaliadas através de MAE, MS-SSIM, Radiómica e um Teste de Turing Visual realizado com cinco radiologistas. Demonstrou-se uma elevada fidelidade em RMs sintéticas (DSC=0,834) e na segmentação óssea (DSC=0,841), identificando simultaneamente limitações críticas no realismo dos tecidos em TC sintéticas (correlação de 0,5461) e na segmentação de tumores complexos.</description>
         <keywords>TC, RM, GANs, DDPMs, Segmentação, Teste de Turing Visual</keywords>
         <image src="/imgs/2025/Stand-alone.png"/>
       </publication>
       <publication>
         <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-16370-7_11"> Geração de casos 10x mais rápido com DDPM Condicional </a>]]></title>
-        <description>
-        <![CDATA[Apresentamos uma framework unificada de denoising-diffusion para as Tarefas 8 (síntese de modalidades de RM em falta) 
-        e 9 (inpainting de regiões sem patologia) do BraTS 2025, com uma estratégia de inferência rápida, 
-        mais de 10x mais veloz que a nossa solução do BraTS 2024, mantendo um baixo custo computacional. 
-        Resultados — Tarefa 8: Dice 0.86, SSIM 0.77; Tarefa 9: RMSE 0.053, PSNR 26.77, SSIM 0.918. 
-        O código está disponível em <a href="https://github.com/andre-fs-ferreira/BraTS2025_by_Faking_it">BraTS2025_by_Faking_it</a>.]]></description>
+        <description><![CDATA[Apresentamos uma framework unificada de denoising-diffusion para as Tarefas 8 (síntese de modalidades de RM em falta) e 9 (inpainting de regiões sem patologia) do BraTS 2025, com uma estratégia de inferência rápida, mais de 10x mais veloz que a nossa solução do BraTS 2024, mantendo um baixo custo computacional. Resultados — Tarefa 8: Dice 0.86, SSIM 0.77; Tarefa 9: RMSE 0.053, PSNR 26.77, SSIM 0.918. O código está disponível em <a href="https://github.com/andre-fs-ferreira/BraTS2025_by_Faking_it">BraTS2025_by_Faking_it</a>.]]></description>
         <keywords>Conditional Denoising Diffusion, IDDPM, Geração de Dados Sintéticos, Reconstrução de RM, Eficiência Computacional, Image Inpainting</keywords>
         <image src="/imgs/2025/Brats_2025_task8_9.png"/>
       </publication>
     </author-group>
     <author-group type="mid" title="Coautor">
+      <publication>
+        <title><![CDATA[<a href="https://arxiv.org/pdf/2601.16759"> Dataset de imagens de colangiopancreatografia retrógrada endoscópica (CPRE) curado </a>]]></title>
+        <description>A colangiopancreatografia retrógrada endoscópica (CPRE) é um procedimento essencial para diagnosticar e tratar doenças biliares e pancreáticas. Embora a inteligência artificial ofereça soluções promissoras para o diagnóstico automatizado, a falta de datasets de CPRE publicamente disponíveis limita o progresso neste campo. Para colmatar esta lacuna, este estudo apresenta um grande dataset de imagens de CPRE curado, compreendendo 19.018 imagens brutas e 19.317 imagens processadas de 1.602 doentes. Destas, 5.519 imagens estão rotuladas e prontas para uso imediato. Todas as imagens foram revistas manualmente e anotadas por dois gastrenterologistas experientes e validadas por um especialista sénior, garantindo elevados padrões de qualidade. A utilidade do dataset foi demonstrada através de uma experiência de classificação, posicionando-o como um potencial benchmark para análise e diagnóstico automatizado de CPRE.</description>
+        <keywords>CPRE; Classificação; Dataset</keywords>
+        <image src="/imgs/2025/ERCP_dataset.png"/>
+      </publication>
       <publication>
         <title><![CDATA[<a href="https://www.mdpi.com/1718-7729/32/10/587"> A Atenuação da Radiação do Músculo Esquelético em C3 Prevê a Sobrevida no Cancro de Cabeça e Pescoço </a>]]></title>
         <description>O nosso estudo demonstra uma forma prática e poderosa de prever os resultados no cancro de cabeça e pescoço (HNC). Embora a baixa massa muscular seja um fator de risco conhecido, esta é tipicamente medida na vértebra L3, que não é abrangida pelas tomografias de HNC. Utilizando uma análise de deep learning em 904 doentes, validamos que as medições na vértebra C3 — uma área já incluída nos exames de rotina — são altamente prognósticas. Descobrimos que tanto a baixa quantidade de músculo (SMA) como a baixa qualidade muscular (SMRA) em C3 se correlacionam independentemente com um pior controlo locorregional e uma menor sobrevida global, estabelecendo as métricas musculares em C3 como um novo biomarcador crítico e acessível para o HNC.</description>
@@ -48,14 +72,14 @@
         <image src="/imgs/2025/BraTS_Meningioma.png"/>
       </publication>
       <publication>
-        <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Coleção de um conjunto de dados de RM de tumor cerebral (Glioblastoma Multiforme) com máscaras de segmentação de referência  </a>]]></title>
-        <description>Apresentamos um dataset de imagens de RM de tumores cerebrais com 23,049 amostras, cada uma incluindo imagens FLAIR, T1, T1ce e T2, além de uma ou duas máscaras de segmentação. O dataset expande 438 casos originais do BraTS 2022 através de registo, gerando amostras adicionais com localizações tumorais variadas. Apesar dos protocolos de imagem heterogéneos, fornece ground truth para cada amostra, apoiando o desenvolvimento de modelos de deep learning para segmentação automática de tumores em casos nunca antes vistos.</description>
+        <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S2352340925000198"> GBM-Reservoir: Coleção de um conjunto de dados de RM de tumor cerebral (Glioblastoma Multiforme) com máscaras de segmentação de referência </a>]]></title>
+        <description>Apresentamos um dataset de imagens de RM de tumores cerebrais com 23.049 amostras, cada uma incluindo imagens FLAIR, T1, T1ce e T2, além de uma ou duas máscaras de segmentação. O dataset expande 438 casos originais do BraTS 2022 através de registo, gerando amostras adicionais com localizações tumorais variadas. Apesar dos protocolos de imagem heterogéneos, fornece ground truth para cada amostra, apoiando o desenvolvimento de modelos de deep learning para segmentação automática de tumores em casos nunca antes vistos.</description>
         <keywords>Segmentação de tumores cerebrais, Aumentação de dados, Registo, BraTS, Deep learning</keywords>
         <image src="/imgs/2025/GBM-Reservoir.png"/>
       </publication>
       <publication>
         <title><![CDATA[<a href="https://www.sciencedirect.com/science/article/pii/S0957417425036474">Beyond Benchmarks: Rumo a uma segmentação óssea robusta por Inteligência Artificial em sistemas sociotécnicos </a>]]></title>
-        <description>Avaliámos 20 modelos de segmentação mandibular de última geração em 19,218 segmentações de 1,000 exames de TC/CBCT multicêntricos e descobrimos que a precisão pode variar até 25% devido a fatores como o tamanho do voxel, orientação do osso e condições do paciente. Embora voxels isotrópicos menores e uma orientação neutra tenham melhorado o desempenho, a osteossíntese metálica e a anatomia complexa degradaram-no. Estes resultados destacam que os modelos de IA não são “plug-and-play” e fornecem recomendações baseadas em evidências para melhorar a integração clínica.</description>
+        <description>Avaliámos 20 modelos de segmentação mandibular de última geração em 19.218 segmentações de 1.000 exames de TC/CBCT multicêntricos e descobrimos que a precisão pode variar até 25% devido a fatores como o tamanho do voxel, orientação do osso e condições do paciente. Embora voxels isotrópicos menores e uma orientação neutra tenham melhorado o desempenho, a osteossíntese metálica e a anatomia complexa degradaram-no. Estes resultados destacam que os modelos de IA não são “plug-and-play” e fornecem recomendações baseadas em evidências para melhorar a integração clínica.</description>
         <keywords>Inteligência Artificial, Processamento de Imagem, Imagem Assistida por Computador, Tridimensional, Tomografia, Tomografia Computadorizada, Guias de Prática Clínica, Mandíbula</keywords>
         <image src="/imgs/2025/Beyond_Benchmarks.png"/>
       </publication>
@@ -110,7 +134,7 @@
       </publication>
       <publication>
         <title><![CDATA[<a href="https://link.springer.com/article/10.1007/s00784-024-05781-5">Insights sobre a Previsão de Extração Dentária a partir de Imagens Panorâmicas: Inteligência Artificial vs. Dentistas</a>]]></title>
-        <description>Treinámos um modelo ResNet50 em 26,956 imagens de dentes recortadas de radiografias panorâmicas para prever se um dente deve ser extraído ou preservado. A IA alcançou ROC-AUC = 0.901 e PR-AUC = 0.749, superando os dentistas (ROC-AUC = 0.797, PR-AUC = 0.589). Estes resultados mostram que a IA pode apoiar a tomada de decisão clínica, melhorando a precisão e reduzindo erros nas indicações de extração dentária.</description>
+        <description>Treinámos um modelo ResNet50 em 26.956 imagens de dentes recortadas de radiografias panorâmicas para prever se um dente deve ser extraído ou preservado. A IA alcançou ROC-AUC = 0.901 e PR-AUC = 0.749, superando os dentistas (ROC-AUC = 0.797, PR-AUC = 0.589). Estes resultados mostram que a IA pode apoiar a tomada de decisão clínica, melhorando a precisão e reduzindo erros nas indicações de extração dentária.</description>
         <keywords>Extração Dentária, Cirurgia, Medicina Dentária, Técnicas de Apoio à Decisão, Deep Learning, Inteligência Artificial</keywords>
         <image src="/imgs/2024/panoramic_tooth.png"/>
       </publication>
@@ -128,7 +152,7 @@
       </publication>
     </author-group>
   </year>
-  
+
   <year value="2023">
     <author-group type="first" title="Primeiro autor">
       <publication>
@@ -141,7 +165,7 @@
     <author-group type="mid" title="Coautor">
       <publication>
         <title><![CDATA[<a href="https://arxiv.org/abs/2308.16139">MedShapeNet – um dataset em larga escala de formas médicas 3D para visão por computador</a>]]></title>
-        <description><![CDATA[Introduzimos o MedShapeNet, uma coleção em larga escala de mais de 100,000 formas médicas 3D anotadas, derivadas de imagens reais de pacientes, cobrindo anatomia e instrumentos cirúrgicos. Concebido para fazer a ponte entre a visão por computador e a imagem médica, suporta tarefas como classificação de tumores, reconstrução de crânio, completação de anatomia, educação e impressão 3D. Os dados são de acesso aberto através de uma interface web e Python, permitindo a investigação em benchmarks discriminativos, reconstrutivos e variacionais, bem como em aplicações de realidade estendida. A página do projeto é: <a href="https://medshapenet.ikim.nrw/">https://medshapenet.ikim.nrw/</a>.]]></description>
+        <description><![CDATA[Introduzimos o MedShapeNet, uma coleção em larga escala de mais de 100.000 formas médicas 3D anotadas, derivadas de imagens reais de pacientes, cobrindo anatomia e instrumentos cirúrgicos. Concebido para fazer a ponte entre a visão por computador e a imagem médica, suporta tarefas como classificação de tumores, reconstrução de crânio, completação de anatomia, educação e impressão 3D. Os dados são de acesso aberto através de uma interface web e Python, permitindo a investigação em benchmarks discriminativos, reconstrutivos e variacionais, bem como em aplicações de realidade estendida. A página do projeto é: <a href="https://medshapenet.ikim.nrw/">https://medshapenet.ikim.nrw/</a>.]]></description>
         <keywords>Formas médicas 3D, benchmark, educação em anatomia, shapeomics, realidade aumentada, realidade virtual</keywords>
         <image src="/imgs/2023/medshapenet.webp"/>
       </publication>
@@ -159,7 +183,7 @@
       </publication>
     </author-group>
   </year>
-  
+
   <year value="2022">
     <author-group type="first" title="Primeiro autor">
       <publication>
