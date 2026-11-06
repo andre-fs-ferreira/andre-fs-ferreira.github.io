@@ -104,13 +104,13 @@
   <year value="2024">
     <author-group type="first" title="First author">
       <publication>
-        <title><![CDATA[<a href="https://arxiv.org/abs/2411.04632v1?utm_source=tldrai">Improved Segmentation with Synthetic Data</a>]]></title>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-31709-4_36">Improved Multi-task Brain Tumour Segmentation with Synthetic Data Augmentation</a>]]></title>
         <description><![CDATA[We present our winning Task 1 and third-place Task 3 solutions for BraTS, using synthetic data to train SOTA segmentation pipelines—improving robustness for post-treatment glioma segmentation though the pipeline was less suited to meningioma. Results — Task 1 (ET, NETC, RC, SNFH, TC, WT): DSC = 0.790, 0.808, 0.776, 0.893, 0.787, 0.894; HD95 = 35.63, 30.35, 44.58, 16.87, 38.19, 17.95. Task 3 (test): DSC = 0.801, HD95 = 38.26. Code available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.]]></description>
         <keywords>Brain Tumour Segmentation, Synthetic data, nnUnet, MedNeXt, Swin-UNETR</keywords>
         <image src="/imgs/2024/BraTS_2024_task1_3.png"/>
       </publication>
       <publication>
-        <title><![CDATA[<a href="https://arxiv.org/abs/2411.04630">Brain Tumour Removing and Missing Modality Generation using 3D WDM</a>]]></title>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-31709-4_55">Brain Tumour Removing and Missing Modality Generation using 3D WDM</a>]]></title>
         <description><![CDATA[We present our second-place solution for BraTS 2024 Task 8 (and a participation entry for Task 7) that uses conditional 3D wavelet diffusion models to handle lesions and missing MRI modalities. By applying a wavelet transform we train and infer at full resolution on a 48 GB GPU without patching or downsampling—preserving all image information and improving prediction reliability; code is available on <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.]]></description>
         <keywords>3D WDM, MRI, Brain Tumour, Inpainting, Missing Modality</keywords>
         <image src="/imgs/2024/BraTS_2024_task7_8.png"/>
