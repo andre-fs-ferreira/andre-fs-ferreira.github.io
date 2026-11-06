@@ -89,13 +89,13 @@
   <year value="2024">
     <author-group type="first" title="Primeiro autor">
       <publication>
-        <title><![CDATA[<a href="https://arxiv.org/abs/2411.04632v1?utm_source=tldrai">Melhoria da Segmentação com Dados Sintéticos</a>]]></title>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-31709-4_36">Melhoria da Segmentação com Dados Sintéticos</a>]]></title>
         <description><![CDATA[Apresentamos as nossas soluções vencedoras da Tarefa 1 e de terceiro lugar da Tarefa 3 para o BraTS, usando dados sintéticos para treinar pipelines de segmentação de última geração — melhorando a robustez para a segmentação de gliomas pós-tratamento, embora a pipeline tenha sido menos adequada para meningiomas. Resultados — Tarefa 1 (ET, NETC, RC, SNFH, TC, WT): DSC = 0.790, 0.808, 0.776, 0.893, 0.787, 0.894; HD95 = 35.63, 30.35, 44.58, 16.87, 38.19, 17.95. Tarefa 3 (teste): DSC = 0.801, HD95 = 38.26. Código disponível em <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.]]></description>
         <keywords>Segmentação de Tumores Cerebrais, Dados sintéticos, nnUnet, MedNeXt, Swin-UNETR</keywords>
         <image src="/imgs/2024/BraTS_2024_task1_3.png"/>
       </publication>
       <publication>
-        <title><![CDATA[<a href="https://arxiv.org/abs/2411.04630">Remoção de Tumores Cerebrais e Geração de Modalidades em Falta usando 3D WDM</a>]]></title>
+        <title><![CDATA[<a href="https://link.springer.com/chapter/10.1007/978-3-032-31709-4_55">Remoção de Tumores Cerebrais e Geração de Modalidades em Falta usando 3D WDM</a>]]></title>
         <description><![CDATA[Apresentamos a nossa solução de segundo lugar para a Tarefa 8 do BraTS 2024 (e uma participação na Tarefa 7) que utiliza modelos de difusão de wavelet 3D condicionais para lidar com lesões e modalidades de RM em falta. Ao aplicar uma transformada de wavelet, treinamos e inferimos em resolução total numa GPU de 48 GB sem patches ou downsampling, preservando toda a informação da imagem e melhorando a fiabilidade da previsão; o código está disponível em <a href="https://github.com/ShadowTwin41/BraTS_2023_2024_solutions">BraTS_2023_2024_solutions</a>.]]></description>
         <keywords>3D WDM, RM, Tumor Cerebral, Inpainting, Modalidade em Falta</keywords>
         <image src="/imgs/2024/BraTS_2024_task7_8.png"/>
