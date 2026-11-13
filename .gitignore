@@ -1,3 +1,4 @@
 Gemfile.lock
 _site
 run_local_test.sh
+.agents/
